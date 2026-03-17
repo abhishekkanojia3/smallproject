@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import { CONTACT_INFO, WHATSAPP_URL } from '@/config/contact';
@@ -13,9 +14,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="bg-primary text-white shadow-lg sticky top-0 z-50 border-b-4 border-accent">
         <nav className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition">
-            <img 
+            <Image 
               src="/logo.png" 
               alt="TechRunniti IT Academy" 
+              width={64}
+              height={64}
+              unoptimized
               className="h-16 w-auto object-contain"
             />
             <div>
@@ -69,9 +73,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <img 
+              <Image 
                 src="/logo.png" 
                 alt="TechRunniti IT Academy" 
+                width={48}
+                height={48}
+                unoptimized
                 className="h-12 w-auto object-contain"
               />
               <div>

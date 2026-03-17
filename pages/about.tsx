@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { WHATSAPP_URL } from '@/config/contact';
 
 export default function About() {
@@ -180,9 +181,9 @@ export default function About() {
           <h2 className="text-4xl font-bold text-gold mb-6">Ready to Join Our Community?</h2>
           <p className="text-xl text-gray-300 mb-8">Start your journey to becoming a DevOps expert with TechRunniti</p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="/courses" className="bg-accent hover:bg-gold text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
+            <Link href="/courses" className="bg-accent hover:bg-gold text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
               Explore Courses
-            </a>
+            </Link>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="border-2 border-gold text-gold hover:bg-gold hover:text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
               Chat With Us
             </a>

@@ -98,7 +98,7 @@ export default function Pricing() {
 
           {/* Course Info Section */}
           <div className="mt-20 bg-primary p-12 rounded shadow-lg border border-gray-700">
-            <h2 className="text-3xl font-bold text-gold mb-6">What's Included in Every Course?</h2>
+            <h2 className="text-3xl font-bold text-gold mb-6">What&apos;s Included in Every Course?</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-bold text-accent mb-3">Live Interactive Sessions</h3>

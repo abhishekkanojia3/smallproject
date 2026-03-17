@@ -42,7 +42,7 @@ export default function Testimonials() {
                     <span key={i} className="text-gold text-2xl">★</span>
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4 italic">"{testi.text}"</p>
+                <p className="text-gray-300 mb-4 italic">&quot;{testi.text}&quot;</p>
                 <div className="border-t border-gray-700 pt-4">
                   <p className="font-bold text-gold">{testi.name}</p>
                   <p className="text-sm text-gray-400">{testi.role}</p>

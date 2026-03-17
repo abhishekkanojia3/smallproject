@@ -26,7 +26,7 @@ export default function Courses() {
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.map((course) => (
+            {COURSES.map((course) => (
               <div key={course.id} className="bg-primary rounded-lg border border-gray-700 hover:border-accent transition overflow-hidden hover:shadow-xl hover:shadow-accent/20">
                 {/* Course Header */}
                 <div className="bg-gradient-to-r from-accent/10 to-gold/10 p-6 border-b border-gray-700">
@@ -93,7 +93,7 @@ export default function Courses() {
       {/* CTA Section */}
       <section className="bg-primary border-t-4 border-accent py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gold mb-6">Can't decide which course?</h2>
+          <h2 className="text-4xl font-bold text-gold mb-6">Can&apos;t decide which course?</h2>
           <p className="text-xl text-gray-300 mb-8">Chat with our academic advisors to find the perfect course for your career goals</p>
           <a
             href={WHATSAPP_MESSAGE_URL(`Hi TechRunniti, I need help choosing a course`)}

@@ -3,6 +3,15 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { CONTACT_INFO, WHATSAPP_URL } from '@/config/contact';
 
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, opts: { action: string }) => Promise<string>;
+    };
+  }
+}
+
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
@@ -16,6 +25,9 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  const endpoint = process.env.NEXT_PUBLIC_LAMBDA_ENDPOINT;
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,8 +43,35 @@ export default function Contact() {
       contactSchema.parse(formData);
       setLoading(true);
 
-      // For static deployments, show success - integrate with Lambda/SES in production
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!endpoint) {
+        throw new Error('Contact endpoint is not configured. Please try WhatsApp or email.');
+      }
+
+      let recaptchaToken: string | undefined;
+      if (recaptchaSiteKey) {
+        if (!window.grecaptcha) {
+          throw new Error('Bot protection is still loading. Please try again in a moment.');
+        }
+        recaptchaToken = await new Promise((resolve, reject) => {
+          window.grecaptcha!.ready(() => {
+            window
+              .grecaptcha!.execute(recaptchaSiteKey, { action: 'contact' })
+              .then(resolve)
+              .catch(reject);
+          });
+        });
+      }
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, recaptchaToken }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data?.error || 'Failed to send message. Please try again.');
+      }
 
       setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
@@ -48,6 +87,13 @@ export default function Contact() {
       <Head>
         <title>Contact Us - TechRunniti</title>
         <meta name="description" content="Get in touch with TechRunniti" />
+        {recaptchaSiteKey ? (
+          <script
+            src={`https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(recaptchaSiteKey)}`}
+            async
+            defer
+          />
+        ) : null}
       </Head>
 
       <section className="min-h-screen bg-gradient-to-b from-primary to-gray-900 px-4 py-20">

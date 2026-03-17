@@ -19,7 +19,7 @@ jobs:
         run: npm ci
 
       - name: Run lint
-        run: npm run lint || true
+        run: npm run lint
 
       - name: Build static site
         run: npm run build
@@ -33,7 +33,10 @@ jobs:
 
       - name: Sync to S3
         run: |
-          aws s3 sync out/ s3://techrunniti.com --delete --cache-control "max-age=31536000,public"
+          # Upload HTML files with no-cache to ensure fresh content
+          aws s3 sync out/ s3://techrunniti.com --delete --exclude "*.js" --exclude "*.css" --exclude "*.json" --exclude "*.woff*" --exclude "*.png" --exclude "*.jpg" --exclude "*.jpeg" --exclude "*.svg" --exclude "*.gif" --cache-control "public, no-cache, no-store, must-revalidate"
+          # Upload hashed assets with long cache (1 year)
+          aws s3 sync out/ s3://techrunniti.com --exclude "*" --include "*.js" --include "*.css" --include "*.woff*" --include "*.png" --include "*.jpg" --include "*.jpeg" --include "*.svg" --include "*.gif" --cache-control "public, max-age=31536000, immutable"
 
       - name: Invalidate CloudFront
         run: |
