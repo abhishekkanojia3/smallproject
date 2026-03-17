@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { WHATSAPP_URL } from '@/config/contact';
 
 export default function About() {
   return (
@@ -182,7 +183,7 @@ export default function About() {
             <a href="/courses" className="bg-accent hover:bg-gold text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
               Explore Courses
             </a>
-            <a href="https://wa.me/919131590319" target="_blank" rel="noopener noreferrer" className="border-2 border-gold text-gold hover:bg-gold hover:text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="border-2 border-gold text-gold hover:bg-gold hover:text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
               Chat With Us
             </a>
           </div>

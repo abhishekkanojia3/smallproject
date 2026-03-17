@@ -9,12 +9,51 @@ html {
 body {
   @apply bg-primary text-white;
   background: linear-gradient(135deg, #2d3e50 0%, #1f2937 50%, #111827 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Link styles */
 a {
   @apply text-accent transition-colors;
 }
 
 a:hover {
   @apply text-gold;
+}
+
+/* Accessibility: Focus styles for all interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-primary rounded;
+}
+
+/* Input focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  @apply border-accent;
+}
+
+button {
+  @apply transition-all;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-primary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gold;
 }

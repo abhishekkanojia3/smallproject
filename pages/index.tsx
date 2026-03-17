@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
+import { COURSES } from '@/lib/courses';
+import { WHATSAPP_MESSAGE_URL } from '@/config/contact';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -13,21 +15,15 @@ export default function Home() {
     setTimeout(() => setSubscribed(false), 3000);
   };
 
-  const courses = [
-    { name: 'AWS Fundamentals', desc: 'Master AWS core services and cloud architecture', icon: '☁️' },
-    { name: 'Kubernetes & Docker', desc: 'Container orchestration and deployment', icon: '🐳' },
-    { name: 'DevOps Engineering', desc: 'CI/CD pipelines and infrastructure automation', icon: '⚙️' },
-    { name: 'Azure Cloud', desc: 'Microsoft Azure cloud platform mastery', icon: '🔷' },
-    { name: 'Terraform & IaC', desc: 'Infrastructure as Code and cloud provisioning', icon: '🏗️' },
-    { name: 'Jenkins & CI/CD', desc: 'Continuous integration and deployment pipelines', icon: '🔄' },
-  ];
-
   const stats = [
     { number: '5000+', label: 'Students Trained' },
     { number: '15+', label: 'Expert Instructors' },
     { number: '95%', label: 'Job Placement Rate' },
     { number: '10+', label: 'Industry Certifications' },
   ];
+
+  // Get first 3 courses for featured section
+  const featuredCourses = COURSES.slice(0, 3);
 
   return (
     <>
@@ -58,7 +54,7 @@ export default function Home() {
               Explore All Courses
             </Link>
             <a 
-              href="https://wa.me/919131590319?text=Hi%20TechRunniti%2C%20I%20want%20to%20know%20about%20your%20courses"
+              href={WHATSAPP_MESSAGE_URL('Hi TechRunniti, I want to know about your courses')}
               target="_blank"
               rel="noopener noreferrer"
               className="border-2 border-gold text-gold hover:bg-gold hover:text-primary px-10 py-4 rounded-lg font-bold text-lg transition"
@@ -92,13 +88,15 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.map((course, i) => (
-              <div key={i} className="bg-primary p-8 rounded-lg border border-gray-700 hover:border-accent transition hover:shadow-xl hover:shadow-accent/20">
-                <div className="text-5xl mb-4">{course.icon}</div>
-                <h3 className="text-2xl font-bold text-accent mb-3">{course.name}</h3>
-                <p className="text-gray-300 mb-6">{course.desc}</p>
+            {featuredCourses.map((course) => (
+              <div key={course.id} className="bg-primary p-8 rounded-lg border border-gray-700 hover:border-accent transition hover:shadow-xl hover:shadow-accent/20">
+                <div className="text-2xl font-bold text-gold mb-4">{course.price}</div>
+                <h3 className="text-xl font-bold text-accent mb-2">{course.name}</h3>
+                <p className="text-gray-300 text-sm mb-2">⏱️ {course.duration}</p>
+                <p className="text-gray-300 text-sm mb-4">👨‍🏫 {course.instructor}</p>
+                <p className="text-gray-300 mb-6 text-sm">{course.description}</p>
                 <Link href="/courses" className="text-gold font-semibold hover:text-accent transition flex items-center gap-2">
-                  Learn More →
+                  View Details →
                 </Link>
               </div>
             ))}
@@ -139,12 +137,14 @@ export default function Home() {
             <Link href="/contact" className="bg-accent hover:bg-gold text-primary px-10 py-4 rounded-lg font-bold text-lg transition transform hover:scale-105 shadow-lg">
               Enroll Now
             </Link>
-            <button 
-              onClick={() => window.open('https://wa.me/919131590319', '_blank')}
+            <a 
+              href={WHATSAPP_MESSAGE_URL('Hi TechRunniti, I want to talk to an advisor about courses')}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-gold text-gold hover:bg-gold hover:text-primary px-10 py-4 rounded-lg font-bold text-lg transition"
             >
               Talk to Advisor
-            </button>
+            </a>
           </div>
 
           <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto">

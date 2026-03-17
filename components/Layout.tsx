@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import ErrorBoundary from './ErrorBoundary';
+import { CONTACT_INFO, WHATSAPP_URL } from '@/config/contact';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <ErrorBoundary>
+      <div className="flex flex-col min-h-screen">
       {/* Header */}
       <header className="bg-primary text-white shadow-lg sticky top-0 z-50 border-b-4 border-accent">
         <nav className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -33,8 +36,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white text-2xl"
+            className="md:hidden text-white text-2xl focus-visible:ring-2 focus-visible:ring-accent rounded p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             ☰
           </button>
@@ -42,7 +48,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <ul className="md:hidden bg-primary border-t border-accent px-4 py-4 space-y-2 font-bold">
+          <ul id="mobile-menu" className="md:hidden bg-primary border-t border-accent px-4 py-4 space-y-2 font-bold">
             <li><Link href="/" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Home</Link></li>
             <li><Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Courses</Link></li>
             <li><Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Pricing</Link></li>
@@ -93,9 +99,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div>
             <h4 className="font-bold text-accent mb-3">Connect</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="https://twitter.com/techrunniti" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">Twitter</a></li>
-              <li><a href="https://linkedin.com/company/techrunniti" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">LinkedIn</a></li>
-              <li><a href="https://wa.me/919131590319" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">WhatsApp</a></li>
+              <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition" aria-label="Contact us on WhatsApp">WhatsApp</a></li>
+              <li><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-gold transition">Email</a></li>
             </ul>
           </div>
         </div>
@@ -103,6 +108,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <p>&copy; 2025 TechRunniti. All rights reserved.</p>
         </div>
       </footer>
-    </div>
+      </div>
+    </ErrorBoundary>
   );
 }

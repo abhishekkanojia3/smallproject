@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { z } from 'zod';
+import { CONTACT_INFO, WHATSAPP_URL } from '@/config/contact';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -106,9 +107,9 @@ export default function Contact() {
 
             <div className="mt-12 pt-8 border-t border-gray-700">
               <h2 className="text-2xl font-bold text-accent mb-4">Other Ways to Reach Us</h2>
-              <p className="text-gray-300 mb-2">📧 Email: hello@techrunniti.com</p>
-              <p className="text-gray-300 mb-2">📞 Phone: +91-9876543210</p>
-              <p className="text-gray-300">💬 <a href="https://wa.me/919131590319" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:text-gold transition">WhatsApp</a></p>
+              <p className="text-gray-300 mb-2">📧 Email: <a href={`mailto:${CONTACT_INFO.email}`} className="text-accent hover:text-gold transition">{CONTACT_INFO.email}</a></p>
+              <p className="text-gray-300 mb-2">📞 Phone: <a href={`tel:${CONTACT_INFO.phone}`} className="text-accent hover:text-gold transition">{CONTACT_INFO.phone}</a></p>
+              <p className="text-gray-300">💬 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:text-gold transition">WhatsApp</a></p>
             </div>
           </div>
         </div>
