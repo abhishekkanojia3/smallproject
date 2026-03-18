@@ -47,7 +47,7 @@ export default function Home() {
             Learn from certified industry experts with hands-on, instructor-led training
           </p>
           <p className="text-md text-accent font-semibold mb-8">
-            Live classes • Small batches • Lifetime access • Job guaranteed
+            Live classes • Small batches • Lifetime access
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center mb-12">
             <Link href="/courses" className="bg-accent hover:bg-gold text-primary px-10 py-4 rounded-lg font-bold text-lg transition transform hover:scale-105 shadow-lg">

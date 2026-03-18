@@ -1,5 +1,33 @@
 const https = require('https');
 const { URLSearchParams } = require('url');
+const { SecretsManagerClient, GetSecretValueCommand } = require('@aws-sdk/client-secrets-manager');
+
+const secretsClient = new SecretsManagerClient({ region: process.env.AWS_REGION || 'ap-south-1' });
+let recaptchaSecretCache = null;
+let cacheExpiry = 0;
+
+/**
+ * Fetch reCAPTCHA secret from AWS Secrets Manager with caching
+ */
+async function getRecaptchaSecret() {
+  const now = Date.now();
+  if (recaptchaSecretCache && cacheExpiry > now) {
+    return recaptchaSecretCache;
+  }
+
+  try {
+    const command = new GetSecretValueCommand({
+      SecretId: 'techrunniti/recaptcha-secret',
+    });
+    const response = await secretsClient.send(command);
+    recaptchaSecretCache = response.SecretString;
+    cacheExpiry = now + 3600000; // Cache for 1 hour
+    return recaptchaSecretCache;
+  } catch (error) {
+    console.warn('Failed to fetch reCAPTCHA secret from Secrets Manager:', error.message);
+    return null; // reCAPTCHA is optional
+  }
+}
 
 exports.handler = async (event) => {
   const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'https://techrunniti.com,https://www.techrunniti.com')
@@ -41,10 +69,7 @@ exports.handler = async (event) => {
       return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'Missing fields' }) };
     }
 
-    const secret =
-      process.env.RECAPTCHA_SECRET ||
-      process.env.RECAPTCHA_SECRET_KEY ||
-      process.env.RECAPTCHA_SECRET_KEY_V3;
+    const secret = await getRecaptchaSecret();
 
     if (secret) {
       if (!recaptchaToken) {
@@ -84,18 +109,42 @@ exports.handler = async (event) => {
         return { statusCode: 403, headers: corsHeaders, body: JSON.stringify({ error: 'Failed bot check' }) };
       }
     }
+  } catch (error) {
+    console.error('Error processing request:', error);
+    return {
+      statusCode: 500,
+      headers: corsHeaders,
+      body: JSON.stringify({ error: 'Internal server error' })
+    };
+  }
+};
+
+// Note: This function requires:
+// 1. Lambda execution role with permissions to read from AWS Secrets Manager
+// 2. Secret stored at: techrunniti/recaptcha-secret
+// 3. Environment variable AWS_REGION set (defaults to ap-south-1)
 
     // Avoid logging message content (PII)
+    const requestId = context.requestId || crypto.randomUUID();
     console.log('Contact submission received', {
+      requestId,
       nameLength: String(name).length,
       emailDomain: String(email).split('@')[1] || null,
       messageLength: String(message).length,
+      timestamp: new Date().toISOString(),
     });
 
     return {
       statusCode: 200,
+      headers: { ...corsHeaders, 'X-Request-ID': requestId },
+      body: JSON.stringify({ success: true, message: 'We will contact you soon!', requestId })
+    };
+  } catch (error) {
+    console.error('Lambda error:', error);
+    return {
+      statusCode: 500,
       headers: corsHeaders,
-      body: JSON.stringify({ success: true, message: 'We will contact you soon!' })
+      body: JSON.stringify({ error: 'Internal server error' })
     };
 
   } catch (error) {
