@@ -76,7 +76,14 @@ export default function Contact() {
       setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      if (err instanceof TypeError && err.message.toLowerCase().includes('failed to fetch')) {
+        const hint = endpoint
+          ? `Network error contacting the server. Please verify NEXT_PUBLIC_LAMBDA_ENDPOINT is a valid HTTPS URL and that the endpoint is reachable (open it in a new tab; it should respond with 405/JSON).`
+          : 'Network error. Please try WhatsApp or email.';
+        setError(hint);
+      } else {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      }
     } finally {
       setLoading(false);
     }
