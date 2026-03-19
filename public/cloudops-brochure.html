@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudOps Engineer Program Brochure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+      color: #fff;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 850px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.98);
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      padding: 40px;
+      color: #1e293b;
+    }
+    .hero {
+      text-align: center;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    /* Logo and Brand Name styling */
+    .brand-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .hero-logo-main {
+      width: 60px; /* Adjusted size to fit with text */
+      height: auto;
+    }
+    .brand-name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #64748b; /* Slate color */
+      letter-spacing: -1px;
+    }
+
+    .hero-cloud-icon {
+      width: 70px;
+      margin-bottom: 15px;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      font-size: 1.4rem;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .hero-highlight {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 36px;
+      margin-top: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    }
+    .badges {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: #eff6ff;
+      color: #2563eb;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #dbeafe;
+    }
+    .section {
+      margin-top: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 25px;
+    }
+    .section-icon {
+      width: 55px;
+      height: 55px;
+      flex-shrink: 0;
+    }
+    .section-icon-cloud {
+        width: 60px;
+        height: auto;
+    }
+    .section-content {
+      flex: 1;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 10px;
+      border-left: 5px solid #2563eb;
+      padding-left: 12px;
+    }
+    .section-subtitle {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 8px;
+    }
+    .section-list {
+      margin: 0;
+      padding-left: 20px;
+      color: #334155;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .section-list li {
+        margin-bottom: 5px;
+    }
+    .section-list ul {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        list-style-type: circle;
+    }
+    .cards {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .card {
+      background: #f8fafc;
+      color: #1e293b;
+      border-radius: 14px;
+      padding: 18px;
+      flex: 1 1 180px;
+      border: 1px solid #e2e8f0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .card img {
+      width: 32px;
+      height: 32px;
+    }
+    .pricing {
+      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 50px;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    }
+    .pricing-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .pricing-highlight {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fef08a;
+    }
+    .contact {
+      margin-top: 50px;
+      text-align: center;
+      padding: 30px;
+      background-color: #f8fafc;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+    }
+    .contact .section-title {
+        border-left: none;
+        padding-left: 0;
+        justify-content: center;
+        display: flex;
+    }
+    .contact-info {
+      font-size: 1.15rem;
+      color: #1e293b;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .contact-info a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+    .footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 2px solid #e2e8f0;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2563eb;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 25px; margin: 20px; }
+      .hero-title { font-size: 2.2rem; }
+      .section { flex-direction: column; gap: 15px; }
+      .section-icon { width: 45px; height: 45px; }
+      .cards { flex-direction: column; gap: 10px; }
+      .brand-name { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="hero">
+      <div class="brand-container">
+        <img src="/logo.png" alt="TechRunniti Logo" class="hero-logo-main" />
+        <span class="brand-name">TechRunniti</span>
+      </div>
+
+      <img src="https://cdn-icons-png.flaticon.com/512/4144/4144720.png" alt="CloudOps Icon" class="hero-cloud-icon" />
+      <div class="hero-title">CloudOps Engineer Program</div>
+      <div class="hero-sub">Become Job-Ready in 3 Months</div>
+      <div class="hero-highlight">AWS + Azure + Linux</div>
+      <a href="https://techrunniti.com" class="cta-btn">Enroll Now</a>
+      <div class="badges">
+        <div class="badge"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="18"/>Beginner Friendly</div>
+        <div class="badge"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" width="18"/>Job Ready</div>
+        <div class="badge"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" width="18"/>Live Training</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/4144/4144720.png" alt="Overview Icon" />
+      <div class="section-content">
+        <div class="section-title">Program Overview</div>
+        <p style="font-size: 1.1rem; line-height: 1.6; color: #334155; margin-bottom: 15px;">
+          Become a job-ready CloudOps Engineer in just 3 months with hands-on training in AWS, Azure, and Linux Administration.
+          This program is designed to prepare you for real-world cloud operations, monitoring, and troubleshooting roles.
+        </p>
+        <ul class="section-list">
+          <li>3 Months Live Training</li>
+          <li>Hands-on Projects</li>
+          <li>Real-World Cloud Skills</li>
+          <li>Certification Focused</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon section-icon-cloud" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" alt="Microsoft Azure Logo" />
+      <div class="section-content">
+        <div class="section-title">Microsoft Azure Administrator (AZ-104)</div>
+        <div class="section-subtitle">Syllabus</div>
+        <ol class="section-list">
+          <li><b>Module 1: Identity & Governance</b>
+            <ul><li>Azure Active Directory, RBAC, Subscriptions</li></ul>
+          </li>
+          <li><b>Module 2: Storage Management</b>
+            <ul><li>Storage Accounts (Blob, File), Security, Lifecycle</li></ul>
+          </li>
+          <li><b>Module 3: Compute Resources</b>
+            <ul><li>Virtual Machines, Scale Sets, Availability</li></ul>
+          </li>
+          <li><b>Module 4: Networking</b>
+            <ul><li>Virtual Networks, DNS, VNet Peering, Gateways</li></ul>
+          </li>
+          <li><b>Module 5: Monitoring & Backup</b>
+            <ul><li>Azure Monitor, Log Analytics, Backup, Site Recovery</li></ul>
+          </li>
+          <li><b>Module 6: Security</b>
+            <ul><li>Key Vault, Defender for Cloud</li></ul>
+          </li>
+          <li><b>Module 7: Automation</b>
+            <ul><li>Azure CLI, PowerShell, ARM Templates</li></ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon section-icon-cloud" src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" />
+      <div class="section-content">
+        <div class="section-title">AWS SysOps Administrator (Associate)</div>
+        <div class="section-subtitle">Syllabus</div>
+        <ol class="section-list">
+          <li><b>Module 1: IAM & Fundamentals</b>
+            <ul><li>Global Infra, Users, Roles, Policies, CLI</li></ul>
+          </li>
+          <li><b>Module 2: Storage</b>
+            <ul><li>S3, EBS, EFS, Glacier, Lifecycle</li></ul>
+          </li>
+          <li><b>Module 3: Compute</b>
+            <ul><li>EC2, AMI, Auto Scaling, Load Balancers</li></ul>
+          </li>
+          <li><b>Module 4: Networking</b>
+            <ul><li>VPC, Subnets, Route Tables, IGW, NAT, Security</li></ul>
+          </li>
+          <li><b>Module 5: Monitoring</b>
+            <ul><li>CloudWatch, CloudTrail, SNS</li></ul>
+          </li>
+          <li><b>Module 6: Security</b>
+            <ul><li>KMS, Secrets Manager, Best Practices</li></ul>
+          </li>
+          <li><b>Module 7: Automation</b>
+            <ul><li>Systems Manager (SSM), Lambda, EventBridge</li></ul>
+          </li>
+          <li><b>Module 8: HA & DR</b>
+            <ul><li>Multi-AZ, Disaster Recovery, Route53</li></ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Projects Icon" />
+      <div class="section-content">
+        <div class="section-title">Hands-on Projects</div>
+        <ul class="section-list">
+          <li>Multi-cloud Architecture (AWS + Azure)</li>
+          <li>High Availability & Fault Tolerant Setup</li>
+          <li>Centralized Monitoring & Alerting System</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Career Icon" />
+      <div class="section-content">
+        <div class="section-title">Career Opportunities</div>
+        <div class="cards">
+          <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/4144/4144720.png" alt="CloudOps" />CloudOps Engineer</div>
+          <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="DevOps" />DevOps Engineer</div>
+          <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Support" />Cloud Support</div>
+          <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="SRE" />SRE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Why Us Icon" />
+      <div class="section-content">
+        <div class="section-title">Why Choose Us</div>
+        <ul class="section-list">
+          <li>Real-Time Practical Training</li>
+          <li>Learn from Industry Experts</li>
+          <li>Resume & Interview Preparation</li>
+          <li>Lifetime Access to Recordings</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pricing">
+      <div class="pricing-title">₹10,000 Only</div>
+      <div class="pricing-highlight">Limited Time Offer!</div>
+    </div>
+
+    <div class="contact">
+      <div class="section-title">Contact Us</div>
+      <div class="contact-info">🌐 <a href="https://techrunniti.com">techrunniti.com</a></div>
+      <div class="contact-info">📱 <span>9131590319</span></div>
+    </div>
+
+    <div class="footer">
+      Enroll Now & Start Your Cloud Journey!
+    </div>
+  </div>
+</body>
+</html>

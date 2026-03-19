@@ -44,36 +44,6 @@ export default function Courses() {
                 <div className="p-6">
                   <p className="text-gray-300 mb-4">{course.description}</p>
 
-                  {/* Topics */}
-                  <div className="mb-4">
-                    <h4 className="text-accent font-semibold mb-2 text-sm">Topics Covered:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {course.topics.map((topic, i) => (
-                        <span key={i} className="text-xs bg-gray-700 text-gray-200 px-2 py-1 rounded">
-                          {topic}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Schedule */}
-                  <div className="mb-4 pb-4 border-b border-gray-700">
-                    <h4 className="text-accent font-semibold mb-2 text-sm">Schedule:</h4>
-                    <p className="text-sm text-gray-300">{course.schedule}</p>
-                  </div>
-
-                  {/* Next Batches */}
-                  <div className="mb-6">
-                    <h4 className="text-accent font-semibold mb-2 text-sm">Next Batches:</h4>
-                    <div className="flex gap-2 flex-wrap">
-                      {course.batches.map((batch, i) => (
-                        <span key={i} className="text-xs bg-gray-700 text-gold px-3 py-1 rounded">
-                          {batch}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
                   {/* CTA Buttons */}
                   <div className="flex gap-2">
                     <Link
@@ -82,6 +52,17 @@ export default function Courses() {
                     >
                       Enroll Now
                     </Link>
+                      {course.name.includes('CloudOps Engineer') && (
+                        <a
+                          href="/cloudops-brochure.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm mt-2"
+                          style={{ display: 'block' }}
+                        >
+                          View Brochure
+                        </a>
+                      )}
                   </div>
                 </div>
               </div>
