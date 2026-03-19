@@ -32,7 +32,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <ul className="hidden md:flex gap-8 font-bold">
             <li><Link href="/" className="text-gold hover:text-accent transition">Home</Link></li>
             <li><Link href="/courses" className="text-gold hover:text-accent transition">Courses</Link></li>
-            <li><Link href="/pricing" className="text-gold hover:text-accent transition">Pricing</Link></li>
+            {/* <li><Link href="/pricing" className="text-gold hover:text-accent transition">Pricing</Link></li> */}
             <li><Link href="/blog" className="text-gold hover:text-accent transition">Blog</Link></li>
             <li><Link href="/about" className="text-gold hover:text-accent transition">About</Link></li>
             <li><Link href="/contact" className="text-gold hover:text-accent transition">Contact</Link></li>
@@ -55,7 +55,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <ul id="mobile-menu" className="md:hidden bg-primary border-t border-accent px-4 py-4 space-y-2 font-bold">
             <li><Link href="/" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Home</Link></li>
             <li><Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Courses</Link></li>
-            <li><Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Pricing</Link></li>
+            {/* <li><Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Pricing</Link></li> */}
             <li><Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Blog</Link></li>
             <li><Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">About</Link></li>
             <li><Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Contact</Link></li>
@@ -93,7 +93,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/courses" className="hover:text-gold transition">Courses</Link></li>
               <li><Link href="/blog" className="hover:text-gold transition">Blog</Link></li>
-              <li><Link href="/pricing" className="hover:text-gold transition">Pricing</Link></li>
+              {/* <li><Link href="/pricing" className="hover:text-gold transition">Pricing</Link></li> */}
             </ul>
           </div>
           <div>
