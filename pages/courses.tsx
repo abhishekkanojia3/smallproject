@@ -1,7 +1,9 @@
+
 import Head from 'next/head';
 import Link from 'next/link';
 import { COURSES } from '@/lib/courses';
 import { WHATSAPP_MESSAGE_URL } from '@/config/contact';
+import { motion } from 'framer-motion';
 
 export default function Courses() {
   return (
@@ -26,14 +28,24 @@ export default function Courses() {
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {COURSES.map((course) => (
-              <div key={course.id} className="bg-primary rounded-lg border border-gray-700 hover:border-accent transition overflow-hidden hover:shadow-xl hover:shadow-accent/20">
+            {COURSES.map((course, idx) => (
+              <motion.div
+                key={course.id}
+                className="bg-primary rounded-lg border border-gray-700 hover:border-accent transition overflow-hidden hover:shadow-xl hover:shadow-accent/20"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: idx * 0.08, ease: 'easeOut' }}
+                whileHover={{ scale: 1.03, boxShadow: '0 8px 32px #ffd70033' }}
+              >
                 {/* Course Header */}
                 <div className="bg-gradient-to-r from-accent/10 to-gold/10 p-6 border-b border-gray-700">
                   <div className="flex justify-between items-start mb-3">
                     <span className="text-2xl font-bold text-gold">{course.price}</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{course.name}</h3>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-2xl font-bold text-white mb-2">{course.name}</h3>
+                  </div>
                   <div className="flex gap-4 text-sm text-gray-300">
                     <span>⏱️ {course.duration}</span>
                     <span>👨‍🏫 {course.instructor}</span>
@@ -52,43 +64,43 @@ export default function Courses() {
                     >
                       Enroll Now
                     </Link>
-                      {/* View Brochure Button for each course */}
-                      {course.name.includes('CloudOps Engineer') && (
-                        <a
-                          href="/cloudops-brochure.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
-                          style={{ display: 'block' }}
-                        >
-                          View Brochure
-                        </a>
-                      )}
-                      {course.name.includes('DevOps Engineer (with Basic Cloud)') && (
-                        <a
-                          href="/DevOps-brochure.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
-                          style={{ display: 'block' }}
-                        >
-                          View Brochure
-                        </a>
-                      )}
-                      {course.name.includes('Cloud & DevOps Engineering with AI Tools') && (
-                        <a
-                          href="/DevOps%20Advance.html"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
-                          style={{ display: 'block' }}
-                        >
-                          View Brochure
-                        </a>
-                      )}
+                    {/* View Brochure Button for each course */}
+                    {course.name === 'CloudOps Engineer (AWS + Azure)' && (
+                      <a
+                        href="/cloudops-brochure.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
+                        style={{ display: 'block' }}
+                      >
+                        View Brochure
+                      </a>
+                    )}
+                    {course.name === 'DevOps Engineer (with Basic Cloud)' && (
+                      <a
+                        href="/DevOps-brochure.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
+                        style={{ display: 'block' }}
+                      >
+                        View Brochure
+                      </a>
+                    )}
+                    {course.name === 'DevOps Engineering with AI Tools' && (
+                      <a
+                        href="/DevOps%20Advance.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
+                        style={{ display: 'block' }}
+                      >
+                        View Brochure
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

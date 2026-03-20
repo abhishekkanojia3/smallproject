@@ -45,7 +45,7 @@ export const COURSES: Course[] = [
   },
   {
     id: 3,
-    name: 'Cloud & DevOps Engineering with AI Tools',
+    name: 'DevOps Engineering with AI Tools',
     duration: '6 Months',
     schedule: 'Sat, Sun - 10:00 AM IST',
     instructor: 'Abhishek Kanojia',
