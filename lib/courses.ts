@@ -8,7 +8,7 @@ export const COURSES: Course[] = [
   {
     id: 1,
     name: 'CloudOps Engineer (AWS + Azure)',
-    duration: '3 Months',
+    duration: '2 Months',
     schedule: 'Mon, Wed, Fri - 7:00 PM IST',
     instructor: 'Abhishek Kanojia',
     price: '₹10,000',
@@ -26,7 +26,7 @@ export const COURSES: Course[] = [
   {
     id: 2,
     name: 'DevOps Engineer (with Basic Cloud)',
-    duration: '4 Months',
+    duration: '3 Months',
     schedule: 'Tue, Thu, Sat - 8:00 PM IST',
     instructor: 'Abhishek Kanojia',
     price: '₹15,000',

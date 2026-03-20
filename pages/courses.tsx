@@ -52,12 +52,35 @@ export default function Courses() {
                     >
                       Enroll Now
                     </Link>
+                      {/* View Brochure Button for each course */}
                       {course.name.includes('CloudOps Engineer') && (
                         <a
                           href="/cloudops-brochure.html"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm mt-2"
+                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
+                          style={{ display: 'block' }}
+                        >
+                          View Brochure
+                        </a>
+                      )}
+                      {course.name.includes('DevOps Engineer (with Basic Cloud)') && (
+                        <a
+                          href="/DevOps-brochure.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
+                          style={{ display: 'block' }}
+                        >
+                          View Brochure
+                        </a>
+                      )}
+                      {course.name.includes('Cloud & DevOps Engineering with AI Tools') && (
+                        <a
+                          href="/DevOps%20Advance.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-bold transition text-center text-sm"
                           style={{ display: 'block' }}
                         >
                           View Brochure

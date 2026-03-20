@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps Engineer Program Brochure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+      color: #fff;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 850px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.98);
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      padding: 40px;
+      color: #1e293b;
+    }
+    .hero {
+      text-align: center;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .brand-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .hero-logo-main {
+      width: 60px;
+      height: auto;
+    }
+    .brand-name {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #64748b; /* Slate color */
+      letter-spacing: -1px;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      font-size: 1.4rem;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .hero-highlight {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 36px;
+      margin-top: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .badges {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: #eff6ff;
+      color: #2563eb;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #dbeafe;
+    }
+    .section {
+      margin-top: 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 25px;
+    }
+    .section-icon {
+      width: 50px;
+      height: auto;
+      flex-shrink: 0;
+    }
+    .section-content { flex: 1; }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 12px;
+      border-left: 5px solid #2563eb;
+      padding-left: 12px;
+    }
+    .month-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .month-title {
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-list {
+      margin: 0;
+      padding-left: 20px;
+      color: #334155;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .pricing {
+      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .pricing-title { font-size: 2rem; font-weight: 700; }
+    .contact {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: 16px;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-weight: 700;
+      color: #2563eb;
+      padding-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 20px; margin: 10px; }
+      .section { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="hero">
+      <div class="brand-container">
+        <img src="/logo.png" alt="TechRunniti Logo" class="hero-logo-main" />
+        <span class="brand-name">TechRunniti</span>
+      </div>
+      <div class="hero-title">DevOps Engineer Program</div>
+      <div class="hero-sub">Master Automation & Cloud in 4 Months</div>
+      <div class="hero-highlight">Linux + Basic AWS/Azure + CICD + K8s</div>
+      <a href="/contact" class="cta-btn">Enroll Now</a>
+      
+      <div class="badges">
+        <div class="badge">4 Months Duration</div>
+        <div class="badge">80% Practical Labs</div>
+        <div class="badge">Industry Projects</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/4144/4144720.png" alt="Icon" />
+      <div class="section-content">
+        <div class="section-title">Program Overview</div>
+        <p style="color: #334155; line-height: 1.6;">
+          Become a job-ready DevOps Engineer in 4 months. Learn to bridge the gap between development and operations using modern tools and cloud platforms.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/2621/2621237.png" alt="Syllabus Icon" />
+      <div class="section-content">
+        <div class="section-title">Course Syllabus</div>
+
+        <div class="month-box">
+          <span class="month-title">Month 1: Foundation & Linux Administration</span>
+          <ul class="section-list">
+            <li>Linux Essentials & File System Hierarchy</li>
+            <li>Command Line Mastery & User Management</li>
+            <li>Shell Scripting (Bash) for Automation</li>
+            <li>Networking Basics (SSH, DNS, Troubleshooting)</li>
+          </ul>
+        </div>
+
+        <div class="month-box">
+          <span class="month-title">Month 2: Basic Cloud & Version Control</span>
+          <ul class="section-list">
+            <li>AWS/Azure Core Services (EC2, S3, IAM)</li>
+            <li>Cloud Networking (VPC, Subnets, Security)</li>
+            <li>Git & GitHub (Branching, PRs, Merge Conflicts)</li>
+          </ul>
+        </div>
+
+        <div class="month-box">
+          <span class="month-title">Month 3: CI/CD & Config Management</span>
+          <ul class="section-list">
+            <li>Jenkins Pipelines (Pipeline as Code)</li>
+            <li>Ansible for Configuration Management</li>
+            <li>Terraform (Infrastructure as Code)</li>
+          </ul>
+        </div>
+
+        <div class="month-box">
+          <span class="month-title">Month 4: Containers & Orchestration</span>
+          <ul class="section-list">
+            <li>Docker (Containerization & Compose)</li>
+            <li>Kubernetes (Pod, Deployment, Services)</li>
+            <li>Monitoring (Prometheus & Grafana)</li>
+            <li>Capstone Project: End-to-End CI/CD Pipeline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing">
+      <div class="pricing-title">Enquire for Fees</div>
+      <div style="color: #fef08a; font-weight: 600;">Limited Seats Available!</div>
+    </div>
+
+    <div class="contact">
+      <div style="font-weight: 700; color: #1e293b; margin-bottom: 10px;">Contact Us</div>
+      <div style="color: #334155;">🌐 <a href="https://techrunniti.com" style="color:#2563eb; text-decoration: none;">techrunniti.com</a></div>
+      <div style="color: #334155; margin-top: 5px;">📱 9131590319</div>
+    </div>
+
+    <div class="footer">
+      Start Your DevOps Career Today!
+    </div>
+  </div>
+</body>
+</html>
