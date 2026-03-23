@@ -38,12 +38,12 @@ export default function About() {
                 ensuring our students learn how to manage production environments faster and smarter.
               </p>
             </div>
-            {/* Founder Box */}
+            {/* Founder Box - Escaped Entities Added Here */}
             <div className="bg-[#1f2937] p-8 rounded-2xl border-l-8 border-gold shadow-xl">
-              <h3 className="text-2xl font-bold text-gold mb-4 italic text-center">Founder's Message</h3>
+              <h3 className="text-2xl font-bold text-gold mb-4 italic text-center">Founder&apos;s Message</h3>
               <p className="text-gray-200 italic text-center leading-relaxed">
-                "The AI revolution has changed how we manage infrastructure. We established TechRunniti to ensure 
-                engineers learn the 'New Way' of Cloud Operations—automated, efficient, and future-proof."
+                &quot;The AI revolution has changed how we manage infrastructure. We established TechRunniti to ensure 
+                engineers learn the &apos;New Way&apos; of Cloud Operations—automated, efficient, and future-proof.&quot;
               </p>
               <div className="mt-6 text-center font-bold text-gold">— Abhishek Kanojia, Founder</div>
             </div>
@@ -51,7 +51,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Why Choose Us - White BG with Dark Cards (Original Card Style) */}
+      {/* Why Choose Us - White BG with Dark Cards */}
       <section className="py-20 px-4 bg-white border-t border-gray-100">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-[#1f2937] mb-16">Why Choose TechRunniti?</h2>
@@ -84,7 +84,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section - Dark Background */}
+      {/* CTA Section */}
       <section className="bg-[#0f172a] border-t-4 border-accent py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-gold mb-6">Ready to Master the Future of Cloud?</h2>
