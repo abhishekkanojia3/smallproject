@@ -103,12 +103,12 @@ export default function Contact() {
         ) : null}
       </Head>
 
-      <section className="min-h-screen bg-gradient-to-b from-primary to-gray-900 px-4 py-20">
+      <section className="min-h-screen bg-gradient-to-b from-primary to-secondary px-4 py-20">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-5xl font-bold text-center text-gold mb-4">Contact Us</h1>
-          <p className="text-center text-gray-300 mb-12">Have questions? Reach out to our team.</p>
+          <h1 className="text-5xl font-bold text-center text-accent mb-4">Contact Us</h1>
+          <p className="text-center text-dark mb-12">Have questions? Reach out to our team.</p>
 
-          <div className="bg-primary p-8 rounded shadow-lg border border-gray-700">
+          <div className="bg-secondary p-8 rounded shadow-lg border border-gray-700">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-accent font-bold mb-2">Name</label>
@@ -117,7 +117,7 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full border border-gray-700 bg-gray-800 px-4 py-2 rounded text-white focus:outline-none focus:border-accent placeholder-gray-500"
+                  className="w-full border border-gray-700 bg-primary px-4 py-2 rounded text-light focus:outline-none focus:border-accent placeholder-gray-500"
                   required
                 />
               </div>
@@ -129,7 +129,7 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full border border-gray-700 bg-gray-800 px-4 py-2 rounded text-white focus:outline-none focus:border-accent placeholder-gray-500"
+                  className="w-full border border-gray-700 bg-primary px-4 py-2 rounded text-light focus:outline-none focus:border-accent placeholder-gray-500"
                   required
                 />
               </div>
@@ -141,18 +141,18 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="w-full border border-gray-700 bg-gray-800 px-4 py-2 rounded text-white focus:outline-none focus:border-accent placeholder-gray-500"
+                  className="w-full border border-gray-700 bg-primary px-4 py-2 rounded text-light focus:outline-none focus:border-accent placeholder-gray-500"
                   required
                 ></textarea>
               </div>
 
               {error && <p className="text-red-400 font-bold">{error}</p>}
-              {success && <p className="text-gold font-bold">✓ Message sent successfully!</p>}
+              {success && <p className="text-accent font-bold">✓ Message sent successfully!</p>}
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-accent hover:bg-secondary text-primary px-6 py-3 rounded font-bold disabled:opacity-50 transition shadow-lg"
+                className="w-full bg-accent hover:brightness-110 text-primary px-6 py-3 rounded font-bold disabled:opacity-50 transition shadow-lg"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </button>
@@ -160,9 +160,9 @@ export default function Contact() {
 
             <div className="mt-12 pt-8 border-t border-gray-700">
               <h2 className="text-2xl font-bold text-accent mb-4">Other Ways to Reach Us</h2>
-              <p className="text-gray-300 mb-2">📧 Email: <a href={`mailto:${CONTACT_INFO.email}`} className="text-accent hover:text-gold transition">{CONTACT_INFO.email}</a></p>
-              <p className="text-gray-300 mb-2">📞 Phone: <a href={`tel:${CONTACT_INFO.phone}`} className="text-accent hover:text-gold transition">{CONTACT_INFO.phone}</a></p>
-              <p className="text-gray-300">💬 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:text-gold transition">WhatsApp</a></p>
+              <p className="text-dark mb-2">📧 Email: <a href={`mailto:${CONTACT_INFO.email}`} className="text-accent hover:brightness-110 transition">{CONTACT_INFO.email}</a></p>
+              <p className="text-dark mb-2">📞 Phone: <a href={`tel:${CONTACT_INFO.phone}`} className="text-accent hover:brightness-110 transition">{CONTACT_INFO.phone}</a></p>
+              <p className="text-dark">💬 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:brightness-110 transition">WhatsApp</a></p>
             </div>
           </div>
         </div>

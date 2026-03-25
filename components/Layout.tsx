@@ -9,9 +9,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <ErrorBoundary>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-primary">
       {/* Header */}
-      <header className="bg-primary text-white shadow-lg sticky top-0 z-50 border-b-4 border-accent">
+      <header className="bg-secondary text-white shadow-lg sticky top-0 z-50">
         <nav className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition">
             <Image 
@@ -23,18 +23,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="h-16 w-auto object-contain"
             />
             <div>
-              <div className="text-xl font-bold text-gold leading-tight">TechRunniti</div>
+              <div className="text-xl font-bold text-light leading-tight">TechRunniti</div>
               <div className="text-xs text-accent font-semibold">IT Academy</div>
             </div>
           </Link>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex gap-8 font-bold">
-            <li><Link href="/" className="text-gold hover:text-accent transition">Home</Link></li>
-            <li><Link href="/courses" className="text-gold hover:text-accent transition">Courses</Link></li>
-            {/* <li><Link href="/pricing" className="text-gold hover:text-accent transition">Pricing</Link></li> */}
-            <li><Link href="/about" className="text-gold hover:text-accent transition">About</Link></li>
-            <li><Link href="/contact" className="text-gold hover:text-accent transition">Contact</Link></li>
+            <li><Link href="/" className="text-light hover:text-accent transition">Home</Link></li>
+            <li><Link href="/courses" className="text-light hover:text-accent transition">Courses</Link></li>
+            <li><Link href="/about" className="text-light hover:text-accent transition">About</Link></li>
+            <li><Link href="/contact" className="text-light hover:text-accent transition">Contact</Link></li>
           </ul>
 
           {/* Mobile Menu Button */}
@@ -51,12 +50,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <ul id="mobile-menu" className="md:hidden bg-primary border-t border-accent px-4 py-4 space-y-2 font-bold">
-            <li><Link href="/" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Home</Link></li>
-            <li><Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Courses</Link></li>
-            {/* <li><Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Pricing</Link></li> */}
-            <li><Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">About</Link></li>
-            <li><Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Contact</Link></li>
+          <ul id="mobile-menu" className="md:hidden bg-secondary border-t border-accent px-4 py-4 space-y-2 font-bold">
+            <li><Link href="/" onClick={() => setMobileMenuOpen(false)} className="block text-light hover:text-accent">Home</Link></li>
+            <li><Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block text-light hover:text-accent">Courses</Link></li>
+            <li><Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block text-light hover:text-accent">About</Link></li>
+            <li><Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block text-light hover:text-accent">Contact</Link></li>
           </ul>
         )}
       </header>
@@ -67,7 +65,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-primary text-white py-12 px-4 mt-20 border-t-4 border-accent">
+      <footer className="bg-secondary text-white py-12 px-4 mt-20">
         <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -80,35 +78,34 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className="h-12 w-auto object-contain"
               />
               <div>
-                <div className="font-bold text-gold text-sm">TechRunniti</div>
+                <div className="font-bold text-light text-sm">TechRunniti</div>
                 <div className="text-xs text-accent">IT Academy</div>
               </div>
             </Link>
-            <p className="text-gray-400">Enterprise DevOps & Cloud Training</p>
+            <p className="text-dark">Enterprise DevOps & Cloud Training</p>
           </div>
           <div>
             <h4 className="font-bold text-accent mb-3">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><Link href="/courses" className="hover:text-gold transition">Courses</Link></li>
-              {/* <li><Link href="/pricing" className="hover:text-gold transition">Pricing</Link></li> */}
+            <ul className="space-y-2 text-dark">
+              <li><Link href="/courses" className="hover:text-light transition">Courses</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold text-accent mb-3">Company</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><Link href="/about" className="hover:text-gold transition">About</Link></li>
-              <li><Link href="/contact" className="hover:text-gold transition">Contact</Link></li>
+            <ul className="space-y-2 text-dark">
+              <li><Link href="/about" className="hover:text-light transition">About</Link></li>
+              <li><Link href="/contact" className="hover:text-light transition">Contact</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold text-accent mb-3">Connect</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition" aria-label="Contact us on WhatsApp">WhatsApp</a></li>
-              <li><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-gold transition">Email</a></li>
+            <ul className="space-y-2 text-dark">
+              <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-light transition" aria-label="Contact us on WhatsApp">WhatsApp</a></li>
+              <li><a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-light transition">Email</a></li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-dark">
           <p>&copy; 2026 TechRunniti. All rights reserved.</p>
         </div>
       </footer>

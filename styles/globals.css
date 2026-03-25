@@ -7,9 +7,7 @@ html {
 }
 
 body {
-  @apply bg-primary text-white;
-  background: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  @apply bg-primary text-light;
 }
 
 /* Link styles */
@@ -18,7 +16,7 @@ a {
 }
 
 a:hover {
-  @apply text-gold;
+  @apply text-accent brightness-125;
 }
 
 /* Accessibility: Focus styles for all interactive elements */
@@ -47,7 +45,7 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-primary;
+  @apply bg-secondary;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -55,5 +53,5 @@ button {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gold;
+  @apply bg-accent brightness-125;
 }

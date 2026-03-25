@@ -12,10 +12,10 @@ export default function About() {
       </Head>
 
       {/* Hero Section - Dark Gradient */}
-      <section className="bg-gradient-to-b from-[#2d3e50] to-[#1f2937] py-20 px-4 text-center">
+      <section className="bg-gradient-to-b from-primary to-secondary py-20 px-4 text-center">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-gold mb-6">About TechRunniti</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <h1 className="text-5xl md:text-6xl font-bold text-accent mb-6">About TechRunniti</h1>
+          <p className="text-xl text-dark max-w-3xl mx-auto leading-relaxed">
             Established in 2026, we are a forward-thinking technology hub dedicated to building the next generation of 
             AI-ready Cloud and DevOps Engineers.
           </p>
@@ -23,38 +23,38 @@ export default function About() {
       </section>
 
       {/* Our Journey & Vision Section - White Background */}
-      <section className="py-20 px-4 bg-white"> 
+      <section className="py-20 px-4 bg-primary"> 
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-[#1f2937] mb-6">Our Journey & Vision</h2>
-              <p className="text-lg text-slate-600 mb-4 leading-relaxed">
+              <h2 className="text-4xl font-bold text-light mb-6">Our Journey & Vision</h2>
+              <p className="text-lg text-dark mb-4 leading-relaxed">
                 TechRunniti was founded in Jabalpur in 2026, born in the era of Artificial Intelligence. 
                 Our mission is to bridge the gap between traditional IT education and the high-speed demands 
                 of the modern global cloud industry.
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                We specialize in integrating <strong className="text-blue-600">AI-driven workflows</strong> into core Cloud and DevOps engineering, 
+              <p className="text-lg text-dark leading-relaxed">
+                We specialize in integrating <strong className="text-accent">AI-driven workflows</strong> into core Cloud and DevOps engineering, 
                 ensuring our students learn how to manage production environments faster and smarter.
               </p>
             </div>
             {/* Founder Box - Escaped Entities Added Here */}
-            <div className="bg-[#1f2937] p-8 rounded-2xl border-l-8 border-gold shadow-xl">
-              <h3 className="text-2xl font-bold text-gold mb-4 italic text-center">Founder&apos;s Message</h3>
-              <p className="text-gray-200 italic text-center leading-relaxed">
+            <div className="bg-secondary p-8 rounded-2xl border-l-8 border-accent shadow-xl">
+              <h3 className="text-2xl font-bold text-accent mb-4 italic text-center">Founder&apos;s Message</h3>
+              <p className="text-light italic text-center leading-relaxed">
                 &quot;The AI revolution has changed how we manage infrastructure. We established TechRunniti to ensure 
                 engineers learn the &apos;New Way&apos; of Cloud Operations—automated, efficient, and future-proof.&quot;
               </p>
-              <div className="mt-6 text-center font-bold text-gold">— Abhishek Kanojia, Founder</div>
+              <div className="mt-6 text-center font-bold text-accent">— Abhishek Kanojia, Founder</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us - White BG with Dark Cards */}
-      <section className="py-20 px-4 bg-white border-t border-gray-100">
+      <section className="py-20 px-4 bg-primary border-t border-secondary">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-[#1f2937] mb-16">Why Choose TechRunniti?</h2>
+          <h2 className="text-4xl font-bold text-center text-light mb-16">Why Choose TechRunniti?</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {[
@@ -75,9 +75,9 @@ export default function About() {
                 desc: 'Master both AWS SysOps and Azure Administrator (AZ-104) standards in a single master program.'
               },
             ].map((feature, i) => (
-              <div key={i} className="bg-[#1f2937] p-8 rounded-lg border border-gray-700 hover:border-gold transition-all duration-300 shadow-lg">
+              <div key={i} className="bg-secondary p-8 rounded-lg border border-secondary hover:border-accent transition-all duration-300 shadow-lg">
                 <h3 className="text-2xl font-bold text-accent mb-4">{feature.title}</h3>
-                <p className="text-gray-300">{feature.desc}</p>
+                <p className="text-dark">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -85,15 +85,15 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#0f172a] border-t-4 border-accent py-16 px-4">
+      <section className="bg-secondary py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gold mb-6">Ready to Master the Future of Cloud?</h2>
-          <p className="text-xl text-gray-300 mb-8">Start your journey to becoming an AI-ready DevOps expert with TechRunniti</p>
+          <h2 className="text-4xl font-bold text-accent mb-6">Ready to Master the Future of Cloud?</h2>
+          <p className="text-xl text-dark mb-8">Start your journey to becoming an AI-ready DevOps expert with TechRunniti</p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Link href="/courses" className="bg-accent hover:bg-gold text-primary px-10 py-4 rounded-lg font-bold text-lg transition shadow-lg">
+            <Link href="/courses" className="bg-accent hover:brightness-110 text-primary px-10 py-4 rounded-lg font-bold text-lg transition shadow-lg">
               Explore Master Programs
             </Link>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="border-2 border-gold text-gold hover:bg-gold hover:text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="border-2 border-accent text-accent hover:bg-accent hover:text-primary px-10 py-4 rounded-lg font-bold text-lg transition">
               Chat With Us
             </a>
           </div>

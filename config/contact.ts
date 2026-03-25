@@ -7,7 +7,7 @@ import type { ContactInfo } from '@/types';
 export const CONTACT_INFO: ContactInfo = {
   whatsapp: '919131590319',
   email: 'hello@techrunniti.com',
-  phone: '+91-9876543210',
+  phone: '+91-9131590319',
 };
 
 export const WHATSAPP_URL = `https://wa.me/${CONTACT_INFO.whatsapp}`;

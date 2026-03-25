@@ -116,7 +116,7 @@ Create `.env.local` with these variables:
 # Contact Information
 NEXT_PUBLIC_WHATSAPP=919131590319
 NEXT_PUBLIC_EMAIL=hello@techrunniti.com
-NEXT_PUBLIC_PHONE=+91-9876543210
+NEXT_PUBLIC_PHONE=+91-9131590319
 
 # API Endpoints (for production)
 NEXT_PUBLIC_LAMBDA_ENDPOINT=https://api.example.com/contact

@@ -6,9 +6,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2d3e50',        // Medium-dark gray (matches logo background)
-        accent: '#ff9500',         // Vibrant orange (matches logo icon)
-        gold: '#fbbf24',           // Light gold
+        primary: '#0A192F', // Dark Navy
+        secondary: '#1E293B', // Lighter Navy
+        accent: '#64FFDA', // Bright Mint
+        light: '#CCD6F6', // Light Slate
+        dark: '#8892B0', // Slate
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },

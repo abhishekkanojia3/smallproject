@@ -603,7 +603,7 @@ The TechRunniti website demonstrates several strong architectural decisions and 
 
 2. **Phone Number Not Masked** - Contact page displays raw phone number
    ```typescript
-   <p className="text-gray-300 mb-2">📞 Phone: +91-9876543210</p>
+   <p className="text-gray-300 mb-2">📞 Phone: +91-9131590319</p>
    ```
 
 3. **Missing CSRF Protection** - Lambda function doesn't validate origin strictly
@@ -684,7 +684,7 @@ The TechRunniti website demonstrates several strong architectural decisions and 
      return phone.slice(0, -4) + 'XXXX';
    };
    
-   <p>📞 Phone: {maskPhone('+91-9876543210')}</p>
+   <p>📞 Phone: {maskPhone('+91-9131590319')}</p>
    ```
 
 6. **Add Form Submission Error Handling**:
