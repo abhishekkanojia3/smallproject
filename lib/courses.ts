@@ -22,6 +22,7 @@ export const COURSES: Course[] = [
     ],
     description: 'Become a CloudOps Engineer with hands-on AWS and Azure skills for real-world cloud operations.',
     batches: [],
+    brochureUrl: '/cloudops-brochure.html',
   },
   {
     id: 2,
@@ -42,10 +43,11 @@ export const COURSES: Course[] = [
     ],
     description: 'DevOps Engineer program with foundational cloud skills, automation, and modern DevOps tools.',
     batches: [],
+    brochureUrl: '/DevOps-brochure.html',
   },
   {
     id: 3,
-    name: 'Cloud & DevOps Engineering with AI Tools',
+    name: 'DevOps Engineering with AI Tools',
     duration: '6 Months',
     schedule: 'Sat, Sun - 10:00 AM IST',
     instructor: 'Abhishek Kanojia',
@@ -62,5 +64,6 @@ export const COURSES: Course[] = [
     ],
     description: 'Comprehensive 6-month program for mastering Cloud, DevOps, and AI/ML tools for engineering leaders.',
     batches: [],
+    brochureUrl: '/DevOps%20Advance.html',
   },
 ];

@@ -12,6 +12,7 @@ export interface Course {
   topics: string[];
   description: string;
   batches: string[];
+  brochureUrl?: string;
 }
 
 export interface ContactFormData {

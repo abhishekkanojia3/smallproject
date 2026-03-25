@@ -33,7 +33,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <li><Link href="/" className="text-gold hover:text-accent transition">Home</Link></li>
             <li><Link href="/courses" className="text-gold hover:text-accent transition">Courses</Link></li>
             {/* <li><Link href="/pricing" className="text-gold hover:text-accent transition">Pricing</Link></li> */}
-            <li><Link href="/blog" className="text-gold hover:text-accent transition">Blog</Link></li>
             <li><Link href="/about" className="text-gold hover:text-accent transition">About</Link></li>
             <li><Link href="/contact" className="text-gold hover:text-accent transition">Contact</Link></li>
           </ul>
@@ -56,7 +55,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <li><Link href="/" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Home</Link></li>
             <li><Link href="/courses" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Courses</Link></li>
             {/* <li><Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Pricing</Link></li> */}
-            <li><Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Blog</Link></li>
             <li><Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">About</Link></li>
             <li><Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block hover:text-accent">Contact</Link></li>
           </ul>
@@ -92,7 +90,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <h4 className="font-bold text-accent mb-3">Quick Links</h4>
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/courses" className="hover:text-gold transition">Courses</Link></li>
-              <li><Link href="/blog" className="hover:text-gold transition">Blog</Link></li>
               {/* <li><Link href="/pricing" className="hover:text-gold transition">Pricing</Link></li> */}
             </ul>
           </div>
