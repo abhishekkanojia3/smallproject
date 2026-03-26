@@ -250,12 +250,21 @@ export default function Contact() {
               <div className="mt-4 overflow-hidden rounded-2xl border border-tint">
                 <iframe
                   title="TechRunniti IT Academy Office"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.5552005431166!2d73.736999!3d18.598595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b93e6a88a09b%3A0x4a2b76f6f1a1f2e9!2sHinjewadi%2C%20Pune%2C%20Maharashtra%20411057!5e0!3m2!1sen!2sin!4v1710000000000"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=73.747%2C18.582%2C73.767%2C18.602&layer=mapnik&marker=18.5920937%2C73.7571423"
                   width="100%"
                   height="220"
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
                 />
+              </div>
+              <div className="mt-3 text-xs text-slate">
+                <a
+                  href="https://www.openstreetmap.org/#map=14/18.5920937/73.7571423"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent font-semibold"
+                >
+                  View larger map
+                </a>
               </div>
             </div>
           </div>
