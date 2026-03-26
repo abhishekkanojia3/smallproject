@@ -70,11 +70,12 @@ exports.handler = async (event, context) => {
     const requestId = context.awsRequestId || crypto.randomUUID();
     console.log('Contact submission received', {
       requestId,
-      nameLength: name.length,
-      emailDomain: email.split('@')[1] || null,
-      phoneLength: String(phone).length,
+      name,
+      email,
+      phone,
       subject,
       preferredTime,
+      messagePreview: String(message).slice(0, 120),
       messageLength: message.length,
     });
 
