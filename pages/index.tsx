@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -263,7 +264,13 @@ Preferred time: ${callbackForm.preferredTime || 'Not selected'}`;
                 show: { opacity: 1, y: 0 },
               }}
             >
-              <img src={logo.src} alt={logo.name} className="h-6 w-auto" loading="lazy" />
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                width={80}
+                height={24}
+                className="h-6 w-auto"
+              />
               {logo.name === 'Kubernetes' ? null : <span>{logo.name}</span>}
             </motion.div>
           ))}

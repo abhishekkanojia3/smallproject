@@ -125,7 +125,7 @@ export default function Contact() {
       <section className="bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">Contact</div>
-          <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">Let's design your learning roadmap.</h1>
+          <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">Let&apos;s design your learning roadmap.</h1>
           <p className="mt-4 max-w-3xl text-lg text-white/80">
             Share your goals and we will respond with the right programme, batch schedule, and pricing options.
           </p>
