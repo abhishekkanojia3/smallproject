@@ -15,4 +15,4 @@ export const WHATSAPP_MESSAGE_URL = (message: string) =>
   `https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodeURIComponent(message)}`;
 
 export const EMAIL_SUBJECT = 'Course Inquiry - TechRunniti';
-export const EMAIL_BODY = 'Hi TechRunniti,\n\nI am interested in learning more about your courses.\n\nBest regards';
+export const EMAIL_BODY = 'Hi TechRunniti,\n\nI am interested in learning more about your programmes.\n\nBest regards';

@@ -1,5 +1,26 @@
 const crypto = require('crypto');
 
+const getRecaptchaSecret = () => process.env.RECAPTCHA_SECRET || '';
+
+const verifyRecaptcha = async (token, secret, remoteIp) => {
+  if (!secret || !token) return { success: false, skipped: true };
+
+  const params = new URLSearchParams({
+    secret,
+    response: token,
+  });
+  if (remoteIp) params.append('remoteip', remoteIp);
+
+  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString(),
+  });
+
+  const data = await response.json();
+  return data;
+};
+
 exports.handler = async (event, context) => {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -22,9 +43,9 @@ exports.handler = async (event, context) => {
     }
 
     const body = JSON.parse(event.body || '{}');
-    const { name, email, message, recaptchaToken } = body;
+    const { name, email, phone, subject, preferredTime, message, recaptchaToken } = body;
 
-    if (!name || !email || !message) {
+    if (!name || !email || !phone || !subject || !preferredTime || !message) {
       return {
         statusCode: 400,
         headers: corsHeaders,
@@ -32,9 +53,18 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const secret = await getRecaptchaSecret();
+    const secret = getRecaptchaSecret();
 
-    // reCAPTCHA validation same as your code...
+    if (secret && recaptchaToken) {
+      const recaptcha = await verifyRecaptcha(recaptchaToken, secret, event?.requestContext?.identity?.sourceIp);
+      if (!recaptcha?.success) {
+        return {
+          statusCode: 400,
+          headers: corsHeaders,
+          body: JSON.stringify({ error: 'reCAPTCHA validation failed' }),
+        };
+      }
+    }
 
     // ✅ Logging safely
     const requestId = context.awsRequestId || crypto.randomUUID();
@@ -42,6 +72,9 @@ exports.handler = async (event, context) => {
       requestId,
       nameLength: name.length,
       emailDomain: email.split('@')[1] || null,
+      phoneLength: String(phone).length,
+      subject,
+      preferredTime,
       messageLength: message.length,
     });
 

@@ -6,18 +6,22 @@ export interface Course {
   id: number;
   name: string;
   duration: string;
-  schedule: string;
-  instructor: string;
   price: string;
-  topics: string[];
-  description: string;
-  batches: string[];
+  mode: string;
+  outcome: string;
+  level: string;
+  category: string;
+  overview: string;
+  syllabus: string[];
   brochureUrl?: string;
 }
 
 export interface ContactFormData {
   name: string;
   email: string;
+  phone: string;
+  subject: string;
+  preferredTime: string;
   message: string;
 }
 

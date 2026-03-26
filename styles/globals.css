@@ -7,16 +7,12 @@ html {
 }
 
 body {
-  @apply bg-primary text-light;
+  @apply bg-surface text-ink font-sans;
 }
 
 /* Link styles */
 a {
-  @apply text-accent transition-colors;
-}
-
-a:hover {
-  @apply text-accent brightness-125;
+  @apply transition-colors;
 }
 
 /* Accessibility: Focus styles for all interactive elements */
@@ -25,7 +21,7 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-primary rounded;
+  @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface rounded;
 }
 
 /* Input focus styles */
@@ -45,7 +41,7 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-secondary;
+  @apply bg-tint;
 }
 
 ::-webkit-scrollbar-thumb {

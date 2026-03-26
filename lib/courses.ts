@@ -7,63 +7,62 @@ import type { Course } from '@/types';
 export const COURSES: Course[] = [
   {
     id: 1,
-    name: 'CloudOps Engineer (AWS + Azure)',
+    name: 'Cloud Professional',
     duration: '2 Months',
-    schedule: 'Mon, Wed, Fri - 7:00 PM IST',
-    instructor: 'Abhishek Kanojia',
-    price: '₹10,000',
-    topics: [
-      'AWS Core Services',
-      'Azure Core Services',
-      'Cloud Networking',
-      'IAM & Security',
-      'Cloud Monitoring',
-      'Cloud Automation Basics'
+    price: 'INR 14,999',
+    mode: 'Online / Hybrid',
+    outcome: 'AWS / Azure Fundamentals',
+    level: 'Beginner',
+    category: 'Cloud',
+    overview:
+      'An intensive 8-week programme for beginners to build a strong foundation in AWS and Azure core services.',
+    syllabus: [
+      'Cloud fundamentals: IaaS, PaaS, SaaS, shared responsibility model',
+      'AWS core services: EC2, S3, VPC, IAM, RDS, CloudWatch',
+      'Azure core services: VMs, Blob Storage, Azure AD, Azure Monitor',
+      'Cloud security basics: encryption, key management, compliance',
+      'Capstone project + mock exam (AWS CCP / AZ-900)'
     ],
-    description: 'Become a CloudOps Engineer with hands-on AWS and Azure skills for real-world cloud operations.',
-    batches: [],
-    brochureUrl: '/cloudops-brochure.html',
+    brochureUrl: '/Cloud%20Professional.html',
   },
   {
     id: 2,
-    name: 'DevOps Engineer (with Basic Cloud)',
+    name: 'DevOps Engineer',
     duration: '3 Months',
-    schedule: 'Tue, Thu, Sat - 8:00 PM IST',
-    instructor: 'Abhishek Kanojia',
-    price: '₹15,000',
-    topics: [
-      'Linux Fundamentals',
-      'AWS & Azure Basics',
-      'CI/CD Pipelines',
-      'Docker & Containers',
-      'Kubernetes Basics',
-      'Infrastructure as Code',
-      'Monitoring & Logging',
-      'DevOps Best Practices'
+    price: 'INR 24,999',
+    mode: 'Online / Hybrid',
+    outcome: 'DevOps Engineer Readiness',
+    level: 'Intermediate',
+    category: 'DevSecOps',
+    overview:
+      'A 12-week DevOps programme covering CI/CD automation, container workflows, and infrastructure as code.',
+    syllabus: [
+      'CI/CD pipelines: GitHub Actions, Jenkins, and release automation',
+      'Containers: Docker fundamentals and Kubernetes basics',
+      'Infrastructure as Code: Terraform and environment provisioning',
+      'Observability: logging, monitoring, and alerting workflows',
+      'DevOps capstone with production-style delivery'
     ],
-    description: 'DevOps Engineer program with foundational cloud skills, automation, and modern DevOps tools.',
-    batches: [],
-    brochureUrl: '/DevOps-brochure.html',
+    brochureUrl: '/DevOps%20Engineer.html',
   },
   {
     id: 3,
-    name: 'DevOps Engineering with AI Tools',
+    name: 'DevSecOps Master',
     duration: '6 Months',
-    schedule: 'Sat, Sun - 10:00 AM IST',
-    instructor: 'Abhishek Kanojia',
-    price: '₹34,999',
-    topics: [
-      'AWS, Azure, GCP Advanced',
-      'Security & Compliance',
-      'Serverless & Microservices',
-      'Advanced Kubernetes',
-      'AI/ML Ops & Tools',
-      'Cloud Automation',
-      'Cost Optimization',
-      'Real-world Projects'
+    price: 'INR 34,999',
+    mode: 'Online / Hybrid',
+    outcome: 'DevSecOps + Cloud Expert',
+    level: 'Advanced',
+    category: 'DevSecOps',
+    overview:
+      'A 24-week flagship programme combining cloud architecture with security-first DevOps engineering.',
+    syllabus: [
+      'Cloud deep dive: full Cloud Professional syllabus',
+      'DevOps toolchain: Git, Jenkins, GitHub Actions, Azure DevOps, ArgoCD',
+      'Containers & orchestration: Docker, Kubernetes (EKS/AKS), Helm',
+      'Security engineering: SAST/DAST, Vault, Trivy, compliance-as-code',
+      'Monitoring & SRE capstone with final project defense'
     ],
-    description: 'Comprehensive 6-month program for mastering Cloud, DevOps, and AI/ML tools for engineering leaders.',
-    batches: [],
-    brochureUrl: '/DevOps%20Advance.html',
+    brochureUrl: '/DevSecOps%20Master.html',
   },
 ];

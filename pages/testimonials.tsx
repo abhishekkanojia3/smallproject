@@ -4,19 +4,19 @@ const testimonials = [
   {
     name: 'Rajesh Kumar',
     role: 'DevOps Engineer at TCS',
-    text: 'The live sessions with instructors were game-changing. Real-time Q&A and hands-on guidance accelerated my learning by months. The batch mates became great networking contacts too!',
+    text: 'The live sessions with instructors were game-changing. Real-time Q&A and hands-on guidance accelerated my learning by months.',
     rating: 5,
   },
   {
     name: 'Priya Sharma',
     role: 'Cloud Architect at Infosys',
-    text: 'Instructor-led training was exactly what I needed. Can access recordings forever, so I reviewed tough concepts multiple times. Got promoted within 4 months of completing the course.',
+    text: 'Instructor-led training was exactly what I needed. I reviewed the lab recordings multiple times and earned my certification.',
     rating: 5,
   },
   {
     name: 'Amit Patel',
     role: 'Senior SRE at HCL Tech',
-    text: 'The small batch size meant personalized attention. Instructors answered every question thoroughly. Now credible talking about production-grade DevOps practices in interviews.',
+    text: 'The small batch size meant personalised attention. I now feel confident speaking about production-grade DevSecOps practices.',
     rating: 5,
   },
 ];
@@ -25,27 +25,32 @@ export default function Testimonials() {
   return (
     <>
       <Head>
-        <title>Testimonials - TechRunniti</title>
+        <title>Testimonials - TechRunniti IT Academy</title>
         <meta name="description" content="Student testimonials and success stories" />
       </Head>
 
-      <section className="min-h-screen bg-gradient-to-b from-primary to-gray-900 px-4 py-20">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-5xl font-bold text-center text-gold mb-4">Student Success Stories</h1>
-          <p className="text-center text-gray-300 mb-16">Hear from our graduates</p>
+      <section className="bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+        <div className="mx-auto max-w-5xl px-4 text-center">
+          <div className="text-xs uppercase tracking-[0.3em] text-white/70">Testimonials</div>
+          <h1 className="mt-4 text-4xl font-semibold font-display">Student success stories</h1>
+          <p className="mt-4 text-white/80">Hear from professionals who advanced their cloud careers with TechRunniti IT Academy.</p>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
+      <section className="bg-surface py-20">
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map((testi, idx) => (
-              <div key={idx} className="bg-primary p-6 rounded shadow-lg border border-gray-700 hover:border-accent transition">
-                <div className="flex gap-1 mb-4">
+              <div key={idx} className="rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5">
+                <div className="flex gap-1 text-accent">
                   {Array.from({ length: testi.rating }).map((_, i) => (
-                    <span key={i} className="text-gold text-2xl">★</span>
+                    <span key={i}>*</span>
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4 italic">&quot;{testi.text}&quot;</p>
-                <div className="border-t border-gray-700 pt-4">
-                  <p className="font-bold text-gold">{testi.name}</p>
-                  <p className="text-sm text-gray-400">{testi.role}</p>
+                <p className="mt-4 text-sm text-slate">&quot;{testi.text}&quot;</p>
+                <div className="mt-6 border-t border-tint pt-4">
+                  <p className="text-sm font-semibold text-ink">{testi.name}</p>
+                  <p className="text-xs text-slate">{testi.role}</p>
                 </div>
               </div>
             ))}
