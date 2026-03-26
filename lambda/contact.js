@@ -21,6 +21,8 @@ const verifyRecaptcha = async (token, secret, remoteIp) => {
   return data;
 };
 
+const LOG_VERSION = '2026-03-27-v2';
+
 exports.handler = async (event, context) => {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -70,6 +72,7 @@ exports.handler = async (event, context) => {
     const requestId = context.awsRequestId || crypto.randomUUID();
     console.log('Contact submission received', {
       requestId,
+      logVersion: LOG_VERSION,
       name,
       email,
       phone,
