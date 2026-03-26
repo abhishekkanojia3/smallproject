@@ -129,9 +129,10 @@ Phone: ${callbackForm.phone || 'Not provided'}
 Preferred time: ${callbackForm.preferredTime || 'Not selected'}`;
     window.open(WHATSAPP_MESSAGE_URL(message), '_blank', 'noopener,noreferrer');
   };
+  const easeOut = [0.16, 1, 0.3, 1] as const;
   const sectionReveal = {
     hidden: { opacity: 0, y: 26 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
   };
   const stagger = {
     hidden: {},
