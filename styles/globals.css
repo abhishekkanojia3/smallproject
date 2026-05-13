@@ -100,10 +100,11 @@ button {
 
 .animate-marquee {
   animation: marquee 18s linear infinite;
+  pointer-events: none;
 }
 
 .animate-marquee:hover {
-  animation-play-state: paused;
+  animation-play-state: running;
 }
 
 /* Shimmer sweep on buttons */

@@ -11,27 +11,28 @@ const cardVariants = {
 };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
 
-const durationOptions = ['2 Months', '3 Months', '6 Months'];
 const categoryOptions = ['Cloud', 'DevOps', 'DevSecOps'];
 
 export default function Courses() {
-  const [duration, setDuration] = useState<string | null>(null);
   const [category, setCategory] = useState<string | null>(null);
 
   const filteredCourses = useMemo(() => {
     return COURSES.filter((course) => {
-      const matchDuration = !duration || course.duration === duration;
       const matchCategory = !category || course.category === category;
-      return matchDuration && matchCategory;
+      return matchCategory;
     });
-  }, [duration, category]);
+  }, [category]);
 
   const clearFilters = () => {
-    setDuration(null);
     setCategory(null);
   };
 
-  const hasActiveFilters = duration !== null || category !== null;
+  const handleCategoryClick = (option: string) => {
+    const newCategory = category === option ? null : option;
+    setCategory(newCategory);
+  };
+
+  const hasActiveFilters = category !== null;
 
   return (
     <>
@@ -74,31 +75,15 @@ export default function Courses() {
                   onClick={clearFilters}
                   className="rounded-full bg-accent text-white px-5 py-2 text-xs font-semibold shadow-lg shadow-accent/30 hover:brightness-110 transition"
                 >
-                  All
+                  All Courses
                 </button>
               )}
-              <div className="flex flex-wrap gap-2">
-                {durationOptions.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() => setDuration(option)}
-                    className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                      duration === option
-                        ? 'bg-accent text-white shadow-lg shadow-accent/30'
-                        : 'bg-tint text-ink hover:bg-accent/10'
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
               <div className="flex flex-wrap gap-2">
                 {categoryOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
-                    onClick={() => setCategory(option)}
+                    onClick={() => handleCategoryClick(option)}
                     className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
                       category === option
                         ? 'bg-accent text-white shadow-lg shadow-accent/30'
@@ -113,13 +98,24 @@ export default function Courses() {
           </div>
 
           <motion.div
-            key={`${duration}-${category}`}
+            key={category}
             className="mt-8 md:mt-10 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3"
             variants={stagger}
             initial="hidden"
             animate="show"
           >
-            {filteredCourses.map((course) => (
+            {filteredCourses.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-slate text-lg">No courses match your filters.</p>
+              <button
+                onClick={clearFilters}
+                className="mt-4 rounded-full bg-accent text-white px-6 py-2 text-sm font-semibold hover:brightness-110 transition"
+              >
+                Clear Filters
+              </button>
+            </div>
+          ) : (
+            filteredCourses.map((course) => (
               <motion.div
                 key={course.id}
                 className="rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5 cursor-default"
@@ -180,7 +176,8 @@ export default function Courses() {
                   </ul>
                 </div>
               </motion.div>
-            ))}
+            ))
+          )}
           </motion.div>
         </div>
       </section>

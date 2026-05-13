@@ -104,20 +104,70 @@ export default function About() {
               ))}
             </motion.div>
           </div>
-          <div className="rounded-3xl border border-tint bg-tint p-6 md:p-8">
-            <h3 className="text-lg md:text-xl font-semibold text-ink font-display">Certifications & standards</h3>
-            <ul className="mt-6 space-y-3 text-sm text-slate">
-              <li>- Curriculum mapped to AWS CLF-C02, SAA-C03, and Azure AZ-104</li>
-              <li>- DevSecOps pathway aligned to CKA and AZ-400 outcomes</li>
-              <li>- ISO 27001 learning practices and governance templates</li>
-            </ul>
-            <div className="mt-8 rounded-2xl bg-white p-6 shadow-lg shadow-black/5">
-              <div className="text-xs uppercase tracking-[0.3em] text-slate">Trusted by</div>
-              <div className="mt-4 grid grid-cols-2 gap-4 text-sm font-semibold text-ink">
-                <div className="rounded-full bg-tint px-4 py-2 text-center">AWS</div>
-                <div className="rounded-full bg-tint px-4 py-2 text-center">Microsoft</div>
-                <div className="rounded-full bg-tint px-4 py-2 text-center">NASSCOM</div>
-                <div className="rounded-full bg-tint px-4 py-2 text-center">ISO 27001</div>
+          <div className="rounded-3xl border border-tint bg-gradient-to-br from-tint to-white p-6 md:p-8">
+            <h3 className="text-lg md:text-xl font-semibold text-ink font-display">Certifications & Career Outcomes</h3>
+            <p className="mt-3 text-sm text-slate">Our curriculum prepares you for industry-recognized certifications and real-world cloud roles.</p>
+            
+            <div className="mt-6 space-y-4">
+              <div className="rounded-xl bg-white p-4 shadow-sm border border-tint">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <span className="text-lg">☁️</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-ink text-sm">AWS Certifications</div>
+                    <div className="text-xs text-slate mt-1">CLF-C02, SAA-C03, DVA-C02</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-white p-4 shadow-sm border border-tint">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <span className="text-lg">🔷</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-ink text-sm">Azure Certifications</div>
+                    <div className="text-xs text-slate mt-1">AZ-900, AZ-104, AZ-400</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-white p-4 shadow-sm border border-tint">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <span className="text-lg">⚙️</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-ink text-sm">Kubernetes & DevOps</div>
+                    <div className="text-xs text-slate mt-1">CKA, CKAD, Jenkins, Terraform</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-white p-4 shadow-sm border border-tint">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <span className="text-lg">🔒</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-ink text-sm">Security Standards</div>
+                    <div className="text-xs text-slate mt-1">ISO 27001, OWASP, CIS Benchmarks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-tint">
+              <div className="grid grid-cols-2 gap-3 text-center">
+                <div className="rounded-lg bg-white p-3 border border-tint">
+                  <div className="text-2xl font-bold text-accent">95%</div>
+                  <div className="text-xs text-slate mt-1">Pass Rate</div>
+                </div>
+                <div className="rounded-lg bg-white p-3 border border-tint">
+                  <div className="text-2xl font-bold text-accent">4+</div>
+                  <div className="text-xs text-slate mt-1">Certifications</div>
+                </div>
               </div>
             </div>
           </div>

@@ -137,20 +137,6 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight text-white">
-        {/* Floating tech icons background */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[
-            { src: '/logos/aws.svg', style: { top: '8%', left: '5%', animationDelay: '0s', animationDuration: '7s' } },
-            { src: '/logos/kubernetes.svg', style: { top: '15%', right: '8%', animationDelay: '1.2s', animationDuration: '9s' } },
-            { src: '/logos/azure.svg', style: { bottom: '20%', left: '12%', animationDelay: '2.5s', animationDuration: '8s' } },
-            { src: '/logos/jenkins.svg', style: { bottom: '10%', right: '15%', animationDelay: '0.8s', animationDuration: '10s' } },
-            { src: '/github-actions.png', style: { top: '45%', left: '2%', animationDelay: '3s', animationDuration: '6s' } },
-          ].map((icon, i) => (
-            <div key={i} className="absolute animate-tech-float" style={icon.style as React.CSSProperties}>
-              <Image src={icon.src} alt="" width={48} height={48} className="w-10 h-10 opacity-[0.08] grayscale" />
-            </div>
-          ))}
-        </div>
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/40 blur-3xl animate-float" />
           <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-float-slow" />
@@ -231,7 +217,7 @@ export default function Home() {
         <div className="flex gap-10 animate-marquee whitespace-nowrap">
           {[...partnerLogos, ...partnerLogos].map((logo, i) => (
             <div key={i} className="inline-flex items-center gap-3 rounded-full bg-tint px-5 py-2 font-semibold text-ink flex-shrink-0">
-              <Image src={logo.src} alt={logo.name} width={80} height={24} className="h-6 w-auto" />
+              <Image src={logo.src} alt={logo.name} width={80} height={24} className="h-6 w-auto pointer-events-none select-none" style={{ pointerEvents: 'none' }} />
               {logo.name !== 'Kubernetes' && <span>{logo.name}</span>}
             </div>
           ))}
