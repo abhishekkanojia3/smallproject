@@ -2,12 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 14px;
+  }
 
-body {
-  @apply bg-surface text-ink font-sans;
+  @media (min-width: 640px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  body {
+    @apply bg-surface text-ink font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 /* Link styles */
@@ -54,12 +77,15 @@ button {
 
 /* Mobile-specific improvements */
 @media (max-width: 768px) {
-  html {
-    font-size: 15px;
-  }
-  
   body {
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Improve touch targets on mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
