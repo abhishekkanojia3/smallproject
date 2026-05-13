@@ -12,6 +12,7 @@ export const COURSES: Course[] = [
     price: 'INR 14,999',
     mode: 'Online',
     outcome: 'AWS / Azure Fundamentals',
+    level: 'Beginner',
     category: 'Cloud',
     overview:
       'An intensive 8-week programme for beginners to build a strong foundation in AWS and Azure core services.',
@@ -32,6 +33,7 @@ export const COURSES: Course[] = [
     price: 'INR 24,999',
     mode: 'Online',
     outcome: 'DevOps Engineer Readiness',
+    level: 'Intermediate',
     category: 'DevOps',
     overview:
       'A 12-week DevOps programme covering CI/CD automation, container workflows, and infrastructure as code.',
@@ -52,6 +54,7 @@ export const COURSES: Course[] = [
     price: 'INR 39,999',
     mode: 'Online',
     outcome: 'DevSecOps + Cloud Expert',
+    level: 'Advanced',
     category: 'DevSecOps',
     overview:
       'A 24-week flagship programme combining cloud architecture with security-first DevOps engineering.',
