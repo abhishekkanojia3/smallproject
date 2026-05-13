@@ -10,9 +10,8 @@ export const COURSES: Course[] = [
     name: 'Cloud Professional',
     duration: '2 Months',
     price: 'INR 14,999',
-    mode: 'Online / Hybrid',
+    mode: 'Online',
     outcome: 'AWS / Azure Fundamentals',
-    level: 'Beginner',
     category: 'Cloud',
     overview:
       'An intensive 8-week programme for beginners to build a strong foundation in AWS and Azure core services.',
@@ -24,16 +23,16 @@ export const COURSES: Course[] = [
       'Capstone project + mock exam (AWS CCP / AZ-900)'
     ],
     brochureUrl: '/Cloud%20Professional.html',
+    scheduleUrl: '/schedule-cloud-professional.html',
   },
   {
     id: 2,
     name: 'DevOps Engineer',
     duration: '3 Months',
     price: 'INR 24,999',
-    mode: 'Online / Hybrid',
+    mode: 'Online',
     outcome: 'DevOps Engineer Readiness',
-    level: 'Intermediate',
-    category: 'DevSecOps',
+    category: 'DevOps',
     overview:
       'A 12-week DevOps programme covering CI/CD automation, container workflows, and infrastructure as code.',
     syllabus: [
@@ -44,15 +43,15 @@ export const COURSES: Course[] = [
       'DevOps capstone with production-style delivery'
     ],
     brochureUrl: '/DevOps%20Engineer.html',
+    scheduleUrl: '/schedule-devops-engineer.html',
   },
   {
     id: 3,
     name: 'DevSecOps Master',
     duration: '6 Months',
-    price: 'INR 34,999',
-    mode: 'Online / Hybrid',
+    price: 'INR 39,999',
+    mode: 'Online',
     outcome: 'DevSecOps + Cloud Expert',
-    level: 'Advanced',
     category: 'DevSecOps',
     overview:
       'A 24-week flagship programme combining cloud architecture with security-first DevOps engineering.',
@@ -64,5 +63,6 @@ export const COURSES: Course[] = [
       'Monitoring & SRE capstone with final project defense'
     ],
     brochureUrl: '/DevSecOps%20Master.html',
+    scheduleUrl: '/schedule-devsecops-master.html',
   },
 ];

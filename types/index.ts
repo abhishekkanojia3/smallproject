@@ -2,6 +2,18 @@
  * Application Type Definitions
  */
 
+export interface DaySchedule {
+  day: string;
+  topic: string;
+  details: string[];
+}
+
+export interface WeekSchedule {
+  week: number;
+  theme: string;
+  days: DaySchedule[];
+}
+
 export interface Course {
   id: number;
   name: string;
@@ -13,6 +25,8 @@ export interface Course {
   category: string;
   overview: string;
   syllabus: string[];
+  schedule?: WeekSchedule[];
+  scheduleUrl?: string;
   brochureUrl?: string;
 }
 

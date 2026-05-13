@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training Schedule – Cloud Professional | TechRunniti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #1A3C6E; --navy: #0F2747; --midnight: #0B1B2E;
+      --accent: #00AEEF; --gold: #D4AF37; --ink: #1A1A2E;
+      --slate: #5A6A7A; --tint: #EBF4FB; --surface: #FFFFFF;
+      --mon: #e0f2fe; --tue: #f0fdf4; --wed: #fef9c3;
+      --thu: #fce7f3; --fri: #ede9fe;
+      --mon-b: #0ea5e9; --tue-b: #22c55e; --wed-b: #eab308;
+      --thu-b: #ec4899; --fri-b: #8b5cf6;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: linear-gradient(135deg, var(--midnight) 0%, var(--primary) 100%); min-height: 100vh; padding: 32px 16px; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 960px; margin: 0 auto; background: var(--surface); border-radius: 24px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.4); }
+
+    /* Header */
+    .header { background: linear-gradient(135deg, var(--primary) 0%, var(--navy) 60%, var(--midnight) 100%); padding: 36px 48px 32px; position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(0,174,239,0.15); }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; position: relative; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 10px; background: rgba(0,174,239,0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .brand-logo img { width: 34px; height: auto; }
+    .brand-text .name { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .brand-text .sub { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-top: 2px; }
+    .header-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,174,239,0.15); border: 1px solid rgba(0,174,239,0.3); color: var(--accent); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 12px; position: relative; }
+    .header h1 { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; line-height: 1.2; position: relative; }
+    .header h1 span { color: var(--accent); }
+    .header-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; position: relative; }
+    .meta-pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); font-size: 0.75rem; font-weight: 500; padding: 5px 14px; border-radius: 100px; }
+    .meta-pill strong { color: #fff; }
+
+    /* Day legend */
+    .legend { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px 48px; background: var(--tint); border-bottom: 1px solid #e0eaf4; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; color: var(--ink); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+    /* Body */
+    .body { padding: 32px 48px 40px; }
+
+    /* Week block */
+    .week-block { margin-bottom: 32px; }
+    .week-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .week-num { width: 36px; height: 36px; border-radius: 10px; background: var(--primary); color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .week-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .week-theme { font-size: 0.78rem; color: var(--slate); margin-top: 1px; }
+
+    /* Day grid */
+    .day-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .day-card { border-radius: 12px; padding: 12px 14px; border: 1.5px solid transparent; }
+    .day-card.mon { background: var(--mon); border-color: #bae6fd; }
+    .day-card.tue { background: var(--tue); border-color: #bbf7d0; }
+    .day-card.wed { background: var(--wed); border-color: #fef08a; }
+    .day-card.thu { background: var(--thu); border-color: #fbcfe8; }
+    .day-card.fri { background: var(--fri); border-color: #ddd6fe; }
+    .day-label { font-family: 'Poppins', sans-serif; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+    .day-card.mon .day-label { color: var(--mon-b); }
+    .day-card.tue .day-label { color: var(--tue-b); }
+    .day-card.wed .day-label { color: var(--wed-b); }
+    .day-card.thu .day-label { color: var(--thu-b); }
+    .day-card.fri .day-label { color: var(--fri-b); }
+    .day-topic { font-size: 0.8rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+    .day-details { list-style: none; }
+    .day-details li { font-size: 0.72rem; color: var(--slate); line-height: 1.5; padding-left: 10px; position: relative; }
+    .day-details li::before { content: '·'; position: absolute; left: 0; color: var(--slate); }
+
+    .divider { height: 1px; background: #e8f0f8; margin: 24px 0; }
+
+    /* CTA */
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+    .btn-primary { flex: 1; background: var(--accent); color: #fff; font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 700; padding: 13px 20px; border-radius: 100px; text-decoration: none; text-align: center; display: block; box-shadow: 0 8px 20px rgba(0,174,239,0.3); }
+    .btn-secondary { flex: 1; background: transparent; color: var(--accent); font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 700; padding: 13px 20px; border-radius: 100px; text-decoration: none; text-align: center; display: block; border: 2px solid var(--accent); }
+
+    .footer { border-top: 1px solid #e8f0f8; padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-left { font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--primary); }
+    .footer-right { font-size: 0.72rem; color: var(--slate); }
+
+    @media (max-width: 700px) {
+      .header, .body, .footer { padding-left: 20px; padding-right: 20px; }
+      .legend { padding-left: 20px; padding-right: 20px; }
+      .day-grid { grid-template-columns: 1fr 1fr; }
+      .header h1 { font-size: 1.5rem; }
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+      .btn-primary, .btn-secondary { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="brand">
+      <div class="brand-logo"><img src="/logo.png" alt="TechRunniti" /></div>
+      <div class="brand-text"><div class="name">TechRunniti</div><div class="sub">IT Academy</div></div>
+    </div>
+    <div class="header-badge">☁️ &nbsp;Cloud Professional · 2 Months</div>
+    <h1>Day-wise <span>Training Schedule</span></h1>
+    <div class="header-meta">
+      <div class="meta-pill"><strong>Duration:</strong> 8 Weeks</div>
+      <div class="meta-pill"><strong>Schedule:</strong> Monday – Friday</div>
+      <div class="meta-pill"><strong>Mode:</strong> Online Live</div>
+      <div class="meta-pill"><strong>Session:</strong> 1.5 hrs/day</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#0ea5e9"></div> Monday</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div> Tuesday</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#eab308"></div> Wednesday</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ec4899"></div> Thursday</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6"></div> Friday</div>
+  </div>
+
+  <div class="body">
+
+    <!-- Week 1 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W1</div>
+        <div><div class="week-title">Cloud Foundations</div><div class="week-theme">Understanding cloud computing concepts and models</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">Intro to Cloud Computing</div><ul class="day-details"><li>What is cloud computing</li><li>IaaS, PaaS, SaaS models</li><li>Public, Private, Hybrid cloud</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">Shared Responsibility Model</div><ul class="day-details"><li>Cloud vs on-premise</li><li>Shared responsibility matrix</li><li>Compliance basics</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">Global Infrastructure</div><ul class="day-details"><li>Regions & Availability Zones</li><li>Edge locations & CDN</li><li>Latency considerations</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">Cloud Economics</div><ul class="day-details"><li>CapEx vs OpEx</li><li>Pay-as-you-go model</li><li>Cost optimisation basics</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Lab + Quiz</div><ul class="day-details"><li>AWS console walkthrough</li><li>Azure portal walkthrough</li><li>Week 1 quiz</li></ul></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Week 2 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W2</div>
+        <div><div class="week-title">AWS Core – Compute & Storage</div><div class="week-theme">EC2, S3 and core AWS services</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">EC2 Fundamentals</div><ul class="day-details"><li>Instance types & families</li><li>AMIs & key pairs</li><li>Launch & connect to EC2</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">EC2 Advanced</div><ul class="day-details"><li>Security groups & NACLs</li><li>Elastic IPs & EBS volumes</li><li>Auto Scaling basics</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">S3 Storage</div><ul class="day-details"><li>Buckets, objects & prefixes</li><li>Storage classes</li><li>Versioning & lifecycle rules</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">S3 Security & Access</div><ul class="day-details"><li>Bucket policies & ACLs</li><li>Pre-signed URLs</li><li>S3 static website hosting</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Hands-on Lab</div><ul class="day-details"><li>Deploy EC2 web server</li><li>Upload & host on S3</li><li>Week 2 review</li></ul></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Week 3 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W3</div>
+        <div><div class="week-title">AWS Core – Networking & IAM</div><div class="week-theme">VPC, subnets, routing and identity management</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">VPC Fundamentals</div><ul class="day-details"><li>VPC, subnets, CIDR</li><li>Internet & NAT gateways</li><li>Route tables</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">VPC Advanced</div><ul class="day-details"><li>VPC peering</li><li>VPN & Direct Connect</li><li>Flow logs</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">IAM Fundamentals</div><ul class="day-details"><li>Users, groups, roles</li><li>Policies & permissions</li><li>Principle of least privilege</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">IAM Advanced</div><ul class="day-details"><li>IAM roles for services</li><li>MFA & password policies</li><li>AWS Organizations basics</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Lab + Review</div><ul class="day-details"><li>Build custom VPC</li><li>Create IAM roles & policies</li><li>Week 3 quiz</li></ul></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Week 4 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W4</div>
+        <div><div class="week-title">AWS Core – Databases & Monitoring</div><div class="week-theme">RDS, DynamoDB and CloudWatch</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">RDS Fundamentals</div><ul class="day-details"><li>Managed relational DB</li><li>Multi-AZ & Read Replicas</li><li>Backup & restore</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">DynamoDB</div><ul class="day-details"><li>NoSQL concepts</li><li>Tables, items & attributes</li><li>Partition keys & indexes</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">CloudWatch</div><ul class="day-details"><li>Metrics & dashboards</li><li>Alarms & notifications</li><li>Log groups & insights</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">Load Balancing & DNS</div><ul class="day-details"><li>ALB vs NLB</li><li>Target groups</li><li>Route 53 basics</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Lab + Review</div><ul class="day-details"><li>Launch RDS instance</li><li>Set up CloudWatch alarm</li><li>Week 4 quiz</li></ul></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Week 5 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W5</div>
+        <div><div class="week-title">Azure Core – Compute & Storage</div><div class="week-theme">Azure VMs, Blob Storage and resource management</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">Azure Portal & Resources</div><ul class="day-details"><li>Resource groups</li><li>Subscriptions & management</li><li>Azure CLI basics</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">Azure Virtual Machines</div><ul class="day-details"><li>VM sizes & images</li><li>Disks & availability sets</li><li>Connect via SSH/RDP</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">Azure Blob Storage</div><ul class="day-details"><li>Storage accounts</li><li>Containers & blobs</li><li>Access tiers & lifecycle</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">Azure Networking</div><ul class="day-details"><li>Virtual Networks & subnets</li><li>NSGs & peering</li><li>Azure Load Balancer</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Lab + Review</div><ul class="day-details"><li>Deploy Azure VM</li><li>Create storage account</li><li>Week 5 quiz</li></ul></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Week 6 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W6</div>
+        <div><div class="week-title">Azure Core – Identity & Monitoring</div><div class="week-theme">Azure AD, RBAC and Azure Monitor</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">Azure Active Directory</div><ul class="day-details"><li>Users, groups & tenants</li><li>App registrations</li><li>MFA & Conditional Access</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">RBAC & Policies</div><ul class="day-details"><li>Built-in roles</li><li>Custom role definitions</li><li>Azure Policy basics</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">Azure Monitor</div><ul class="day-details"><li>Metrics & alerts</li><li>Log Analytics workspace</li><li>Application Insights</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">Azure Key Vault</div><ul class="day-details"><li>Secrets & certificates</li><li>Key management</li><li>Access policies</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Lab + Review</div><ul class="day-details"><li>Configure Azure AD users</li><li>Set up Monitor alerts</li><li>Week 6 quiz</li></ul></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Week 7 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W7</div>
+        <div><div class="week-title">Cloud Security & Compliance</div><div class="week-theme">Encryption, security best practices and compliance frameworks</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">Encryption Fundamentals</div><ul class="day-details"><li>Encryption at rest & transit</li><li>AWS KMS & Azure Key Vault</li><li>TLS/SSL basics</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">Security Best Practices</div><ul class="day-details"><li>AWS Well-Architected Security</li><li>Azure Security Center</li><li>CIS benchmarks</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">Compliance Frameworks</div><ul class="day-details"><li>ISO 27001 overview</li><li>SOC 2 basics</li><li>GDPR & data residency</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">Cost Management</div><ul class="day-details"><li>AWS Cost Explorer</li><li>Azure Cost Management</li><li>Tagging strategies</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Lab + Review</div><ul class="day-details"><li>Enable KMS encryption</li><li>Review security posture</li><li>Week 7 quiz</li></ul></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <!-- Week 8 -->
+    <div class="week-block">
+      <div class="week-header">
+        <div class="week-num">W8</div>
+        <div><div class="week-title">Capstone Project & Certification Prep</div><div class="week-theme">Final project, mock exams and career readiness</div></div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card mon"><div class="day-label">Monday</div><div class="day-topic">Capstone Kickoff</div><ul class="day-details"><li>Project brief & requirements</li><li>Multi-cloud architecture design</li><li>Team assignment</li></ul></div>
+        <div class="day-card tue"><div class="day-label">Tuesday</div><div class="day-topic">Capstone Build</div><ul class="day-details"><li>Deploy AWS infrastructure</li><li>Deploy Azure resources</li><li>Connect & test</li></ul></div>
+        <div class="day-card wed"><div class="day-label">Wednesday</div><div class="day-topic">AWS CCP Mock Exam</div><ul class="day-details"><li>65-question mock test</li><li>Review wrong answers</li><li>Exam tips & strategy</li></ul></div>
+        <div class="day-card thu"><div class="day-label">Thursday</div><div class="day-topic">AZ-900 Mock Exam</div><ul class="day-details"><li>60-question mock test</li><li>Review wrong answers</li><li>Exam tips & strategy</li></ul></div>
+        <div class="day-card fri"><div class="day-label">Friday</div><div class="day-topic">Graduation & Next Steps</div><ul class="day-details"><li>Project presentation</li><li>Certificate of completion</li><li>Career roadmap session</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="/contact" class="btn-primary">Enroll Now</a>
+      <a href="/Cloud%20Professional.html" class="btn-secondary">View Brochure</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">TechRunniti IT Academy — Cloud Professional Schedule</div>
+    <div class="footer-right">© 2026 TechRunniti. All rights reserved.</div>
+  </div>
+
+</div>
+</body>
+</html>

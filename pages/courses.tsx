@@ -1,23 +1,37 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { COURSES } from '@/lib/courses';
 import { WHATSAPP_MESSAGE_URL } from '@/config/contact';
 
-const durationOptions = ['All', '2 Months', '3 Months', '6 Months'];
-const categoryOptions = ['All', 'Cloud', 'DevSecOps'];
+const cardVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.94 },
+  show: { opacity: 1, y: 0, scale: 1 },
+};
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
+
+const durationOptions = ['2 Months', '3 Months', '6 Months'];
+const categoryOptions = ['Cloud', 'DevOps', 'DevSecOps'];
 
 export default function Courses() {
-  const [duration, setDuration] = useState('All');
-  const [category, setCategory] = useState('All');
+  const [duration, setDuration] = useState<string | null>(null);
+  const [category, setCategory] = useState<string | null>(null);
 
   const filteredCourses = useMemo(() => {
     return COURSES.filter((course) => {
-      const matchDuration = duration === 'All' || course.duration === duration;
-      const matchCategory = category === 'All' || course.category === category;
+      const matchDuration = !duration || course.duration === duration;
+      const matchCategory = !category || course.category === category;
       return matchDuration && matchCategory;
     });
   }, [duration, category]);
+
+  const clearFilters = () => {
+    setDuration(null);
+    setCategory(null);
+  };
+
+  const hasActiveFilters = duration !== null || category !== null;
 
   return (
     <>
@@ -26,14 +40,24 @@ export default function Courses() {
         <meta name="description" content="Explore TechRunniti IT Academy programmes in Cloud, AWS, Azure, and DevSecOps." />
       </Head>
 
-      <section className="bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
-        <div className="mx-auto max-w-6xl px-4 text-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-accent/40 blur-3xl animate-float" />
+          <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-white/10 blur-3xl animate-float-slow" />
+          <div className="absolute top-1/3 right-1/4 h-32 w-32 rounded-full bg-gold/10 blur-2xl animate-float" style={{ animationDelay: '1.5s' }} />
+        </div>
+        <motion.div
+          className="relative mx-auto max-w-6xl px-4 text-center"
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 340, damping: 24 }}
+        >
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">Programmes</div>
           <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">Choose the right learning tier</h1>
           <p className="mt-4 text-lg text-white/80">
             Structured pathways for cloud fundamentals, architecture mastery, and full-stack DevSecOps leadership.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       <section className="bg-surface py-16">
@@ -44,6 +68,15 @@ export default function Courses() {
               <p className="mt-2 text-sm text-slate">Find the duration and focus area that fits your goals.</p>
             </div>
             <div className="flex flex-wrap gap-4">
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="rounded-full bg-accent text-white px-5 py-2 text-xs font-semibold shadow-lg shadow-accent/30 hover:brightness-110 transition"
+                >
+                  All
+                </button>
+              )}
               <div className="flex flex-wrap gap-2">
                 {durationOptions.map((option) => (
                   <button
@@ -79,9 +112,21 @@ export default function Courses() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <motion.div
+            key={`${duration}-${category}`}
+            className="mt-10 grid gap-6 md:grid-cols-3"
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+          >
             {filteredCourses.map((course) => (
-              <div key={course.id} className="rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5">
+              <motion.div
+                key={course.id}
+                className="rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5 cursor-default"
+                variants={cardVariants}
+                transition={{ type: 'spring', stiffness: 360, damping: 26 }}
+                whileHover={{ y: -8, scale: 1.02, boxShadow: '0 20px 40px rgba(0,174,239,0.15)', transition: { type: 'spring', stiffness: 500, damping: 20 } }}
+              >
                 <div className="flex items-center justify-between text-xs text-slate">
                   <span className="rounded-full bg-tint px-3 py-1">{course.level}</span>
                   <span>{course.duration}</span>
@@ -96,30 +141,35 @@ export default function Courses() {
                   <div className="text-xs text-slate">Starting at</div>
                   <div className="text-2xl font-semibold text-ink">{course.price}</div>
                 </div>
-                <div className="mt-6 flex gap-3">
+                <div className="mt-6 flex flex-col gap-2">
                   <Link
                     href="/contact"
-                    className="flex-1 rounded-full bg-accent px-4 py-2 text-center text-xs font-semibold text-white shadow-lg shadow-accent/30 hover:brightness-110 transition"
+                    className="rounded-full bg-accent px-4 py-2 text-center text-xs font-semibold text-white shadow-lg shadow-accent/30 hover:brightness-110 transition"
                   >
                     Enroll Now
                   </Link>
-                  {course.brochureUrl ? (
-                    <a
-                      href={course.brochureUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 rounded-full border border-accent px-4 py-2 text-center text-xs font-semibold text-accent hover:bg-accent hover:text-white transition"
-                    >
-                      View Brochure
-                    </a>
-                  ) : (
-                    <Link
-                      href="/contact"
-                      className="flex-1 rounded-full border border-accent px-4 py-2 text-center text-xs font-semibold text-accent hover:bg-accent hover:text-white transition"
-                    >
-                      Request Syllabus
-                    </Link>
-                  )}
+                  <div className="flex gap-2">
+                    {course.brochureUrl && (
+                      <a
+                        href={course.brochureUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 rounded-full border border-accent px-4 py-2 text-center text-xs font-semibold text-accent hover:bg-accent hover:text-white transition"
+                      >
+                        Brochure
+                      </a>
+                    )}
+                    {course.scheduleUrl && (
+                      <a
+                        href={course.scheduleUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 rounded-full border border-primary px-4 py-2 text-center text-xs font-semibold text-primary hover:bg-primary hover:text-white transition"
+                      >
+                        📅 Schedule
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <div className="mt-6 border-t border-tint pt-4">
                   <div className="text-xs uppercase tracking-[0.2em] text-slate">Syllabus Highlights</div>
@@ -129,13 +179,19 @@ export default function Courses() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="bg-tint py-16">
+      <motion.section
+        className="bg-tint py-16"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 24 }}
+      >
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="text-3xl font-semibold text-ink font-display">Not sure which programme fits?</h2>
           <p className="mt-3 text-slate">Speak to our advisors for a personalised roadmap and batch schedule.</p>
@@ -148,7 +204,7 @@ export default function Courses() {
             Chat with Advisor
           </a>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

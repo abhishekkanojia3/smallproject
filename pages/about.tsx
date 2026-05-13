@@ -1,6 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { WHATSAPP_URL } from '@/config/contact';
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 28, scale: 0.94 },
+  show: { opacity: 1, y: 0, scale: 1 },
+};
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } };
 
 const instructors = [
   {
@@ -43,31 +50,59 @@ export default function About() {
         <meta name="description" content="Learn about TechRunniti IT Academy, our instructors, and our enterprise training approach." />
       </Head>
 
-      <section className="bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
-        <div className="mx-auto max-w-6xl px-4">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute -top-20 right-10 h-64 w-64 rounded-full bg-accent/40 blur-3xl animate-float" />
+          <div className="absolute bottom-0 -left-10 h-48 w-48 rounded-full bg-white/10 blur-3xl animate-float-slow" />
+          <div className="absolute top-1/2 left-1/2 h-32 w-32 rounded-full bg-gold/10 blur-2xl animate-float" style={{ animationDelay: '1s' }} />
+        </div>
+        <motion.div
+          className="relative mx-auto max-w-6xl px-4"
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 340, damping: 24 }}
+        >
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">About Us</div>
           <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">We build cloud leaders for the modern enterprise.</h1>
           <p className="mt-5 max-w-3xl text-lg text-white/80">
             TechRunniti IT Academy is an enterprise IT training platform focused on cloud computing and DevSecOps. Our programmes combine structured learning with real-world delivery standards.
           </p>
-        </div>
+        </motion.div>
       </section>
 
-      <section className="bg-surface py-20">
+      <motion.section
+        className="bg-surface py-20"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="text-3xl font-semibold text-ink font-display">Our mission</h2>
             <p className="mt-4 text-slate">
               We help professionals transition into cloud architecture and DevSecOps roles with a curriculum that mirrors enterprise delivery pipelines. Each cohort blends live instruction, labs, and real-world scenarios across AWS and Azure.
             </p>
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {values.map((value) => (
-                <div key={value.title} className="rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5">
+            <motion.div
+              className="mt-8 grid gap-6 md:grid-cols-3"
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {values.map((value, i) => (
+                <motion.div
+                  key={value.title}
+                  className="rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5 cursor-default"
+                  variants={cardVariants}
+                  transition={{ type: 'spring', stiffness: 360, damping: 24 }}
+                  whileHover={{ y: -6, scale: 1.03, transition: { type: 'spring', stiffness: 500, damping: 20 } }}
+                >
                   <h3 className="text-lg font-semibold text-ink font-display">{value.title}</h3>
                   <p className="mt-3 text-sm text-slate">{value.desc}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
           <div className="rounded-3xl border border-tint bg-tint p-8">
             <h3 className="text-xl font-semibold text-ink font-display">Certifications & standards</h3>
@@ -87,9 +122,15 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="bg-tint py-20">
+      <motion.section
+        className="bg-tint py-20"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -98,22 +139,40 @@ export default function About() {
             </div>
             <Link href="/contact" className="text-sm font-semibold text-accent hover:brightness-110">Join a cohort -&gt;</Link>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {instructors.map((instructor) => (
-              <div key={instructor.name} className="rounded-2xl border border-white bg-white p-6 shadow-lg shadow-black/5">
+          <motion.div
+            className="mt-10 grid gap-6 md:grid-cols-3"
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {instructors.map((instructor, i) => (
+              <motion.div
+                key={instructor.name}
+                className="rounded-2xl border border-white bg-white p-6 shadow-lg shadow-black/5 cursor-default"
+                variants={{ hidden: { opacity: 0, x: i % 2 === 0 ? -28 : 28, scale: 0.94 }, show: { opacity: 1, x: 0, scale: 1 } }}
+                transition={{ type: 'spring', stiffness: 360, damping: 24 }}
+                whileHover={{ y: -6, scale: 1.03, transition: { type: 'spring', stiffness: 500, damping: 20 } }}
+              >
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent font-semibold">
                   {instructor.name.split(' ').map((part) => part[0]).join('')}
                 </div>
                 <h3 className="mt-4 text-lg font-semibold text-ink font-display">{instructor.name}</h3>
                 <p className="text-sm text-slate">{instructor.role}</p>
                 <p className="mt-3 text-xs text-slate">{instructor.certs}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="bg-surface py-20">
+      <motion.section
+        className="bg-surface py-20"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="mx-auto max-w-6xl px-4">
           <div className="rounded-3xl border border-tint bg-white p-10 shadow-lg shadow-black/5">
             <h2 className="text-3xl font-semibold text-ink font-display">Ready to grow with TechRunniti IT Academy?</h2>
@@ -138,7 +197,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

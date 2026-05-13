@@ -1,262 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevOps Engineer Program Brochure</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Engineer – TechRunniti IT Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1A3C6E;
+      --navy: #0F2747;
+      --midnight: #0B1B2E;
+      --accent: #00AEEF;
+      --gold: #D4AF37;
+      --ink: #1A1A2E;
+      --slate: #5A6A7A;
+      --tint: #EBF4FB;
+      --surface: #FFFFFF;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
-      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, var(--midnight) 0%, var(--primary) 100%);
       min-height: 100vh;
+      padding: 32px 16px;
       -webkit-font-smoothing: antialiased;
+      color: var(--ink);
     }
-    .container {
-      max-width: 850px;
-      margin: 40px auto;
-      background: rgba(255,255,255,0.98);
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--surface);
       border-radius: 24px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-      padding: 40px;
-      color: #1e293b;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
     }
-    .hero {
-      text-align: center;
-      padding-bottom: 30px;
-      border-bottom: 2px solid #e2e8f0;
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--navy) 60%, var(--midnight) 100%);
+      padding: 40px 48px 36px;
+      position: relative;
+      overflow: hidden;
     }
-    .brand-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(0,174,239,0.15);
     }
-    .hero-logo-main {
-      width: 60px;
-      height: auto;
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
     }
-    .brand-name {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #64748b; /* Slate color */
-      letter-spacing: -1px;
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px; position: relative;
     }
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #2563eb;
-      margin-bottom: 10px;
-      line-height: 1.2;
+    .brand-logo {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(0,174,239,0.15);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
-    .hero-sub {
-      font-size: 1.4rem;
-      color: #0f172a;
-      margin-bottom: 10px;
+    .brand-logo img { width: 38px; height: auto; }
+    .brand-text .name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--gold); line-height: 1;
     }
-    .hero-highlight {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #475569;
-      margin-bottom: 20px;
+    .brand-text .sub {
+      font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--accent); margin-top: 2px;
     }
-    .cta-btn {
-      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      padding: 14px 36px;
-      margin-top: 15px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.2s;
+    .header-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(0,174,239,0.15); border: 1px solid rgba(0,174,239,0.3);
+      color: var(--accent); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 14px; position: relative;
     }
-    .cta-btn:hover { transform: translateY(-2px); }
-    .badges {
-      margin-top: 25px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.4rem; font-weight: 800; color: #fff;
+      line-height: 1.15; position: relative;
     }
-    .badge {
-      background: #eff6ff;
-      color: #2563eb;
-      border-radius: 20px;
-      padding: 8px 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid #dbeafe;
+    .header h1 span { color: var(--accent); }
+    .header-meta {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 20px; position: relative;
     }
-    .section {
-      margin-top: 40px;
-      display: flex;
-      align-items: flex-start;
-      gap: 25px;
+    .meta-pill {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85); font-size: 0.8rem; font-weight: 500;
+      padding: 6px 16px; border-radius: 100px;
     }
+    .meta-pill strong { color: #fff; }
+
+    .body { padding: 40px 48px; }
+
+    .overview-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-bottom: 40px;
+    }
+    .ov-card {
+      background: var(--tint); border-radius: 14px; padding: 16px 14px;
+      text-align: center; border: 1px solid rgba(0,174,239,0.12);
+    }
+    .ov-card .val {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--primary);
+    }
+    .ov-card .lbl { font-size: 0.72rem; color: var(--slate); margin-top: 3px; font-weight: 500; }
+
+    .section { margin-bottom: 36px; }
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
     .section-icon {
-      width: 50px;
-      height: auto;
-      flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--tint); display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
     }
-    .section-content { flex: 1; }
     .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 12px;
-      border-left: 5px solid #2563eb;
-      padding-left: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--ink);
     }
-    .month-box {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 15px;
+    .section-title span {
+      display: block; width: 32px; height: 3px;
+      background: var(--accent); border-radius: 2px; margin-top: 4px;
     }
-    .month-title {
-      color: #2563eb;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      display: block;
+
+    /* Timeline-style month boxes */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px; top: 0; bottom: 0;
+      width: 2px; background: var(--tint);
     }
-    .section-list {
-      margin: 0;
-      padding-left: 20px;
-      color: #334155;
-      font-size: 1rem;
-      line-height: 1.6;
+    .tl-item { display: flex; gap: 20px; padding-bottom: 20px; position: relative; }
+    .tl-dot {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 1;
+      box-shadow: 0 0 0 4px var(--tint);
     }
-    .pricing {
-      background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
-      color: #fff;
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-      margin-top: 40px;
+    .tl-content {
+      flex: 1; background: var(--tint);
+      border-radius: 14px; padding: 16px 18px;
+      border: 1px solid rgba(0,174,239,0.12);
     }
-    .pricing-title { font-size: 2rem; font-weight: 700; }
-    .contact {
-      margin-top: 40px;
-      text-align: center;
-      padding: 20px;
-      background: #f8fafc;
-      border-radius: 16px;
+    .tl-month {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;
     }
+    .tl-topics { display: flex; flex-wrap: wrap; gap: 7px; }
+    .topic-tag {
+      background: #fff; border: 1px solid #d0e8f8;
+      color: var(--primary); font-size: 0.75rem; font-weight: 500;
+      padding: 4px 12px; border-radius: 100px;
+    }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .outcome-card {
+      background: var(--tint); border-radius: 14px; padding: 18px;
+      border: 1px solid rgba(0,174,239,0.12);
+    }
+    .outcome-card .oc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .outcome-card .oc-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+    }
+    .outcome-card .oc-desc { font-size: 0.78rem; color: var(--slate); line-height: 1.5; }
+
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1.5px solid #d0e8f8;
+      border-radius: 10px; padding: 8px 14px;
+      font-size: 0.8rem; font-weight: 600; color: var(--ink);
+    }
+    .tool-chip img { width: 20px; height: 20px; object-fit: contain; }
+
+    .pricing-block {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--navy) 100%);
+      border-radius: 18px; padding: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap; margin-bottom: 28px;
+    }
+    .pricing-left .label {
+      font-size: 0.75rem; color: rgba(255,255,255,0.6);
+      text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 6px;
+    }
+    .pricing-left .price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1;
+    }
+    .pricing-left .price-note { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .pricing-right { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .pricing-feature {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; color: rgba(255,255,255,0.85);
+    }
+    .pricing-feature::before {
+      content: '✓'; width: 20px; height: 20px;
+      background: rgba(0,174,239,0.25); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--accent); flex-shrink: 0;
+    }
+
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+    .btn-primary {
+      flex: 1; background: var(--accent); color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700;
+      padding: 14px 24px; border-radius: 100px; text-decoration: none;
+      text-align: center; display: block;
+      box-shadow: 0 8px 20px rgba(0,174,239,0.35); transition: filter 0.2s;
+    }
+    .btn-primary:hover { filter: brightness(1.1); }
+    .btn-secondary {
+      flex: 1; background: transparent; color: var(--accent);
+      font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700;
+      padding: 14px 24px; border-radius: 100px; text-decoration: none;
+      text-align: center; display: block; border: 2px solid var(--accent);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { background: var(--accent); color: #fff; }
+
+    .contact-bar {
+      background: var(--tint); border-radius: 14px; padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; margin-bottom: 28px;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.85rem; color: var(--ink); font-weight: 500;
+    }
+    .contact-item a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
     .footer {
-      margin-top: 40px;
-      text-align: center;
-      font-weight: 700;
-      color: #2563eb;
-      padding-bottom: 20px;
+      border-top: 1px solid #e8f0f8; padding: 18px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
     }
-    @media (max-width: 768px) {
-      .container { padding: 20px; margin: 10px; }
-      .section { flex-direction: column; }
+    .footer-left {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem; font-weight: 700; color: var(--primary);
+    }
+    .footer-right { font-size: 0.75rem; color: var(--slate); }
+    .divider { height: 1px; background: #e8f0f8; margin: 32px 0; }
+
+    @media (max-width: 640px) {
+      .header { padding: 28px 24px; }
+      .body { padding: 28px 24px; }
+      .header h1 { font-size: 1.8rem; }
+      .overview-strip { grid-template-columns: repeat(2, 1fr); }
+      .two-col { grid-template-columns: 1fr; }
+      .pricing-block { flex-direction: column; align-items: flex-start; }
+      .pricing-right { align-items: flex-start; }
+      .footer { padding: 16px 24px; }
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+      .btn-primary, .btn-secondary { display: none; }
     }
   </style>
 </head>
 <body>
+  <div class="page">
 
-  <div class="container">
-    <div class="hero">
-      <div class="brand-container">
-        <img src="/logo.png" alt="TechRunniti Logo" class="hero-logo-main" />
-        <span class="brand-name">TechRunniti</span>
+    <div class="header">
+      <div class="brand">
+        <div class="brand-logo"><img src="/logo.png" alt="TechRunniti" /></div>
+        <div class="brand-text">
+          <div class="name">TechRunniti</div>
+          <div class="sub">IT Academy</div>
+        </div>
       </div>
-      <div class="hero-title">DevOps Engineer Program</div>
-      <div class="hero-sub">Master Automation & Cloud in 4 Months</div>
-      <div class="hero-highlight">Linux + Basic AWS/Azure + CICD + K8s</div>
-      <a href="/contact" class="cta-btn">Enroll Now</a>
-      
-      <div class="badges">
-        <div class="badge">4 Months Duration</div>
-        <div class="badge">80% Practical Labs</div>
-        <div class="badge">Industry Projects</div>
+      <div class="header-badge">⚙️ &nbsp;Intermediate · DevOps</div>
+      <h1>DevOps <span>Engineer</span><br/>Programme</h1>
+      <div class="header-meta">
+        <div class="meta-pill"><strong>Duration:</strong> 3 Months</div>
+        <div class="meta-pill"><strong>Mode:</strong> Online Live</div>
+        <div class="meta-pill"><strong>Batch Size:</strong> Max 12 Students</div>
+        <div class="meta-pill"><strong>Outcome:</strong> DevOps Engineer Readiness</div>
       </div>
     </div>
 
-    <div class="section">
-      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/4144/4144720.png" alt="Icon" />
-      <div class="section-content">
-        <div class="section-title">Program Overview</div>
-        <p style="color: #334155; line-height: 1.6;">
-          Become a job-ready DevOps Engineer in 4 months. Learn to bridge the gap between development and operations using modern tools and cloud platforms.
+    <div class="body">
+
+      <div class="overview-strip">
+        <div class="ov-card"><div class="val">12</div><div class="lbl">Weeks of Live Training</div></div>
+        <div class="ov-card"><div class="val">80%</div><div class="lbl">Practical Labs</div></div>
+        <div class="ov-card"><div class="val">6+</div><div class="lbl">Industry Projects</div></div>
+        <div class="ov-card"><div class="val">10+</div><div class="lbl">DevOps Tools Covered</div></div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">📋</div>
+          <div class="section-title">Programme Overview <span></span></div>
+        </div>
+        <p style="font-size:0.9rem; color:var(--slate); line-height:1.75;">
+          The DevOps Engineer programme is a 12-week hands-on course that bridges the gap between development and operations. You will master CI/CD pipelines, container orchestration, infrastructure as code, and observability — all through live labs and real-world delivery scenarios with a small cohort of 12 students.
         </p>
       </div>
-    </div>
 
-    <div class="section">
-      <img class="section-icon" src="https://cdn-icons-png.flaticon.com/512/2621/2621237.png" alt="Syllabus Icon" />
-      <div class="section-content">
-        <div class="section-title">Course Syllabus</div>
+      <div class="divider"></div>
 
-        <div class="month-box">
-          <span class="month-title">Month 1: Foundation & Linux Administration</span>
-          <ul class="section-list">
-            <li>Linux Essentials & File System Hierarchy</li>
-            <li>Command Line Mastery & User Management</li>
-            <li>Shell Scripting (Bash) for Automation</li>
-            <li>Networking Basics (SSH, DNS, Troubleshooting)</li>
-          </ul>
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">📚</div>
+          <div class="section-title">Month-by-Month Syllabus <span></span></div>
         </div>
-
-        <div class="month-box">
-          <span class="month-title">Month 2: Basic Cloud & Version Control</span>
-          <ul class="section-list">
-            <li>AWS/Azure Core Services (EC2, S3, IAM)</li>
-            <li>Cloud Networking (VPC, Subnets, Security)</li>
-            <li>Git & GitHub (Branching, PRs, Merge Conflicts)</li>
-          </ul>
-        </div>
-
-        <div class="month-box">
-          <span class="month-title">Month 3: CI/CD & Config Management</span>
-          <ul class="section-list">
-            <li>Jenkins Pipelines (Pipeline as Code)</li>
-            <li>Ansible for Configuration Management</li>
-            <li>Terraform (Infrastructure as Code)</li>
-          </ul>
-        </div>
-
-        <div class="month-box">
-          <span class="month-title">Month 4: Containers & Orchestration</span>
-          <ul class="section-list">
-            <li>Docker (Containerization & Compose)</li>
-            <li>Kubernetes (Pod, Deployment, Services)</li>
-            <li>Monitoring (Prometheus & Grafana)</li>
-            <li>Capstone Project: End-to-End CI/CD Pipeline</li>
-          </ul>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot">M1</div>
+            <div class="tl-content">
+              <div class="tl-month">Month 1 — Linux &amp; Version Control</div>
+              <div class="tl-topics">
+                <span class="topic-tag">Linux Essentials</span>
+                <span class="topic-tag">Shell Scripting (Bash)</span>
+                <span class="topic-tag">User &amp; Permission Management</span>
+                <span class="topic-tag">Git &amp; GitHub</span>
+                <span class="topic-tag">Branching &amp; PR Workflows</span>
+                <span class="topic-tag">Networking Basics</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">M2</div>
+            <div class="tl-content">
+              <div class="tl-month">Month 2 — CI/CD &amp; Infrastructure as Code</div>
+              <div class="tl-topics">
+                <span class="topic-tag">Jenkins Pipelines</span>
+                <span class="topic-tag">GitHub Actions</span>
+                <span class="topic-tag">Pipeline as Code</span>
+                <span class="topic-tag">Terraform</span>
+                <span class="topic-tag">Ansible</span>
+                <span class="topic-tag">Environment Provisioning</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">M3</div>
+            <div class="tl-content">
+              <div class="tl-month">Month 3 — Containers, Kubernetes &amp; Observability</div>
+              <div class="tl-topics">
+                <span class="topic-tag">Docker &amp; Docker Compose</span>
+                <span class="topic-tag">Kubernetes (Pods, Deployments)</span>
+                <span class="topic-tag">Helm Charts</span>
+                <span class="topic-tag">Prometheus &amp; Grafana</span>
+                <span class="topic-tag">Log Aggregation</span>
+                <span class="topic-tag">Capstone: End-to-End CI/CD Pipeline</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="pricing">
-      <div class="pricing-title">Enquire for Fees</div>
-      <div style="color: #fef08a; font-weight: 600;">Limited Seats Available!</div>
-    </div>
+      <div class="divider"></div>
 
-    <div class="contact">
-      <div style="font-weight: 700; color: #1e293b; margin-bottom: 10px;">Contact Us</div>
-      <div style="color: #334155;">🌐 <a href="https://techrunniti.com" style="color:#2563eb; text-decoration: none;">techrunniti.com</a></div>
-      <div style="color: #334155; margin-top: 5px;">📱 9131590319</div>
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🛠️</div>
+          <div class="section-title">Tools &amp; Platforms <span></span></div>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-chip"><img src="/logos/jenkins.svg" alt="Jenkins" />Jenkins</div>
+          <div class="tool-chip"><img src="/github-actions.png" alt="GitHub Actions" />GitHub Actions</div>
+          <div class="tool-chip"><img src="/logos/kubernetes.svg" alt="Kubernetes" />Kubernetes</div>
+          <div class="tool-chip"><img src="/logos/aws.svg" alt="AWS" />AWS</div>
+          <div class="tool-chip">🐳 Docker</div>
+          <div class="tool-chip">🏗️ Terraform</div>
+          <div class="tool-chip">⚙️ Ansible</div>
+          <div class="tool-chip">📊 Prometheus</div>
+          <div class="tool-chip">📈 Grafana</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <div class="section-title">Career Outcomes <span></span></div>
+        </div>
+        <div class="two-col">
+          <div class="outcome-card">
+            <div class="oc-icon">⚙️</div>
+            <div class="oc-title">DevOps Engineer</div>
+            <div class="oc-desc">Build and maintain CI/CD pipelines, automate deployments, and manage cloud infrastructure.</div>
+          </div>
+          <div class="outcome-card">
+            <div class="oc-icon">🐳</div>
+            <div class="oc-title">Platform Engineer</div>
+            <div class="oc-desc">Design container platforms using Docker and Kubernetes for production workloads.</div>
+          </div>
+          <div class="outcome-card">
+            <div class="oc-icon">🏗️</div>
+            <div class="oc-title">Infrastructure Engineer</div>
+            <div class="oc-desc">Provision and manage cloud infrastructure using Terraform and Ansible at scale.</div>
+          </div>
+          <div class="outcome-card">
+            <div class="oc-icon">📊</div>
+            <div class="oc-title">Site Reliability Engineer</div>
+            <div class="oc-desc">Implement observability, alerting, and SLO-driven reliability practices.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="pricing-block">
+        <div class="pricing-left">
+          <div class="label">Programme Fee</div>
+          <div class="price">₹24,999</div>
+          <div class="price-note">One-time · No hidden charges</div>
+        </div>
+        <div class="pricing-right">
+          <div class="pricing-feature">Live instructor-led sessions</div>
+          <div class="pricing-feature">Recorded session access</div>
+          <div class="pricing-feature">Real-world capstone project</div>
+          <div class="pricing-feature">Career support &amp; resume review</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a href="/contact" class="btn-primary">Enroll Now</a>
+        <a href="https://wa.me/919131590319?text=Hi%20TechRunniti%2C%20I%20am%20interested%20in%20the%20DevOps%20Engineer%20programme." target="_blank" class="btn-secondary">Chat on WhatsApp</a>
+      </div>
+
+      <div class="contact-bar">
+        <div class="contact-item">🌐 <a href="https://techrunniti.com">techrunniti.com</a></div>
+        <div class="contact-item">📧 <a href="mailto:hello@techrunniti.com">hello@techrunniti.com</a></div>
+        <div class="contact-item">📱 <a href="tel:+919131590319">+91-9131590319</a></div>
+      </div>
+
     </div>
 
     <div class="footer">
-      Start Your DevOps Career Today!<br />
-      © 2026 TechRunniti. All rights reserved.
+      <div class="footer-left">TechRunniti IT Academy</div>
+      <div class="footer-right">© 2026 TechRunniti. All rights reserved.</div>
     </div>
+
   </div>
 </body>
 </html>

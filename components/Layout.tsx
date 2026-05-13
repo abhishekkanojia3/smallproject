@@ -151,7 +151,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/40 hover:brightness-110 transition"
           aria-label="Chat with TechRunniti on WhatsApp"
         >
-          Chat
+          <span className="absolute inset-0 rounded-full bg-accent animate-ping-slow" />
+          <span className="relative">Chat</span>
         </a>
       </div>
     </ErrorBoundary>
