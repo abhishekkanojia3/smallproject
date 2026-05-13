@@ -283,7 +283,7 @@ export default function Home() {
             {COURSES.map((course, i) => (
               <motion.div
                 key={course.id}
-                className="group rounded-2xl border border-tint bg-white/80 backdrop-blur p-6 shadow-lg shadow-black/5 cursor-default card-glow"
+                className="group rounded-2xl border border-tint bg-white/80 backdrop-blur p-6 shadow-lg shadow-black/5 card-glow"
                 variants={{ hidden: { opacity: 0, y: 28, scale: 0.94 }, show: { opacity: 1, y: 0, scale: 1 } }}
                 transition={{ type: 'spring', stiffness: 360, damping: 26 }}
               >
@@ -293,16 +293,18 @@ export default function Home() {
                 </div>
                 <h3 className="mt-4 text-lg md:text-xl font-semibold text-ink font-display">{course.name}</h3>
                 <p className="mt-3 text-sm text-slate">{course.overview}</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <div>
-                    <div className="text-sm text-slate">Starting at</div>
-                    <div className="text-xl md:text-2xl font-semibold text-ink">{course.price}</div>
+                <div className="mt-4 flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-xs text-slate">Starting at</div>
+                      <div className="text-xl md:text-2xl font-semibold text-ink">{course.price}</div>
+                    </div>
                   </div>
                   <Link
                     href="/contact"
-                    className="rounded-full bg-accent px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-accent/30 transition hover:brightness-110"
+                    className="block w-full rounded-full bg-accent px-4 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-accent/30 transition hover:brightness-110 relative z-10"
                   >
-                    Enroll
+                    🚀 Enroll Now
                   </Link>
                 </div>
               </motion.div>
