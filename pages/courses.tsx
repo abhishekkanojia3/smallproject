@@ -137,22 +137,22 @@ export default function Courses() {
                   <div className="text-xs text-slate">Starting at</div>
                   <div className="text-xl md:text-2xl font-semibold text-ink">{course.price}</div>
                 </div>
-                <div className="mt-6 flex flex-col gap-2">
+                <div className="mt-6 flex flex-col gap-3">
                   <Link
                     href="/contact"
-                    className="rounded-full bg-accent px-4 py-2 text-center text-xs font-semibold text-white shadow-lg shadow-accent/30 hover:brightness-110 transition"
+                    className="w-full rounded-full bg-accent px-4 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-accent/30 hover:brightness-110 transition"
                   >
-                    Enroll Now
+                    🚀 Enroll Now
                   </Link>
-                  <div className="flex gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {course.brochureUrl && (
                       <a
                         href={course.brochureUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 rounded-full border border-accent px-4 py-2 text-center text-xs font-semibold text-accent hover:bg-accent hover:text-white transition"
+                        className="rounded-full border-2 border-accent px-3 py-2.5 text-center text-xs font-semibold text-accent hover:bg-accent hover:text-white transition flex items-center justify-center gap-1"
                       >
-                        Brochure
+                        📄 Brochure
                       </a>
                     )}
                     {course.scheduleUrl && (
@@ -160,7 +160,7 @@ export default function Courses() {
                         href={course.scheduleUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 rounded-full border border-primary px-4 py-2 text-center text-xs font-semibold text-primary hover:bg-primary hover:text-white transition"
+                        className="rounded-full border-2 border-primary px-3 py-2.5 text-center text-xs font-semibold text-primary hover:bg-primary hover:text-white transition flex items-center justify-center gap-1"
                       >
                         📅 Schedule
                       </a>
