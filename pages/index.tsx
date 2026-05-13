@@ -106,11 +106,11 @@ function StatCard({ label, value, suffix, precision }: { label: string; value: n
   return (
     <motion.div
       ref={ref}
-      className="rounded-2xl bg-white/10 px-6 py-6 text-white backdrop-blur"
+      className="rounded-2xl bg-white/10 px-4 md:px-6 py-4 md:py-6 text-white backdrop-blur"
       variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
     >
-      <div className="text-3xl font-semibold font-display">{formattedValue}{suffix}</div>
-      <div className="mt-2 text-sm text-white/70">{label}</div>
+      <div className="text-2xl md:text-3xl font-semibold font-display">{formattedValue}{suffix}</div>
+      <div className="mt-2 text-xs md:text-sm text-white/70">{label}</div>
     </motion.div>
   );
 }
@@ -156,7 +156,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-float-slow" />
           <div className="absolute top-1/2 left-1/3 h-40 w-40 rounded-full bg-gold/10 blur-2xl animate-float" style={{ animationDelay: '2s' }} />
         </div>
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-24 md:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-4 py-16 md:py-24 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -170,28 +170,28 @@ export default function Home() {
             >
               Cloud / DevSecOps / AWS / Azure
             </motion.div>
-            <h1 className="mt-6 text-4xl font-semibold leading-tight md:text-5xl font-display">
+            <h1 className="mt-6 text-3xl font-semibold leading-tight md:text-4xl lg:text-5xl font-display">
               Build enterprise cloud expertise with a Fortune-500 training experience.
             </h1>
-            <p className="mt-5 text-lg text-white/80">
+            <p className="mt-5 text-base md:text-lg text-white/80">
               TechRunniti IT Academy delivers structured programmes, live labs, and security-first engineering to help you earn certification and lead cloud transformations.
             </p>
             <motion.div
-              className="mt-8 flex flex-col gap-4 sm:flex-row"
+              className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, type: 'spring', stiffness: 340, damping: 22 }}
             >
               <Link
                 href="/courses"
-                className="relative overflow-hidden rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/40 hover:brightness-110 transition group"
+                className="relative overflow-hidden rounded-full bg-accent px-6 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-accent/40 hover:brightness-110 transition group"
               >
                 <span className="absolute inset-0 -translate-x-full bg-white/20 skew-x-12 group-hover:translate-x-full transition-transform duration-500" />
                 Explore Programmes
               </Link>
               <Link
                 href="/contact"
-                className="rounded-full border border-white/40 px-7 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
+                className="rounded-full border border-white/40 px-6 py-3 text-center text-sm font-semibold text-white hover:bg-white/10 transition"
               >
                 Request a Callback
               </Link>
@@ -227,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* Trust Bar — infinite marquee */}
-      <section className="bg-surface py-8 overflow-hidden">
+      <section className="bg-surface py-6 md:py-8 overflow-hidden">
         <div className="flex gap-10 animate-marquee whitespace-nowrap">
           {[...partnerLogos, ...partnerLogos].map((logo, i) => (
             <div key={i} className="inline-flex items-center gap-3 rounded-full bg-tint px-5 py-2 font-semibold text-ink flex-shrink-0">
@@ -240,7 +240,7 @@ export default function Home() {
 
       {/* Why TechRunniti */}
       <motion.section
-        className="bg-tint py-20"
+        className="bg-tint py-12 md:py-20"
         variants={sectionReveal}
         initial="hidden"
         whileInView="show"
@@ -248,12 +248,12 @@ export default function Home() {
       >
         <div className="mx-auto max-w-6xl px-4">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-semibold font-display text-ink">Why TechRunniti IT Academy</h2>
-            <p className="mt-3 text-slate">
+            <h2 className="text-2xl md:text-3xl font-semibold font-display text-ink">Why TechRunniti IT Academy</h2>
+            <p className="mt-3 text-sm md:text-base text-slate">
               Designed to feel like an enterprise training portal, with measurable outcomes and a refined learner journey.
             </p>
           </div>
-          <motion.div className="mt-12 grid gap-6 md:grid-cols-3" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+          <motion.div className="mt-8 md:mt-12 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
             {[
               { title: 'Expert Instructors', desc: 'Mentors from top cloud teams who teach architecture decisions, not just tutorials.', icon: '🎓' },
               { title: 'Live Labs', desc: 'Guided labs on AWS and Azure with real infrastructure patterns and security baselines.', icon: '⚡' },
@@ -266,8 +266,8 @@ export default function Home() {
                 transition={{ type: 'spring', stiffness: 360, damping: 24 }}
                 whileHover={{ y: -6, scale: 1.03, transition: { type: 'spring', stiffness: 500, damping: 20 } }}
               >
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-ink font-display">{item.title}</h3>
+                <div className="text-2xl md:text-3xl mb-3">{item.icon}</div>
+                <h3 className="text-lg md:text-xl font-semibold text-ink font-display">{item.title}</h3>
                 <p className="mt-3 text-sm text-slate">{item.desc}</p>
               </motion.div>
             ))}
@@ -277,7 +277,7 @@ export default function Home() {
 
       {/* Courses */}
       <motion.section
-        className="bg-surface py-20"
+        className="bg-surface py-12 md:py-20"
         variants={sectionReveal}
         initial="hidden"
         whileInView="show"
@@ -286,14 +286,14 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-semibold font-display text-ink">Programmes for every career stage</h2>
-              <p className="mt-3 text-slate">Three structured tiers, priced below INR 35,000 with flexible schedules.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold font-display text-ink">Programmes for every career stage</h2>
+              <p className="mt-3 text-sm md:text-base text-slate">Three structured tiers, priced below INR 35,000 with flexible schedules.</p>
             </div>
             <Link href="/courses" className="text-sm font-semibold text-accent hover:brightness-110">
               View all programmes -&gt;
             </Link>
           </div>
-          <motion.div className="mt-12 grid gap-6 md:grid-cols-3" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+          <motion.div className="mt-8 md:mt-12 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
             {COURSES.map((course, i) => (
               <motion.div
                 key={course.id}
@@ -305,12 +305,12 @@ export default function Home() {
                   <span className="rounded-full bg-tint px-3 py-1">{course.level}</span>
                   <span>{course.duration}</span>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-ink font-display">{course.name}</h3>
+                <h3 className="mt-4 text-lg md:text-xl font-semibold text-ink font-display">{course.name}</h3>
                 <p className="mt-3 text-sm text-slate">{course.overview}</p>
                 <div className="mt-4 flex items-center justify-between">
                   <div>
                     <div className="text-sm text-slate">Starting at</div>
-                    <div className="text-2xl font-semibold text-ink">{course.price}</div>
+                    <div className="text-xl md:text-2xl font-semibold text-ink">{course.price}</div>
                   </div>
                   <Link
                     href="/contact"
@@ -327,13 +327,13 @@ export default function Home() {
 
       {/* Stats */}
       <motion.section
-        className="bg-gradient-to-r from-primary to-navy py-16"
+        className="bg-gradient-to-r from-primary to-navy py-12 md:py-16"
         variants={sectionReveal}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-4" variants={stagger}>
+        <motion.div className="mx-auto grid max-w-6xl gap-4 md:gap-6 px-4 grid-cols-2 lg:grid-cols-4" variants={stagger}>
           {stats.map((stat) => (
             <motion.div key={stat.label} whileHover={{ scale: 1.06, transition: { type: 'spring', stiffness: 500, damping: 18 } }}>
               <StatCard
@@ -349,7 +349,7 @@ export default function Home() {
 
       {/* Blog Preview */}
       <motion.section
-        className="bg-tint py-20"
+        className="bg-tint py-12 md:py-20"
         variants={sectionReveal}
         initial="hidden"
         whileInView="show"
@@ -358,14 +358,14 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-semibold text-ink font-display">Insights & resources</h2>
-              <p className="mt-3 text-slate">Weekly guidance on cloud architecture, security, and DevSecOps practices.</p>
+              <h2 className="text-2xl md:text-3xl font-semibold text-ink font-display">Insights & resources</h2>
+              <p className="mt-3 text-sm md:text-base text-slate">Weekly guidance on cloud architecture, security, and DevSecOps practices.</p>
             </div>
             <Link href="/blog" className="text-sm font-semibold text-accent hover:brightness-110">
               Browse resources -&gt;
             </Link>
           </div>
-          <motion.div className="mt-10 grid gap-6 md:grid-cols-3" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+          <motion.div className="mt-8 md:mt-10 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
             {posts.map((post, i) => (
               <motion.div
                 key={post.title}
@@ -375,7 +375,7 @@ export default function Home() {
                 whileHover={{ y: -5, transition: { type: 'spring', stiffness: 500, damping: 20 } }}
               >
                 <div className="text-xs text-accent font-semibold">{post.tag}</div>
-                <h3 className="mt-3 text-lg font-semibold text-ink font-display">{post.title}</h3>
+                <h3 className="mt-3 text-base md:text-lg font-semibold text-ink font-display">{post.title}</h3>
                 <p className="mt-3 text-sm text-slate">{post.excerpt}</p>
                 <div className="mt-6 text-xs text-slate">{post.date}</div>
                 <a
@@ -394,15 +394,15 @@ export default function Home() {
 
       {/* CTA */}
       <motion.section
-        className="bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white"
+        className="bg-gradient-to-br from-primary via-navy to-midnight py-12 md:py-20 text-white"
         variants={sectionReveal}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.1fr_0.9fr]">
+        <div className="mx-auto grid max-w-6xl gap-8 md:gap-10 px-4 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <h2 className="text-3xl font-semibold font-display">Start your cloud journey today</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold font-display">Start your cloud journey today</h2>
             <p className="mt-4 text-white/80">
               Speak with an advisor to find the right programme and funding option. We respond within one business day.
             </p>
@@ -412,8 +412,8 @@ export default function Home() {
               <div>- Certification-aligned curriculum</div>
             </div>
           </div>
-          <div className="rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur">
-            <h3 className="text-xl font-semibold font-display">Get a personalised plan</h3>
+          <div className="rounded-3xl border border-white/15 bg-white/10 p-6 md:p-8 backdrop-blur">
+            <h3 className="text-lg md:text-xl font-semibold font-display">Get a personalised plan</h3>
             <form className="mt-6 space-y-4">
               <input
                 type="text"

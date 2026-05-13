@@ -47,23 +47,23 @@ export default function Blog() {
         <meta name="description" content="TechRunniti IT Academy insights, playbooks, and cloud resources." />
       </Head>
 
-      <section className="bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+      <section className="bg-gradient-to-br from-primary via-navy to-midnight py-12 md:py-20 text-white">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">Resources</div>
-          <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">Insights for cloud leaders</h1>
-          <p className="mt-4 max-w-3xl text-lg text-white/80">
+          <h1 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-semibold font-display">Insights for cloud leaders</h1>
+          <p className="mt-4 max-w-3xl text-base md:text-lg text-white/80">
             Articles, guides, and architecture playbooks curated by the TechRunniti IT Academy faculty.
           </p>
         </div>
       </section>
 
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-12 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <article key={post.title} className="rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5">
                 <div className="text-xs font-semibold text-accent">{post.category}</div>
-                <h2 className="mt-3 text-xl font-semibold text-ink font-display">{post.title}</h2>
+                <h2 className="mt-3 text-base md:text-xl font-semibold text-ink font-display">{post.title}</h2>
                 <p className="mt-3 text-sm text-slate">{post.excerpt}</p>
                 <div className="mt-6 text-xs text-slate">{post.date} - {post.readTime}</div>
                 <a

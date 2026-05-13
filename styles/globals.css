@@ -37,7 +37,7 @@ button {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -50,6 +50,17 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-accent brightness-125;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
 }
 
 /* Floating blob animations for hero sections */

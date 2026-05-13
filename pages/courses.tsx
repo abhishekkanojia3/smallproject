@@ -40,7 +40,7 @@ export default function Courses() {
         <meta name="description" content="Explore TechRunniti IT Academy programmes in Cloud, AWS, Azure, and DevSecOps." />
       </Head>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-12 md:py-20 text-white">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-accent/40 blur-3xl animate-float" />
           <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-white/10 blur-3xl animate-float-slow" />
@@ -53,18 +53,18 @@ export default function Courses() {
           transition={{ type: 'spring', stiffness: 340, damping: 24 }}
         >
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">Programmes</div>
-          <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">Choose the right learning tier</h1>
-          <p className="mt-4 text-lg text-white/80">
+          <h1 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-semibold font-display">Choose the right learning tier</h1>
+          <p className="mt-4 text-base md:text-lg text-white/80">
             Structured pathways for cloud fundamentals, architecture mastery, and full-stack DevSecOps leadership.
           </p>
         </motion.div>
       </section>
 
-      <section className="bg-surface py-16">
+      <section className="bg-surface py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-col gap-6 rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-xl font-semibold text-ink font-display">Filter programmes</h2>
+              <h2 className="text-lg md:text-xl font-semibold text-ink font-display">Filter programmes</h2>
               <p className="mt-2 text-sm text-slate">Find the duration and focus area that fits your goals.</p>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -114,7 +114,7 @@ export default function Courses() {
 
           <motion.div
             key={`${duration}-${category}`}
-            className="mt-10 grid gap-6 md:grid-cols-3"
+            className="mt-8 md:mt-10 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3"
             variants={stagger}
             initial="hidden"
             animate="show"
@@ -131,7 +131,7 @@ export default function Courses() {
                   <span className="rounded-full bg-tint px-3 py-1">{course.level}</span>
                   <span>{course.duration}</span>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-ink font-display">{course.name}</h3>
+                <h3 className="mt-4 text-lg md:text-xl font-semibold text-ink font-display">{course.name}</h3>
                 <p className="mt-3 text-sm text-slate">{course.overview}</p>
                 <div className="mt-4 text-sm text-slate">
                   <div>Mode: {course.mode}</div>
@@ -139,7 +139,7 @@ export default function Courses() {
                 </div>
                 <div className="mt-4">
                   <div className="text-xs text-slate">Starting at</div>
-                  <div className="text-2xl font-semibold text-ink">{course.price}</div>
+                  <div className="text-xl md:text-2xl font-semibold text-ink">{course.price}</div>
                 </div>
                 <div className="mt-6 flex flex-col gap-2">
                   <Link
@@ -186,14 +186,14 @@ export default function Courses() {
       </section>
 
       <motion.section
-        className="bg-tint py-16"
+        className="bg-tint py-12 md:py-16"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ type: 'spring', stiffness: 340, damping: 24 }}
       >
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl font-semibold text-ink font-display">Not sure which programme fits?</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold text-ink font-display">Not sure which programme fits?</h2>
           <p className="mt-3 text-slate">Speak to our advisors for a personalised roadmap and batch schedule.</p>
           <a
             href={WHATSAPP_MESSAGE_URL('Hi TechRunniti, I need help choosing a programme.')}

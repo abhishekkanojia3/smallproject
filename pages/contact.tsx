@@ -122,20 +122,20 @@ export default function Contact() {
         ) : null}
       </Head>
 
-      <section className="bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+      <section className="bg-gradient-to-br from-primary via-navy to-midnight py-12 md:py-20 text-white">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">Contact</div>
-          <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">Let&apos;s design your learning roadmap.</h1>
-          <p className="mt-4 max-w-3xl text-lg text-white/80">
+          <h1 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-semibold font-display">Let&apos;s design your learning roadmap.</h1>
+          <p className="mt-4 max-w-3xl text-base md:text-lg text-white/80">
             Share your goals and we will respond with the right programme, batch schedule, and pricing options.
           </p>
         </div>
       </section>
 
-      <section className="bg-surface py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-3xl border border-tint bg-white p-8 shadow-lg shadow-black/5">
-            <h2 className="text-2xl font-semibold text-ink font-display">Send an enquiry</h2>
+      <section className="bg-surface py-12 md:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 md:gap-10 px-4 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="rounded-3xl border border-tint bg-white p-6 md:p-8 shadow-lg shadow-black/5">
+            <h2 className="text-xl md:text-2xl font-semibold text-ink font-display">Send an enquiry</h2>
             <p className="mt-2 text-sm text-slate">We typically respond within one business day.</p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -235,8 +235,8 @@ export default function Contact() {
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-3xl border border-tint bg-white p-6 shadow-lg shadow-black/5">
-              <h3 className="text-xl font-semibold text-ink font-display">Admissions desk</h3>
+            <div className="rounded-3xl border border-tint bg-white p-5 md:p-6 shadow-lg shadow-black/5">
+              <h3 className="text-lg md:text-xl font-semibold text-ink font-display">Admissions desk</h3>
               <p className="mt-2 text-sm text-slate">Call, email, or WhatsApp us for immediate support.</p>
               <div className="mt-4 space-y-2 text-sm text-slate">
                 <div>Phone: <a href={`tel:${CONTACT_INFO.phone}`} className="text-accent font-semibold">{CONTACT_INFO.phone}</a></div>
@@ -244,8 +244,8 @@ export default function Contact() {
                 <div>WhatsApp: <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold">Chat now</a></div>
               </div>
             </div>
-            <div className="rounded-3xl border border-tint bg-white p-6 shadow-lg shadow-black/5">
-              <h3 className="text-xl font-semibold text-ink font-display">Office location</h3>
+            <div className="rounded-3xl border border-tint bg-white p-5 md:p-6 shadow-lg shadow-black/5">
+              <h3 className="text-lg md:text-xl font-semibold text-ink font-display">Office location</h3>
               <p className="mt-2 text-sm text-slate">Hinjewadi, Pune - 411057</p>
               <div className="mt-4 overflow-hidden rounded-2xl border border-tint">
                 <iframe

@@ -50,7 +50,7 @@ export default function About() {
         <meta name="description" content="Learn about TechRunniti IT Academy, our instructors, and our enterprise training approach." />
       </Head>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-12 md:py-20 text-white">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute -top-20 right-10 h-64 w-64 rounded-full bg-accent/40 blur-3xl animate-float" />
           <div className="absolute bottom-0 -left-10 h-48 w-48 rounded-full bg-white/10 blur-3xl animate-float-slow" />
@@ -63,28 +63,28 @@ export default function About() {
           transition={{ type: 'spring', stiffness: 340, damping: 24 }}
         >
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">About Us</div>
-          <h1 className="mt-4 text-4xl font-semibold font-display md:text-5xl">We build cloud leaders for the modern enterprise.</h1>
-          <p className="mt-5 max-w-3xl text-lg text-white/80">
+          <h1 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-semibold font-display">We build cloud leaders for the modern enterprise.</h1>
+          <p className="mt-5 max-w-3xl text-base md:text-lg text-white/80">
             TechRunniti IT Academy is an enterprise IT training platform focused on cloud computing and DevSecOps. Our programmes combine structured learning with real-world delivery standards.
           </p>
         </motion.div>
       </section>
 
       <motion.section
-        className="bg-surface py-20"
+        className="bg-surface py-12 md:py-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1.1fr_0.9fr]">
+        <div className="mx-auto grid max-w-6xl gap-8 md:gap-12 px-4 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <h2 className="text-3xl font-semibold text-ink font-display">Our mission</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold text-ink font-display">Our mission</h2>
             <p className="mt-4 text-slate">
               We help professionals transition into cloud architecture and DevSecOps roles with a curriculum that mirrors enterprise delivery pipelines. Each cohort blends live instruction, labs, and real-world scenarios across AWS and Azure.
             </p>
             <motion.div
-              className="mt-8 grid gap-6 md:grid-cols-3"
+              className="mt-6 md:mt-8 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3"
               variants={stagger}
               initial="hidden"
               whileInView="show"
@@ -98,14 +98,14 @@ export default function About() {
                   transition={{ type: 'spring', stiffness: 360, damping: 24 }}
                   whileHover={{ y: -6, scale: 1.03, transition: { type: 'spring', stiffness: 500, damping: 20 } }}
                 >
-                  <h3 className="text-lg font-semibold text-ink font-display">{value.title}</h3>
+                  <h3 className="text-base md:text-lg font-semibold text-ink font-display">{value.title}</h3>
                   <p className="mt-3 text-sm text-slate">{value.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
           </div>
-          <div className="rounded-3xl border border-tint bg-tint p-8">
-            <h3 className="text-xl font-semibold text-ink font-display">Certifications & standards</h3>
+          <div className="rounded-3xl border border-tint bg-tint p-6 md:p-8">
+            <h3 className="text-lg md:text-xl font-semibold text-ink font-display">Certifications & standards</h3>
             <ul className="mt-6 space-y-3 text-sm text-slate">
               <li>- Curriculum mapped to AWS CLF-C02, SAA-C03, and Azure AZ-104</li>
               <li>- DevSecOps pathway aligned to CKA and AZ-400 outcomes</li>
@@ -125,7 +125,7 @@ export default function About() {
       </motion.section>
 
       <motion.section
-        className="bg-tint py-20"
+        className="bg-tint py-12 md:py-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.1 }}
@@ -134,13 +134,13 @@ export default function About() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-semibold text-ink font-display">Meet the instructors</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold text-ink font-display">Meet the instructors</h2>
               <p className="mt-3 text-slate">Senior cloud practitioners guiding every cohort.</p>
             </div>
             <Link href="/contact" className="text-sm font-semibold text-accent hover:brightness-110">Join a cohort -&gt;</Link>
           </div>
           <motion.div
-            className="mt-10 grid gap-6 md:grid-cols-3"
+            className="mt-8 md:mt-10 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3"
             variants={stagger}
             initial="hidden"
             whileInView="show"
@@ -157,7 +157,7 @@ export default function About() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent font-semibold">
                   {instructor.name.split(' ').map((part) => part[0]).join('')}
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-ink font-display">{instructor.name}</h3>
+                <h3 className="mt-4 text-base md:text-lg font-semibold text-ink font-display">{instructor.name}</h3>
                 <p className="text-sm text-slate">{instructor.role}</p>
                 <p className="mt-3 text-xs text-slate">{instructor.certs}</p>
               </motion.div>
@@ -167,15 +167,15 @@ export default function About() {
       </motion.section>
 
       <motion.section
-        className="bg-surface py-20"
+        className="bg-surface py-12 md:py-20"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
         <div className="mx-auto max-w-6xl px-4">
-          <div className="rounded-3xl border border-tint bg-white p-10 shadow-lg shadow-black/5">
-            <h2 className="text-3xl font-semibold text-ink font-display">Ready to grow with TechRunniti IT Academy?</h2>
+          <div className="rounded-3xl border border-tint bg-white p-6 md:p-10 shadow-lg shadow-black/5">
+            <h2 className="text-2xl md:text-3xl font-semibold text-ink font-display">Ready to grow with TechRunniti IT Academy?</h2>
             <p className="mt-4 text-slate">
               Join a cohort designed for enterprise-level outcomes, with structured delivery, labs, and certification readiness.
             </p>

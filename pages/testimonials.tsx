@@ -32,7 +32,7 @@ export default function Testimonials() {
         <meta name="description" content="Student testimonials and success stories" />
       </Head>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-20 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-navy to-midnight py-12 md:py-20 text-white">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute -top-16 right-0 h-56 w-56 rounded-full bg-accent/40 blur-3xl animate-float" />
           <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-white/10 blur-3xl animate-float-slow" />
@@ -44,15 +44,15 @@ export default function Testimonials() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <div className="text-xs uppercase tracking-[0.3em] text-white/70">Testimonials</div>
-          <h1 className="mt-4 text-4xl font-semibold font-display">Student success stories</h1>
+          <h1 className="mt-4 text-3xl md:text-4xl font-semibold font-display">Student success stories</h1>
           <p className="mt-4 text-white/80">Hear from professionals who advanced their cloud careers with TechRunniti IT Academy.</p>
         </motion.div>
       </section>
 
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-12 md:py-20">
         <div className="mx-auto max-w-5xl px-4">
           <motion.div
-            className="grid gap-6 md:grid-cols-3"
+            className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3"
             variants={stagger}
             initial="hidden"
             whileInView="show"

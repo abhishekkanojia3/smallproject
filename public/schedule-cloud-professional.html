@@ -81,11 +81,30 @@
     .footer-left { font-family: 'Poppins', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--primary); }
     .footer-right { font-size: 0.72rem; color: var(--slate); }
 
-    @media (max-width: 700px) {
-      .header, .body, .footer { padding-left: 20px; padding-right: 20px; }
-      .legend { padding-left: 20px; padding-right: 20px; }
-      .day-grid { grid-template-columns: 1fr 1fr; }
-      .header h1 { font-size: 1.5rem; }
+    @media (max-width: 768px) {
+      body { padding: 16px 8px; }
+      .page { border-radius: 16px; }
+      .header { padding: 24px 20px 20px; }
+      .header h1 { font-size: 1.4rem; }
+      .header-meta { gap: 6px; }
+      .meta-pill { font-size: 0.7rem; padding: 4px 10px; }
+      .legend { padding: 16px 20px; gap: 8px; }
+      .legend-item { font-size: 0.7rem; }
+      .body { padding: 24px 20px 32px; }
+      .week-block { margin-bottom: 24px; }
+      .week-num { width: 32px; height: 32px; font-size: 0.7rem; }
+      .week-title { font-size: 0.9rem; }
+      .week-theme { font-size: 0.72rem; }
+      .day-grid { grid-template-columns: 1fr; gap: 10px; }
+      .day-card { padding: 14px; }
+      .day-label { font-size: 0.7rem; margin-bottom: 8px; }
+      .day-topic { font-size: 0.85rem; margin-bottom: 8px; }
+      .day-details li { font-size: 0.75rem; }
+      .divider { margin: 20px 0; }
+      .cta-row { flex-direction: column; gap: 10px; }
+      .btn-primary, .btn-secondary { font-size: 0.85rem; padding: 12px 20px; }
+      .footer { padding: 16px 20px; flex-direction: column; text-align: center; }
+      .footer-left, .footer-right { font-size: 0.7rem; }
     }
     @media print {
       body { background: #fff; padding: 0; }

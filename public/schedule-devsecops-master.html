@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSecOps Master - Training Schedule | TechRunniti IT Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 50px; color: white; }
+        h1 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; background: linear-gradient(135deg, #D4AF37, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .subtitle { font-size: 1.2rem; color: #ddd; margin-bottom: 20px; }
+        .info-bar { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .info-item { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 8px; backdrop-filter: blur(10px); }
+        .info-item strong { color: #D4AF37; }
+        .week { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .week-header { border-left: 5px solid #D4AF37; padding-left: 20px; margin-bottom: 25px; }
+        .week-title { font-family: 'Poppins', sans-serif; font-size: 1.8rem; color: #1A3C6E; margin-bottom: 5px; }
+        .week-theme { color: #00AEEF; font-weight: 600; font-size: 1.1rem; }
+        .day { margin-bottom: 20px; padding: 20px; border-radius: 8px; border-left: 4px solid; }
+        .day-mon { background: #e3f2fd; border-color: #2196F3; }
+        .day-tue { background: #e8f5e9; border-color: #4CAF50; }
+        .day-wed { background: #fff9c4; border-color: #FFC107; }
+        .day-thu { background: #fce4ec; border-color: #E91E63; }
+        .day-fri { background: #f3e5f5; border-color: #9C27B0; }
+        .day-header { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: #1A3C6E; }
+        .day-topic { font-weight: 600; color: #00AEEF; margin-bottom: 5px; }
+        .day-details { color: #555; font-size: 0.95rem; }
+        footer { text-align: center; color: white; margin-top: 50px; padding: 30px; background: rgba(0,0,0,0.3); border-radius: 12px; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+        .btn { padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s; display: inline-block; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: linear-gradient(135deg, #D4AF37, #FFD700); color: #1A3C6E; }
+        .btn-secondary { background: #1A3C6E; color: white; }
+        .phase-divider { text-align: center; padding: 40px 20px; margin: 40px 0; background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(0,174,239,0.1)); border-radius: 12px; }
+        .phase-title { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: #D4AF37; margin-bottom: 10px; }
+        .phase-desc { color: #1A3C6E; font-size: 1.1rem; }
+        @media (max-width: 768px) {
+            body { padding: 16px 8px; }
+            .container { padding: 20px 16px; }
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1rem; }
+            .info-bar { gap: 8px; }
+            .info-item { font-size: 0.7rem; padding: 8px 14px; }
+            .week { padding: 20px 16px; margin-bottom: 24px; border-radius: 10px; }
+            .week-title { font-size: 1.4rem; }
+            .week-theme { font-size: 0.95rem; }
+            .day { padding: 14px; margin-bottom: 14px; border-radius: 6px; }
+            .day-header { font-size: 0.95rem; margin-bottom: 6px; }
+            .day-topic { font-size: 0.85rem; margin-bottom: 4px; }
+            .day-details { font-size: 0.8rem; line-height: 1.6; }
+            .cta-buttons { flex-direction: column; gap: 10px; }
+            .btn { font-size: 0.85rem; padding: 11px 24px; }
+            footer { padding: 24px 16px; margin-top: 40px; }
+            footer h3 { font-size: 1.1rem; }
+            footer p { font-size: 0.85rem; }
+            .phase-divider { padding: 24px 16px; margin: 24px 0; }
+            .phase-title { font-size: 1.4rem; }
+            .phase-desc { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DevSecOps Master Training Schedule</h1>
+            <p class="subtitle">24-Week Flagship Program | Monday to Friday</p>
+            <div class="info-bar">
+                <div class="info-item"><strong>Duration:</strong> 6 Months</div>
+                <div class="info-item"><strong>Mode:</strong> Online</div>
+                <div class="info-item"><strong>Price:</strong> ₹39,999</div>
+                <div class="info-item"><strong>Schedule:</strong> Mon-Fri</div>
+            </div>
+        </header>
+
+        <div class="phase-divider">
+            <div class="phase-title">📚 Phase 1: Cloud Foundations (Weeks 1-8)</div>
+            <div class="phase-desc">Complete Cloud Professional curriculum - AWS & Azure mastery</div>
+        </div>
+
+        <!-- Weeks 1-8: Cloud Professional Content (Same as Cloud Professional schedule) -->
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 1</h2>
+                <p class="week-theme">Cloud Foundations</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday</div>
+                <div class="day-topic">Intro to Cloud Computing</div>
+                <div class="day-details">Cloud models (IaaS, PaaS, SaaS), public/private/hybrid cloud, shared responsibility</div>
+            </div>
+            <div class="day day-tue">
+                <div class="day-header">Tuesday</div>
+                <div class="day-topic">Global Infrastructure</div>
+                <div class="day-details">Regions, Availability Zones, edge locations, latency considerations</div>
+            </div>
+            <div class="day day-wed">
+                <div class="day-header">Wednesday</div>
+                <div class="day-topic">Cloud Economics</div>
+                <div class="day-details">CapEx vs OpEx, pay-as-you-go, cost optimization strategies</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday</div>
+                <div class="day-topic">AWS Console & Services Overview</div>
+                <div class="day-details">AWS Management Console, service categories, billing dashboard</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Azure Portal & Services Overview</div>
+                <div class="day-details">Azure Portal, resource groups, subscriptions, service overview</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 2-4</h2>
+                <p class="week-theme">AWS Core Services</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Focus Areas</div>
+                <div class="day-topic">Compute, Storage, Networking & IAM</div>
+                <div class="day-details">EC2, S3, VPC, IAM, RDS, CloudWatch - comprehensive hands-on labs</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 5-7</h2>
+                <p class="week-theme">Azure Core Services</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Focus Areas</div>
+                <div class="day-topic">Compute, Storage, Networking & Identity</div>
+                <div class="day-details">Azure VMs, Blob Storage, VNet, Azure AD, RBAC, Azure Monitor</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 8</h2>
+                <p class="week-theme">Cloud Security & Capstone</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Wednesday</div>
+                <div class="day-topic">Cloud Security Fundamentals</div>
+                <div class="day-details">Encryption, KMS, Key Vault, security best practices, compliance</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday-Friday</div>
+                <div class="day-topic">Phase 1 Capstone Project</div>
+                <div class="day-details">Multi-cloud architecture deployment, mock certification exams</div>
+            </div>
+        </div>
+
+        <div class="phase-divider">
+            <div class="phase-title">🚀 Phase 2: DevOps Engineering (Weeks 9-16)</div>
+            <div class="phase-desc">CI/CD, Containers, Kubernetes & Infrastructure as Code</div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 9</h2>
+                <p class="week-theme">Linux & Version Control</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Tuesday</div>
+                <div class="day-topic">Linux Mastery</div>
+                <div class="day-details">Shell scripting, process management, system monitoring, cron jobs</div>
+            </div>
+            <div class="day day-wed">
+                <div class="day-header">Wednesday-Thursday</div>
+                <div class="day-topic">Git & GitHub</div>
+                <div class="day-details">Branching strategies, merge vs rebase, pull requests, workflows</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Networking Essentials</div>
+                <div class="day-details">TCP/IP, DNS, HTTP/HTTPS, load balancing, troubleshooting</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 10-11</h2>
+                <p class="week-theme">Docker & Containerization</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Week 10</div>
+                <div class="day-topic">Docker Fundamentals</div>
+                <div class="day-details">Containers, images, Dockerfile, multi-stage builds, networking, volumes</div>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Week 11</div>
+                <div class="day-topic">Docker Advanced</div>
+                <div class="day-details">Docker Compose, registries, security scanning, best practices</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 12-13</h2>
+                <p class="week-theme">Kubernetes Orchestration</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Week 12</div>
+                <div class="day-topic">Kubernetes Fundamentals</div>
+                <div class="day-details">Architecture, Pods, Deployments, Services, ConfigMaps, Secrets</div>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Week 13</div>
+                <div class="day-topic">Kubernetes Advanced</div>
+                <div class="day-details">StatefulSets, Ingress, Helm, EKS/AKS, cluster management</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 14</h2>
+                <p class="week-theme">CI/CD with Jenkins</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Wednesday</div>
+                <div class="day-topic">Jenkins Pipelines</div>
+                <div class="day-details">Setup, declarative pipelines, Jenkinsfile, integrations</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday-Friday</div>
+                <div class="day-topic">GitHub Actions & GitLab CI</div>
+                <div class="day-details">Workflow syntax, actions marketplace, .gitlab-ci.yml</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 15</h2>
+                <p class="week-theme">Infrastructure as Code</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Thursday</div>
+                <div class="day-topic">Terraform Deep Dive</div>
+                <div class="day-details">HCL, providers, modules, state management, AWS/Azure provisioning</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Ansible Basics</div>
+                <div class="day-details">Playbooks, roles, inventory, configuration management</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 16</h2>
+                <p class="week-theme">Monitoring & GitOps</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Wednesday</div>
+                <div class="day-topic">Prometheus & Grafana</div>
+                <div class="day-details">Metrics, PromQL, dashboards, alerts, exporters</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday-Friday</div>
+                <div class="day-topic">ArgoCD & GitOps</div>
+                <div class="day-details">GitOps principles, ArgoCD setup, application deployment</div>
+            </div>
+        </div>
+
+        <div class="phase-divider">
+            <div class="phase-title">🔒 Phase 3: Security Engineering (Weeks 17-22)</div>
+            <div class="phase-desc">DevSecOps, SAST/DAST, Secrets Management & Compliance</div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 17</h2>
+                <p class="week-theme">DevSecOps Fundamentals</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Tuesday</div>
+                <div class="day-topic">Shift-Left Security</div>
+                <div class="day-details">DevSecOps principles, threat modeling, security in SDLC</div>
+            </div>
+            <div class="day day-wed">
+                <div class="day-header">Wednesday-Thursday</div>
+                <div class="day-topic">Container Security</div>
+                <div class="day-details">Image scanning with Trivy, vulnerability management, runtime security</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Kubernetes Security</div>
+                <div class="day-details">RBAC, network policies, pod security standards, admission controllers</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 18</h2>
+                <p class="week-theme">SAST & DAST</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Tuesday</div>
+                <div class="day-topic">Static Application Security Testing</div>
+                <div class="day-details">SonarQube, code quality, security rules, CI/CD integration</div>
+            </div>
+            <div class="day day-wed">
+                <div class="day-header">Wednesday-Thursday</div>
+                <div class="day-topic">Dynamic Application Security Testing</div>
+                <div class="day-details">OWASP ZAP, penetration testing basics, vulnerability scanning</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Dependency Scanning</div>
+                <div class="day-details">Snyk, Dependabot, SCA tools, license compliance</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 19</h2>
+                <p class="week-theme">Secrets Management</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Wednesday</div>
+                <div class="day-topic">HashiCorp Vault</div>
+                <div class="day-details">Vault architecture, secret engines, dynamic secrets, policies</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday</div>
+                <div class="day-topic">AWS Secrets Manager</div>
+                <div class="day-details">Secret rotation, IAM integration, application access</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Azure Key Vault</div>
+                <div class="day-details">Keys, secrets, certificates, managed identities</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 20</h2>
+                <p class="week-theme">Compliance as Code</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Tuesday</div>
+                <div class="day-topic">Policy as Code</div>
+                <div class="day-details">Open Policy Agent (OPA), Rego language, policy enforcement</div>
+            </div>
+            <div class="day day-wed">
+                <div class="day-header">Wednesday-Thursday</div>
+                <div class="day-topic">Infrastructure Compliance</div>
+                <div class="day-details">Terraform Sentinel, AWS Config, Azure Policy, compliance scanning</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Audit & Logging</div>
+                <div class="day-details">CloudTrail, Azure Monitor, log aggregation, SIEM basics</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 21</h2>
+                <p class="week-theme">Advanced Monitoring & Logging</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Wednesday</div>
+                <div class="day-topic">ELK Stack</div>
+                <div class="day-details">Elasticsearch, Logstash, Kibana, log analysis, visualizations</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday-Friday</div>
+                <div class="day-topic">Distributed Tracing</div>
+                <div class="day-details">Jaeger, OpenTelemetry, APM, performance monitoring</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 22</h2>
+                <p class="week-theme">Incident Response & SRE</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday-Tuesday</div>
+                <div class="day-topic">Incident Management</div>
+                <div class="day-details">Incident response, post-mortems, runbooks, on-call practices</div>
+            </div>
+            <div class="day day-wed">
+                <div class="day-header">Wednesday-Thursday</div>
+                <div class="day-topic">SRE Principles</div>
+                <div class="day-details">SLIs, SLOs, SLAs, error budgets, reliability engineering</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Disaster Recovery</div>
+                <div class="day-details">Backup strategies, RTO/RPO, failover, business continuity</div>
+            </div>
+        </div>
+
+        <div class="phase-divider">
+            <div class="phase-title">🎯 Phase 4: Capstone & Career (Weeks 23-24)</div>
+            <div class="phase-desc">End-to-end DevSecOps project & certification preparation</div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 23</h2>
+                <p class="week-theme">Capstone Project</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday</div>
+                <div class="day-topic">Project Planning</div>
+                <div class="day-details">Architecture design, tool selection, security requirements, timeline</div>
+            </div>
+            <div class="day day-tue">
+                <div class="day-header">Tuesday-Wednesday</div>
+                <div class="day-topic">Infrastructure Setup</div>
+                <div class="day-details">Terraform IaC, multi-cloud deployment, Kubernetes cluster setup</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday</div>
+                <div class="day-topic">CI/CD Pipeline</div>
+                <div class="day-details">Complete pipeline with security scanning, testing, deployment</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Security Implementation</div>
+                <div class="day-details">SAST/DAST integration, secrets management, compliance checks</div>
+            </div>
+        </div>
+
+        <div class="week">
+            <div class="week-header">
+                <h2 class="week-title">Week 24</h2>
+                <p class="week-theme">Project Defense & Career Prep</p>
+            </div>
+            <div class="day day-mon">
+                <div class="day-header">Monday</div>
+                <div class="day-topic">Monitoring & Observability</div>
+                <div class="day-details">Complete monitoring stack, dashboards, alerts, logging</div>
+            </div>
+            <div class="day day-tue">
+                <div class="day-header">Tuesday</div>
+                <div class="day-topic">Project Presentation</div>
+                <div class="day-details">Demo, architecture walkthrough, Q&A, peer review</div>
+            </div>
+            <div class="day day-wed">
+                <div class="day-header">Wednesday</div>
+                <div class="day-topic">Certification Roadmap</div>
+                <div class="day-details">AWS SAA, CKA, AZ-400 preparation strategies, study resources</div>
+            </div>
+            <div class="day day-thu">
+                <div class="day-header">Thursday</div>
+                <div class="day-topic">Resume & Portfolio</div>
+                <div class="day-details">Resume building, GitHub portfolio, LinkedIn optimization</div>
+            </div>
+            <div class="day day-fri">
+                <div class="day-header">Friday</div>
+                <div class="day-topic">Interview Preparation & Graduation</div>
+                <div class="day-details">Mock interviews, behavioral questions, technical deep-dives, certificate ceremony</div>
+            </div>
+        </div>
+
+        <footer>
+            <h3 style="color: #D4AF37; margin-bottom: 15px;">Ready to Become a DevSecOps Master?</h3>
+            <p style="margin-bottom: 20px;">Join our flagship 24-week program and master cloud, DevOps, and security engineering</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919131590319?text=I%20want%20to%20enroll%20in%20DevSecOps%20Master%20course" class="btn btn-primary">Enroll Now - ₹39,999</a>
+                <a href="tel:+919131590319" class="btn btn-secondary">Call Us</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.9rem;">
+                📧 hello@techrunniti.com | 📱 +91-9131590319<br>
+                © 2024 TechRunniti IT Academy. All rights reserved.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

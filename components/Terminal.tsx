@@ -60,16 +60,16 @@ export default function Terminal() {
   const activeLine = currentLine < LINES.length ? LINES[currentLine] : null;
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0d1117] shadow-2xl shadow-black/50 overflow-hidden font-mono text-sm">
+    <div className="rounded-2xl border border-white/10 bg-[#0d1117] shadow-2xl shadow-black/50 overflow-hidden font-mono text-xs md:text-sm">
       {/* Title bar */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-white/10">
-        <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-        <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
-        <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-        <span className="ml-3 text-xs text-white/30 tracking-wide">terminal — bash</span>
+      <div className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-[#161b22] border-b border-white/10">
+        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#ff5f57]" />
+        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#febc2e]" />
+        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#28c840]" />
+        <span className="ml-2 md:ml-3 text-[10px] md:text-xs text-white/30 tracking-wide">terminal — bash</span>
       </div>
       {/* Body */}
-      <div className="px-5 py-4 space-y-2 min-h-[200px]">
+      <div className="px-3 md:px-5 py-3 md:py-4 space-y-2 min-h-[160px] md:min-h-[200px]">
         {lines.map((l, i) => (
           <div key={i}>
             <div className="flex gap-2">
