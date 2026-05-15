@@ -19,9 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <ErrorBoundary>
       <div className="flex min-h-screen flex-col bg-surface text-ink">
         <header
-          className={`sticky top-0 z-50 transition-all ${
-            isScrolled ? 'bg-navy/98 shadow-lg backdrop-blur' : 'bg-navy/95 backdrop-blur'
-          }`}
+          className={`sticky top-0 z-50 transition-all bg-navy shadow-lg`}
         >
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
             <Link href="/" className="flex items-center gap-2 md:gap-3 hover:opacity-90 transition">
