@@ -20,7 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="flex min-h-screen flex-col bg-surface text-ink">
         <header
           className={`sticky top-0 z-50 transition-all ${
-            isScrolled ? 'bg-navy/95 shadow-lg backdrop-blur' : 'bg-navy/80 backdrop-blur'
+            isScrolled ? 'bg-navy/98 shadow-lg backdrop-blur' : 'bg-navy/95 backdrop-blur'
           }`}
         >
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </div>
             </Link>
 
-            <ul className="hidden items-center gap-8 text-sm font-semibold text-slate md:flex">
+            <ul className="hidden items-center gap-8 text-sm font-semibold text-white md:flex">
               <li><Link href="/" className="hover:text-gold transition">Home</Link></li>
               <li><Link href="/courses" className="hover:text-gold transition">Courses</Link></li>
               <li><Link href="/about" className="hover:text-gold transition">About</Link></li>
@@ -59,7 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             <button
-              className="md:hidden text-white bg-accent/20 hover:bg-accent/30 border border-accent/40 text-xs font-semibold focus-visible:ring-2 focus-visible:ring-accent rounded-lg px-4 py-2 transition"
+              className="md:hidden text-white bg-accent/30 hover:bg-accent/40 border border-accent/50 text-xs font-semibold focus-visible:ring-2 focus-visible:ring-accent rounded-lg px-4 py-2 transition"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
@@ -70,7 +70,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </nav>
 
           {mobileMenuOpen && (
-            <div id="mobile-menu" className="md:hidden bg-navy/98 backdrop-blur-lg border-t border-white/10 px-4 py-5 shadow-xl">
+            <div id="mobile-menu" className="md:hidden bg-midnight/98 backdrop-blur-lg border-t border-white/10 px-4 py-5 shadow-xl">
               <ul className="space-y-4 text-base font-semibold">
                 <li>
                   <Link 
