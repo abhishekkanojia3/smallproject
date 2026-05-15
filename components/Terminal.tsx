@@ -2,10 +2,15 @@ import { useEffect, useState } from 'react';
 
 const LINES = [
   { prompt: '$ ', cmd: 'terraform init', out: '✔ Terraform initialized successfully.' },
+  { prompt: '$ ', cmd: 'nmap -sV -sC 10.10.10.5', out: '✔ Open ports: 22/tcp, 80/tcp, 445/tcp' },
   { prompt: '$ ', cmd: 'docker build -t app:latest .', out: '✔ Successfully built 3f2a1c9d8e7b' },
+  { prompt: '$ ', cmd: 'gobuster dir -u http://target.com -w wordlist.txt', out: '✔ Found: /admin, /backup, /uploads' },
   { prompt: '$ ', cmd: 'aws configure --profile prod', out: '✔ AWS credentials configured.' },
+  { prompt: '$ ', cmd: 'sqlmap -u "http://target.com?id=1" --dbs', out: '✔ Available databases: users, admin, logs' },
   { prompt: '$ ', cmd: 'kubectl apply -f deployment.yaml', out: '✔ deployment.apps/app created' },
+  { prompt: '$ ', cmd: 'msfconsole -q -x "use exploit/multi/handler"', out: '✔ Metasploit handler started' },
   { prompt: '$ ', cmd: 'ansible-playbook site.yml', out: '✔ PLAY RECAP — ok=12 changed=4' },
+  { prompt: '$ ', cmd: 'hydra -l admin -P passwords.txt ssh://10.10.10.5', out: '✔ Valid credentials found: admin:password123' },
 ];
 
 const TYPE_SPEED = 48;
