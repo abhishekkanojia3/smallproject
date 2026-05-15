@@ -68,4 +68,25 @@ export const COURSES: Course[] = [
     brochureUrl: '/DevSecOps%20Master.html',
     scheduleUrl: '/schedule-devsecops-master.html',
   },
+  {
+    id: 4,
+    name: 'Penetration Testing Professional',
+    duration: '3 Months',
+    price: 'INR 29,999',
+    mode: 'Online',
+    outcome: 'OSCP-Aligned Penetration Tester',
+    level: 'Advanced',
+    category: 'Security',
+    overview:
+      'A comprehensive 12-week penetration testing programme aligned with OSCP certification, covering offensive security techniques and real-world exploitation.',
+    syllabus: [
+      'Penetration testing fundamentals: methodology, reconnaissance, and enumeration',
+      'Exploitation techniques: buffer overflows, privilege escalation, and lateral movement',
+      'Web application security: OWASP Top 10, SQL injection, XSS, and authentication bypass',
+      'Network penetration: Active Directory attacks, pivoting, and post-exploitation',
+      'Practical labs and OSCP exam preparation with hands-on challenges'
+    ],
+    brochureUrl: '/Penetration%20Testing%20Professional.html',
+    scheduleUrl: '/schedule-penetration-testing.html',
+  },
 ];

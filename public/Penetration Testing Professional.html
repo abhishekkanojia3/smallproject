@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penetration Testing Professional - Course Brochure | TechRunniti IT Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #333; line-height: 1.6; padding: 20px; }
+        .brochure { max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        
+        .header { background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); color: white; padding: 50px 40px; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%; }
+        .header::after { content: ''; position: absolute; bottom: -30px; left: -30px; width: 150px; height: 150px; background: rgba(255,255,255,0.08); border-radius: 50%; }
+        .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; position: relative; z-index: 1; }
+        .logo-box { width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .logo-text { font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; }
+        .course-title { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; position: relative; z-index: 1; }
+        .course-subtitle { font-size: 1.1rem; opacity: 0.95; position: relative; z-index: 1; }
+        
+        .badge-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px; position: relative; z-index: 1; }
+        .badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+        
+        .content { padding: 40px; }
+        .section { margin-bottom: 35px; }
+        .section-title { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 700; color: #c41e3a; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .section-title::before { content: ''; width: 4px; height: 24px; background: #c41e3a; border-radius: 2px; }
+        
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .info-card { background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%); padding: 20px; border-radius: 12px; border-left: 4px solid #c41e3a; }
+        .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #c41e3a; font-weight: 600; margin-bottom: 5px; }
+        .info-value { font-size: 1.3rem; font-weight: 700; color: #1a1a2e; }
+        
+        .syllabus-grid { display: grid; gap: 15px; }
+        .module-card { background: #f8f9fa; padding: 20px; border-radius: 12px; border-left: 4px solid #c41e3a; transition: transform 0.3s, box-shadow 0.3s; }
+        .module-card:hover { transform: translateX(5px); box-shadow: 0 5px 15px rgba(196,30,58,0.2); }
+        .module-number { display: inline-block; background: #c41e3a; color: white; width: 32px; height: 32px; border-radius: 50%; text-align: center; line-height: 32px; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px; }
+        .module-title { font-weight: 700; font-size: 1.1rem; color: #1a1a2e; margin-bottom: 8px; }
+        .module-desc { font-size: 0.9rem; color: #555; line-height: 1.6; }
+        
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+        .tool-item { background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%); padding: 12px; border-radius: 10px; text-align: center; font-weight: 600; font-size: 0.85rem; color: #1a1a2e; border: 2px solid #ffcccc; }
+        
+        .outcomes-list { display: grid; gap: 12px; }
+        .outcome-item { display: flex; align-items: start; gap: 12px; padding: 15px; background: #f8f9fa; border-radius: 10px; }
+        .outcome-icon { flex-shrink: 0; width: 36px; height: 36px; background: #c41e3a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .outcome-text { font-size: 0.95rem; color: #333; }
+        
+        .cta-section { background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); color: white; padding: 40px; border-radius: 15px; text-align: center; margin-top: 40px; }
+        .cta-title { font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 25px; flex-wrap: wrap; }
+        .btn { padding: 14px 32px; border-radius: 30px; font-weight: 700; text-decoration: none; display: inline-block; transition: transform 0.3s, box-shadow 0.3s; font-size: 0.95rem; }
+        .btn-primary { background: white; color: #c41e3a; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        
+        .footer { text-align: center; padding: 30px; background: #1a1a2e; color: white; font-size: 0.85rem; }
+        .footer a { color: #ff6b6b; text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { padding: 30px 20px; }
+            .course-title { font-size: 1.8rem; }
+            .content { padding: 25px 20px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .tools-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-box">🛡️</div>
+                <div class="logo-text">TechRunniti IT Academy</div>
+            </div>
+            <h1 class="course-title">Penetration Testing Professional</h1>
+            <p class="course-subtitle">OSCP-Aligned Offensive Security Training | Master Ethical Hacking & Penetration Testing</p>
+            <div class="badge-row">
+                <span class="badge">⏱️ 3 Months</span>
+                <span class="badge">💻 100% Online</span>
+                <span class="badge">🎯 OSCP Aligned</span>
+                <span class="badge">🔥 Hands-on Labs</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-label">Duration</div>
+                    <div class="info-value">12 Weeks</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Investment</div>
+                    <div class="info-value">₹29,999</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Mode</div>
+                    <div class="info-value">Online Live</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Level</div>
+                    <div class="info-value">Advanced</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Course Overview</h2>
+                <p style="color: #555; line-height: 1.8;">
+                    Our Penetration Testing Professional programme is meticulously designed to align with the OSCP (Offensive Security Certified Professional) certification. This intensive 12-week course combines theoretical knowledge with extensive hands-on practice, preparing you to identify, exploit, and report security vulnerabilities in real-world environments. You'll master the "Try Harder" methodology and develop the practical skills needed to succeed in offensive security roles.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Comprehensive Syllabus</h2>
+                <div class="syllabus-grid">
+                    <div class="module-card">
+                        <div class="module-number">1</div>
+                        <div class="module-title">Penetration Testing Fundamentals</div>
+                        <div class="module-desc">
+                            Penetration testing methodology and frameworks (PTES, OWASP), reconnaissance techniques (passive and active), enumeration strategies, information gathering with OSINT tools, scanning and vulnerability assessment
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">2</div>
+                        <div class="module-title">Linux & Windows Exploitation</div>
+                        <div class="module-desc">
+                            Buffer overflow exploitation (stack and heap), privilege escalation techniques (Linux and Windows), exploit development basics, shellcode creation, return-oriented programming (ROP), bypassing DEP and ASLR
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">3</div>
+                        <div class="module-title">Web Application Security</div>
+                        <div class="module-desc">
+                            OWASP Top 10 vulnerabilities, SQL injection (manual and automated), cross-site scripting (XSS), authentication and session management flaws, file upload vulnerabilities, command injection, SSRF, XXE
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">4</div>
+                        <div class="module-title">Network Penetration Testing</div>
+                        <div class="module-desc">
+                            Active Directory enumeration and attacks, Kerberos exploitation (Kerberoasting, Golden/Silver tickets), lateral movement techniques, pivoting and port forwarding, password cracking, post-exploitation frameworks
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-number">5</div>
+                        <div class="module-title">Advanced Exploitation & OSCP Prep</div>
+                        <div class="module-desc">
+                            Client-side attacks, antivirus evasion techniques, custom exploit development, report writing and documentation, OSCP exam strategies, 24-hour practical exam simulation, capstone penetration testing project
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Tools & Technologies</h2>
+                <div class="tools-grid">
+                    <div class="tool-item">Kali Linux</div>
+                    <div class="tool-item">Metasploit</div>
+                    <div class="tool-item">Burp Suite</div>
+                    <div class="tool-item">Nmap</div>
+                    <div class="tool-item">Wireshark</div>
+                    <div class="tool-item">SQLMap</div>
+                    <div class="tool-item">John the Ripper</div>
+                    <div class="tool-item">Hashcat</div>
+                    <div class="tool-item">Hydra</div>
+                    <div class="tool-item">Netcat</div>
+                    <div class="tool-item">Gobuster</div>
+                    <div class="tool-item">Impacket</div>
+                    <div class="tool-item">BloodHound</div>
+                    <div class="tool-item">Mimikatz</div>
+                    <div class="tool-item">PowerShell Empire</div>
+                    <div class="tool-item">Cobalt Strike</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Career Outcomes</h2>
+                <div class="outcomes-list">
+                    <div class="outcome-item">
+                        <div class="outcome-icon">🎯</div>
+                        <div class="outcome-text"><strong>OSCP Certification Ready:</strong> Comprehensive preparation for the OSCP exam with mock exams and 24-hour practical challenges</div>
+                    </div>
+                    <div class="outcome-item">
+                        <div class="outcome-icon">💼</div>
+                        <div class="outcome-text"><strong>Penetration Tester Roles:</strong> Qualify for positions as Penetration Tester, Security Consultant, or Ethical Hacker</div>
+                    </div>
+                    <div class="outcome-item">
+                        <div class="outcome-icon">🔬</div>
+                        <div class="outcome-text"><strong>Hands-on Experience:</strong> 100+ hours of practical lab time with real-world vulnerable machines and networks</div>
+                    </div>
+                    <div class="outcome-item">
+                        <div class="outcome-icon">📊</div>
+                        <div class="outcome-text"><strong>Professional Reporting:</strong> Learn to document findings and create executive-level penetration testing reports</div>
+                    </div>
+                    <div class="outcome-item">
+                        <div class="outcome-icon">🚀</div>
+                        <div class="outcome-text"><strong>Career Advancement:</strong> Average salary increase of 40-60% for OSCP-certified professionals</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Certification Preparation</h2>
+                <div style="background: #fff5f5; padding: 25px; border-radius: 12px; border-left: 4px solid #c41e3a;">
+                    <h3 style="color: #c41e3a; margin-bottom: 15px; font-size: 1.2rem;">OSCP (Offensive Security Certified Professional)</h3>
+                    <ul style="color: #555; line-height: 2; padding-left: 20px;">
+                        <li>24-hour hands-on penetration testing exam</li>
+                        <li>Real-world vulnerable machines and networks</li>
+                        <li>Professional penetration testing report required</li>
+                        <li>Industry-recognized offensive security certification</li>
+                        <li>Mock exams and exam strategy sessions included</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2 class="cta-title">Ready to Become a Penetration Testing Professional?</h2>
+                <p style="opacity: 0.95; margin-bottom: 10px;">Join our OSCP-aligned programme and master offensive security</p>
+                <p style="font-size: 2rem; font-weight: 800; margin: 20px 0;">₹29,999</p>
+                <p style="font-size: 0.9rem; opacity: 0.9;">12-Week Intensive Programme | 100% Online | OSCP Aligned</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/919131590319?text=I%20want%20to%20enroll%20in%20Penetration%20Testing%20Professional%20course" class="btn btn-primary">Enroll Now</a>
+                    <a href="tel:+919131590319" class="btn btn-secondary">Call Us</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>TechRunniti IT Academy</strong></p>
+            <p style="margin-top: 10px;">📧 <a href="mailto:hello@techrunniti.com">hello@techrunniti.com</a> | 📱 <a href="tel:+919131590319">+91-9131590319</a></p>
+            <p style="margin-top: 15px; font-size: 0.75rem; opacity: 0.7;">© 2024 TechRunniti IT Academy. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

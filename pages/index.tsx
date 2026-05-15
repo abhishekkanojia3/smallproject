@@ -273,7 +273,7 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold font-display text-ink">Programmes for every career stage</h2>
-              <p className="mt-3 text-sm md:text-base text-slate">Three structured tiers, priced below INR 35,000 with flexible schedules.</p>
+              <p className="mt-3 text-sm md:text-base text-slate">Four structured programmes covering cloud, DevOps, security, and penetration testing.</p>
             </div>
             <Link href="/courses" className="text-sm font-semibold text-accent hover:brightness-110">
               View all programmes -&gt;

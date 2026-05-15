@@ -11,7 +11,7 @@ const cardVariants = {
 };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
 
-const categoryOptions = ['Cloud', 'DevOps', 'DevSecOps'];
+const categoryOptions = ['Cloud', 'DevOps', 'DevSecOps', 'Security'];
 
 export default function Courses() {
   const [category, setCategory] = useState<string | null>(null);
@@ -66,7 +66,7 @@ export default function Courses() {
           <div className="flex flex-col gap-6 rounded-2xl border border-tint bg-white p-6 shadow-lg shadow-black/5 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 className="text-lg md:text-xl font-semibold text-ink font-display">Filter programmes</h2>
-              <p className="mt-2 text-sm text-slate">Find the duration and focus area that fits your goals.</p>
+              <p className="mt-2 text-sm text-slate">Find the focus area that fits your goals.</p>
             </div>
             <div className="flex flex-wrap gap-4">
               {hasActiveFilters && (
