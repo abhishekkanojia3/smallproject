@@ -164,6 +164,7 @@ NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_key_here
    npm install --save-dev jest @testing-library/react
    ```
 
+
 ### Short-term (1-2 weeks)
 
 - [ ] Implement actual contact form API
