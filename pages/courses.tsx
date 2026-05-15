@@ -11,7 +11,7 @@ const cardVariants = {
 };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
 
-const categoryOptions = ['Cloud', 'DevOps', 'DevSecOps', 'Security'];
+const categoryOptions = ['Cloud', 'DevOps', 'DevSecOps', 'Security', 'AI'];
 
 export default function Courses() {
   const [category, setCategory] = useState<string | null>(null);

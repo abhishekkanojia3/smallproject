@@ -89,4 +89,30 @@ export const COURSES: Course[] = [
     brochureUrl: '/Penetration%20Testing%20Professional.html',
     scheduleUrl: '/schedule-penetration-testing.html',
   },
+  {
+    id: 5,
+    name: 'Prompt Engineering Professional',
+    duration: '10 Days',
+    price: 'INR 9,999',
+    mode: 'Online',
+    outcome: 'AI Prompt Engineering Expert',
+    level: 'Beginner to Advanced',
+    category: 'AI',
+    overview:
+      'A fast-paced 10-day intensive programme to master prompt engineering for ChatGPT, Claude, and enterprise LLMs with hands-on projects.',
+    syllabus: [
+      'Introduction to LLMs: GPT-4, Claude, Gemini architecture and capabilities',
+      'Prompt design patterns: zero-shot, few-shot, and chain-of-thought prompting',
+      'Advanced techniques: ReAct, Tree of Thoughts, self-consistency prompting',
+      'Role-based prompting: persona engineering and context optimization',
+      'Prompt security: injection attacks, jailbreaking, and defensive strategies',
+      'RAG fundamentals: retrieval augmented generation and vector databases',
+      'Function calling and API integration with LLMs',
+      'Multi-modal prompting: text, image, and code generation',
+      'Enterprise use cases: customer support, content creation, code assistance',
+      'Production deployment: cost optimization and performance tuning'
+    ],
+    brochureUrl: '/Prompt%20Engineering%20Professional.html',
+    scheduleUrl: '/schedule-prompt-engineering.html',
+  },
 ];
