@@ -1,6 +1,1 @@
-var R=require("../chunks/ssr/[turbopack]_runtime.js")("server/pages/_document.js")
-R.c("server/chunks/ssr/[externals]_next_dist_compiled_@opentelemetry_api_2f2eda7e._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__b8b303e5._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__36535e1f._.js")
-R.m(20935)
-module.exports=R.m(20935).exports
+"use strict";(()=>{var a={};a.id=220,a.ids=[220],a.modules={361:a=>{a.exports=require("next/dist/compiled/next-server/pages.runtime.prod.js")},2015:a=>{a.exports=require("react")},2572:(a,b,c)=>{c.r(b),c.d(b,{default:()=>f});var d=c(8732),e=c(2341);function f(){return(0,d.jsxs)(e.Html,{lang:"en",children:[(0,d.jsxs)(e.Head,{children:[(0,d.jsx)("meta",{charSet:"UTF-8"}),(0,d.jsx)("link",{rel:"icon",href:"/favicon.ico",sizes:"any"}),(0,d.jsx)("link",{rel:"icon",href:"/favicon.png",type:"image/png"}),(0,d.jsx)("link",{rel:"apple-touch-icon",href:"/favicon.png"}),(0,d.jsx)("link",{rel:"preconnect",href:"https://fonts.googleapis.com"}),(0,d.jsx)("link",{rel:"preconnect",href:"https://fonts.gstatic.com",crossOrigin:"anonymous"}),(0,d.jsx)("link",{href:"https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap",rel:"stylesheet"})]}),(0,d.jsxs)("body",{children:[(0,d.jsx)(e.Main,{}),(0,d.jsx)(e.NextScript,{})]})]})}},3873:a=>{a.exports=require("path")},8732:a=>{a.exports=require("react/jsx-runtime")}};var b=require("../webpack-runtime.js");b.C(a);var c=b.X(0,[43,341],()=>b(b.s=2572));module.exports=c})();

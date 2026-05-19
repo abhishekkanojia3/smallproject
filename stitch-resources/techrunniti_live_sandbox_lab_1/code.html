@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease-in-out;
+        }
+        .scan-line {
+            background: linear-gradient(to bottom, transparent, rgba(20, 216, 255, 0.5), transparent);
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            z-index: 10;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: -100px; }
+            100% { top: 100%; }
+        }
+        .cursor-blink {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background: #14d8ff;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .glow-active {
+            box-shadow: 0 0 20px rgba(20, 216, 255, 0.4);
+            border-color: #14d8ff !important;
+        }
+        .terminal-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(20, 216, 255, 0.2) transparent;
+        }
+        .pulse-glow {
+            animation: pulse-terminal 0.6s ease-out;
+        }
+        @keyframes pulse-terminal {
+            0% { box-shadow: 0 0 0px rgba(20, 216, 255, 0); }
+            50% { box-shadow: 0 0 30px rgba(20, 216, 255, 0.2); }
+            100% { box-shadow: 0 0 0px rgba(20, 216, 255, 0); }
+        }
+        .bar-flicker {
+            animation: flicker 0.15s infinite alternate;
+        }
+        @keyframes flicker {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#004e5d",
+                      "surface-container-low": "#161d1f",
+                      "on-tertiary-fixed-variant": "#5e4100",
+                      "on-surface-variant": "#bbc9ce",
+                      "on-primary-container": "#005a6c",
+                      "tertiary": "#ffdda7",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#2f3638",
+                      "secondary": "#ebb2ff",
+                      "primary": "#aeecff",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#271900",
+                      "surface-bright": "#333a3d",
+                      "on-tertiary-container": "#6d4c00",
+                      "primary-container": "#00d8ff",
+                      "secondary-container": "#ce5dff",
+                      "on-secondary-container": "#480064",
+                      "surface-dim": "#0e1417",
+                      "tertiary-fixed": "#ffdea9",
+                      "surface-container-high": "#242b2d",
+                      "on-tertiary": "#422d00",
+                      "error-container": "#93000a",
+                      "error": "#ffb4ab",
+                      "inverse-primary": "#00687b",
+                      "outline": "#859398",
+                      "primary-fixed-dim": "#14d8ff",
+                      "primary-fixed": "#afecff",
+                      "surface-variant": "#2f3638",
+                      "surface": "#0e1417",
+                      "tertiary-container": "#feba29",
+                      "outline-variant": "#3c494d",
+                      "inverse-surface": "#dde4e6",
+                      "on-primary": "#003641",
+                      "on-primary-fixed": "#001f27",
+                      "on-secondary-fixed": "#320047",
+                      "inverse-on-surface": "#2b3234",
+                      "surface-tint": "#14d8ff",
+                      "surface-container": "#1a2123",
+                      "secondary-fixed": "#f8d8ff",
+                      "on-secondary-fixed-variant": "#74009f",
+                      "on-background": "#dde4e6",
+                      "background": "#0e1417",
+                      "secondary-fixed-dim": "#ebb2ff",
+                      "tertiary-fixed-dim": "#ffbb2a",
+                      "on-secondary": "#520071",
+                      "on-surface": "#dde4e6",
+                      "surface-container-lowest": "#080f11"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "bento_ratio": "1.618",
+                      "container_padding": "24px",
+                      "card_padding": "20px",
+                      "grid_gap": "16px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "label-caps": ["JetBrains Mono"],
+                      "code-sm": ["JetBrains Mono"],
+                      "body-base": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "code-sm": ["13px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-base": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-base overflow-hidden">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-container_padding h-16 shadow-[0_0_15px_rgba(20,216,255,0.1)]">
+<div class="flex items-center gap-3">
+<img alt="TechRunniti Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiUr1MY62CdWwAWFR808RR8hOPIa1QXmfy5MNNcsKDsXpVnzSKaQFSe1egDG_jXhrJXzJrOJbgpWebwSKgBxkpS26HL3hklj9HNW2DRNIWa2B-WL4XnznWZr0_h8Ylcy2AoSTmly9Su_hOhRs_BZsmCn5m84iea1RMflNltOMNngIQVIt-YdAObKyhI0ayIZg3yF7TSUmJuvZq_fPyVvR76x3WmlIufe6Y_I0xRu88Dw8PsACbi5IwnVqA"/>
+<span class="font-display-lg text-headline-md tracking-tighter text-primary-fixed-dim">TECHRUNNITI <span class="hidden sm:inline">IT ACADEMY</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container px-2 py-1">LAB V.2.1</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all" href="#">Courses</a>
+<a class="font-label-caps text-label-caps text-primary-fixed border-b-2 border-primary-fixed transition-all" href="#">Cloud Lab</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all" href="#">Resources</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all" href="#">Student Portal</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-primary-container text-on-primary font-label-caps text-label-caps px-4 py-2 hover:bg-primary-fixed transition-all">Launch Environment</button>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">settings_ethernet</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">terminal</span>
+</div>
+</header>
+<!-- Side Navigation -->
+<aside class="hidden lg:flex fixed left-0 top-0 h-full w-64 flex-col py-6 bg-surface-container-low/80 backdrop-blur-2xl border-r border-white/5 z-40 mt-16">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container/20 border border-primary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim">school</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-primary-container">STUDENT_ADMIN</div>
+<div class="font-code-sm text-[10px] text-on-surface-variant">Cloud Architect Path</div>
+</div>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary font-code-sm" href="#">
+<span class="material-symbols-outlined" data-icon="cloud">cloud</span> AWS/Azure Labs
+        </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary font-code-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span> CI/CD Pipelines
+        </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary font-code-sm" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span> Cybersecurity
+        </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary font-code-sm" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span> AI &amp; ML
+        </a>
+<a class="flex items-center gap-3 px-6 py-3 bg-primary-container/20 text-primary-fixed border-l-4 border-primary-fixed-dim font-code-sm" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span> TechRunniti Sandbox
+        </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary font-code-sm" href="#">
+<span class="material-symbols-outlined" data-icon="biometric_setup">security_update_good</span> Penetration Testing
+        </a>
+</nav>
+<div class="px-6 space-y-2 mb-12">
+<button class="w-full bg-white/5 border border-white/10 text-on-surface-variant hover:text-primary py-2 font-label-caps text-label-caps transition-all">
+            Sync Course Progress
+        </button>
+<div class="pt-4 space-y-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-code-sm hover:text-primary cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">settings</span> Account
+            </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-code-sm hover:text-primary cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">help_center</span> Mentor Support
+            </div>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="lg:pl-64 pt-16 h-screen w-full flex flex-col md:flex-row gap-grid_gap p-grid_gap overflow-hidden">
+<!-- Left: Terminal IDE Workspace -->
+<section class="flex-1 glass-panel flex flex-col overflow-hidden relative group" id="terminal-container">
+<div class="h-10 border-b border-white/10 flex items-center justify-between px-4 bg-surface-container-high/50">
+<div class="flex items-center gap-2">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error/30 border border-error"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-container/30 border border-tertiary-container"></div>
+<div class="w-3 h-3 rounded-full bg-primary-container/30 border border-primary-container"></div>
+</div>
+<span class="ml-4 font-code-sm text-on-surface-variant">techrunniti://cloud-lab/provision_env.sh</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">content_copy</span>
+</div>
+<div class="flex-1 p-6 font-code-sm text-code-sm text-primary overflow-y-auto terminal-scroll space-y-1" id="terminal-output">
+<div class="text-on-surface-variant opacity-50">Initializing TechRunniti Virtual Environment...</div>
+<div class="text-on-surface-variant opacity-50">Fetching Lab Credentials from Academy Secure Vault... [OK]</div>
+<div class="flex gap-2 text-primary-fixed-dim">
+<span class="text-secondary">$</span>
+<span id="typing-line"></span><span class="cursor-blink"></span>
+</div>
+<div id="command-history"></div>
+</div>
+<!-- Dashboard Readouts overlay -->
+<div class="absolute bottom-4 right-4 flex flex-col gap-2 pointer-events-none">
+<div class="glass-panel p-2 border-primary-fixed-dim/30">
+<div class="font-label-caps text-[9px] text-primary-fixed-dim">CLOUD CPU</div>
+<div class="h-1 w-24 bg-white/10 mt-1 relative overflow-hidden">
+<div class="h-full bg-primary-container w-[42%] transition-all duration-300" id="cpu-bar"></div>
+</div>
+</div>
+<div class="glass-panel p-2 border-secondary/30">
+<div class="font-label-caps text-[9px] text-secondary">NETWORK PING</div>
+<div class="font-code-sm text-primary flex items-center gap-1">
+<span id="ping-value">24</span>ms
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary-container bar-flicker"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right: 3D Visualization / Hologram -->
+<section class="flex-1 glass-panel relative overflow-hidden flex items-center justify-center">
+<div class="scan-line"></div>
+<!-- Holographic UI Elements -->
+<div class="absolute top-6 left-6 flex flex-col gap-2 z-20">
+<div class="bg-surface-container-high/40 p-3 border-l-2 border-primary-fixed-dim">
+<div class="font-label-caps text-[10px] text-on-surface-variant">LAB_INSTANCE</div>
+<div class="font-headline-md text-primary text-sm">TRN-AZ-SANDBOX-09</div>
+</div>
+<div class="bg-error-container/20 p-3 border-l-2 border-error" id="status-indicator">
+<div class="font-label-caps text-[10px] text-on-surface-variant">ENV_STATUS</div>
+<div class="font-headline-md text-error text-sm uppercase transition-colors duration-1000">Misconfigured</div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 z-20">
+<div class="font-code-sm text-[10px] text-on-surface-variant text-right">LAB_COMPLETION</div>
+<div class="flex gap-1 mt-1" id="completion-bars">
+<div class="w-1.5 h-6 bg-error shadow-[0_0_8px_rgba(255,180,171,0.5)] transition-all duration-500"></div>
+<div class="w-1.5 h-6 bg-error transition-all duration-500"></div>
+<div class="w-1.5 h-6 bg-error opacity-50 transition-all duration-500"></div>
+<div class="w-1.5 h-6 bg-surface-container-highest transition-all duration-500"></div>
+<div class="w-1.5 h-6 bg-surface-container-highest transition-all duration-500"></div>
+<div class="w-1.5 h-6 bg-surface-container-highest transition-all duration-500"></div>
+</div>
+</div>
+<!-- Central Holographic Tower Mockup -->
+<div class="relative w-72 h-96 flex flex-col items-center justify-center">
+<!-- Stacked Server Blades -->
+<div class="space-y-4 relative z-10" id="tower">
+<div class="server-blade w-48 h-12 glass-panel border-error/50 flex items-center px-4 transition-all duration-1000">
+<div class="w-2 h-2 rounded-full bg-error mr-3"></div>
+<div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-error w-full transition-all duration-1000"></div>
+</div>
+</div>
+<div class="server-blade w-48 h-12 glass-panel border-error/50 flex items-center px-4 transition-all duration-1000">
+<div class="w-2 h-2 rounded-full bg-error mr-3"></div>
+<div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-error w-4/5 transition-all duration-1000"></div>
+</div>
+</div>
+<div class="server-blade w-48 h-12 glass-panel border-error/50 flex items-center px-4 transition-all duration-1000 translate-x-4">
+<div class="w-2 h-2 rounded-full bg-error mr-3"></div>
+<div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-error w-full transition-all duration-1000"></div>
+</div>
+</div>
+<div class="server-blade w-48 h-12 glass-panel border-error/50 flex items-center px-4 transition-all duration-1000">
+<div class="w-2 h-2 rounded-full bg-error mr-3"></div>
+<div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-error w-1/2 transition-all duration-1000"></div>
+</div>
+</div>
+<div class="server-blade w-48 h-12 glass-panel border-error/50 flex items-center px-4 transition-all duration-1000 -translate-x-2">
+<div class="w-2 h-2 rounded-full bg-error mr-3"></div>
+<div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-error w-full transition-all duration-1000"></div>
+</div>
+</div>
+</div>
+<!-- Abstract Base -->
+<div class="w-64 h-2 bg-primary-fixed-dim/20 blur-xl mt-8 absolute bottom-0"></div>
+<!-- Background Image Integration -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<img alt="Cybersecurity lab background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOAqmie3vfFDLjjx209SHg42liTX9WskzTNU5wU5aqQFJ4qV2LIAja8pgG7YW_n8gT0WehK3UqWuWt_K2CNeki76m1UzrwqqZzZdXlsqUkFT4IADzd2U3Iq_pMYvbvnYRNj1iEYx5M0KO4Q9_gCh8VU-M5gC3NfP30mkxsuTC-zh89gzWV1QgtU4pIg9FjW626f1MUleDBsH8NsVjCqoIbgKaq3nPFwvy-V8hax0Opr-v02VCHQoBV1kMhmC7oc0vwJibj_uvpqYI"/>
+</div>
+</div>
+<!-- Grid Background Overlay -->
+<div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(20, 216, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 216, 255, 0.05) 1px, transparent 1px); background-size: 40px 40px;"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full bg-surface-container-lowest py-8 flex flex-col md:flex-row justify-between items-center px-container_padding border-t border-outline-variant z-50">
+<div class="font-label-caps text-label-caps text-tertiary">© 2024 TECHRUNNITI IT ACADEMY • LAB ENV V.2.1</div>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary opacity-80 hover:opacity-100 transition-all" href="#">Curriculum Docs</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary opacity-80 hover:opacity-100 transition-all" href="#">Tech Support</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary opacity-80 hover:opacity-100 transition-all" href="#">Lab Status</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary opacity-80 hover:opacity-100 transition-all" href="#">TechRunniti Community</a>
+</div>
+</footer>
+<script>
+    const terminalOutput = document.getElementById('terminal-output');
+    const terminalContainer = document.getElementById('terminal-container');
+    const typingLine = document.getElementById('typing-line');
+    const commandHistory = document.getElementById('command-history');
+    const towerBlades = document.querySelectorAll('.server-blade');
+    const statusIndicator = document.getElementById('status-indicator');
+    const statusText = statusIndicator.querySelector('.font-headline-md');
+    const cpuBar = document.getElementById('cpu-bar');
+    const pingValue = document.getElementById('ping-value');
+    const completionBars = document.querySelectorAll('#completion-bars > div');
+
+    const scriptSteps = [
+        { cmd: "az group create --name TechRunnitiLab --location eastus", response: "Azure Resource Group created. Initializing environment context..." },
+        { cmd: "terraform init && terraform apply -var 'student_id=trn_8820' --auto-approve", response: "Deploying TechRunniti Core Infrastructure... [AWS EKS Cluster Provisioned]" },
+        { cmd: "kubectl apply -f trn-security-policy.yaml", response: "Applying Academic Compliance Policies... Deployment Success." },
+        { cmd: "scanner --target techrunniti.local --depth full", response: "Vulnerability Scan Result: Outdated Nginx version detected on Node 3." },
+        { cmd: "runniti_fix --apply-patch --node cluster-node-03", response: "Auto-patching node via TechRunniti DevOps Script... VERIFIED." },
+        { cmd: "deploy_app --env production --version v2.1", response: "TechRunniti Lab Environment is now LIVE and SECURE." }
+    ];
+
+    let stepIndex = 0;
+    let charIndex = 0;
+
+    // Fluctuating indicators
+    setInterval(() => {
+        const cpuRand = Math.floor(Math.random() * 20) + 30;
+        cpuBar.style.width = `${cpuRand}%`;
+        const pingRand = Math.floor(Math.random() * 15) + 18;
+        pingValue.textContent = pingRand;
+    }, 2000);
+
+    function getTypingSpeed() {
+        // More organic typing speed variations
+        return Math.floor(Math.random() * 60) + 30;
+    }
+
+    function typeCommand() {
+        if (stepIndex >= scriptSteps.length) {
+            stepIndex = 0;
+            commandHistory.innerHTML = "";
+            resetTower();
+        }
+
+        const currentStep = scriptSteps[stepIndex];
+        if (charIndex < currentStep.cmd.length) {
+            typingLine.textContent += currentStep.cmd.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeCommand, getTypingSpeed());
+        } else {
+            setTimeout(() => executeCommand(currentStep), 600);
+        }
+    }
+
+    function executeCommand(step) {
+        // Trigger pulse glow on execution
+        terminalContainer.classList.add('pulse-glow');
+        setTimeout(() => terminalContainer.classList.remove('pulse-glow'), 600);
+
+        const cmdLine = document.createElement('div');
+        cmdLine.className = 'flex gap-2 text-primary-fixed-dim';
+        cmdLine.innerHTML = `<span class="text-secondary">$</span> ${step.cmd}`;
+        commandHistory.appendChild(cmdLine);
+
+        const respLine = document.createElement('div');
+        respLine.className = 'text-primary pl-4 opacity-80 mb-2';
+        respLine.textContent = `> ${step.response}`;
+        commandHistory.appendChild(respLine);
+
+        typingLine.textContent = "";
+        charIndex = 0;
+        
+        // Interaction logic based on command
+        if (step.cmd.includes('terraform')) {
+            updateTower(2);
+            updateCompletion(2);
+        } else if (step.cmd.includes('scanner')) {
+            updateTower(3);
+            updateCompletion(4);
+        } else if (step.cmd.includes('fix')) {
+            updateTower(5);
+            updateCompletion(6);
+            
+            // Smooth transition for status
+            statusIndicator.classList.replace('bg-error-container/20', 'bg-primary-container/20');
+            statusIndicator.classList.replace('border-error', 'border-primary-fixed-dim');
+            statusText.classList.replace('text-error', 'text-primary-fixed-dim');
+            statusText.textContent = "Optimized";
+        }
+
+        stepIndex++;
+        setTimeout(typeCommand, 1800);
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    function updateTower(count) {
+        towerBlades.forEach((blade, idx) => {
+            if (idx < count) {
+                blade.classList.remove('border-error/50');
+                blade.classList.add('glow-active');
+                const dot = blade.querySelector('div:first-child');
+                dot.classList.replace('bg-error', 'bg-primary-container');
+                const bar = blade.querySelector('.h-full');
+                bar.classList.replace('bg-error', 'bg-primary-container');
+            }
+        });
+    }
+
+    function updateCompletion(count) {
+        completionBars.forEach((bar, idx) => {
+            if (idx < count) {
+                bar.classList.replace('bg-surface-container-highest', 'bg-primary-container');
+                bar.classList.replace('bg-error', 'bg-primary-container');
+                bar.style.opacity = "1";
+                bar.style.boxShadow = "0 0 8px rgba(20, 216, 255, 0.5)";
+            }
+        });
+    }
+
+    function resetTower() {
+        towerBlades.forEach((blade) => {
+            blade.classList.add('border-error/50');
+            blade.classList.remove('glow-active');
+            const dot = blade.querySelector('div:first-child');
+            dot.classList.add('bg-error');
+            dot.classList.remove('bg-primary-container');
+            const bar = blade.querySelector('.h-full');
+            bar.classList.add('bg-error');
+            bar.classList.remove('bg-primary-container');
+        });
+        
+        completionBars.forEach((bar, idx) => {
+            if (idx < 3) {
+                bar.classList.replace('bg-primary-container', 'bg-error');
+                bar.style.boxShadow = "0 0 8px rgba(255, 180, 171, 0.5)";
+            } else {
+                bar.classList.replace('bg-primary-container', 'bg-surface-container-highest');
+                bar.style.boxShadow = "none";
+            }
+        });
+
+        statusIndicator.className = "bg-error-container/20 p-3 border-l-2 border-error";
+        statusText.className = "font-headline-md text-error text-sm uppercase transition-colors duration-1000";
+        statusText.textContent = "Misconfigured";
+    }
+
+    setTimeout(typeCommand, 1000);
+</script>
+</body></html>

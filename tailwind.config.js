@@ -6,15 +6,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1A3C6E', // CloudForce Primary Blue
-        accent: '#00AEEF', // Accent Cyan
-        gold: '#D4AF37', // Brand Gold
+        primary: '#0F172A', // Deep Slate (Modern Dark)
+        accent: '#3B82F6', // Vibrant Blue
+        secondary: '#8B5CF6', // Purple Accent
+        success: '#10B981', // Green
+        warning: '#F59E0B', // Amber
+        danger: '#EF4444', // Red
+        gold: '#FBBF24', // Bright Gold
         surface: '#FFFFFF', // Surface White
-        tint: '#EBF4FB', // Light Blue Tint
-        ink: '#1A1A2E', // Dark Text
-        slate: '#5A6A7A', // Mid Gray
-        navy: '#0F2747', // Header/Footer Navy
-        midnight: '#0B1B2E', // Deep Navy
+        tint: '#F1F5F9', // Light Slate Tint
+        ink: '#0F172A', // Dark Text
+        slate: '#64748B', // Mid Gray
+        navy: '#1E293B', // Header Navy
+        midnight: '#020617', // Deep Black
+        cyber: '#06B6D4', // Cyan Tech
+        neon: '#A855F7', // Neon Purple
       },
       fontFamily: {
         sans: ['"DM Sans"', 'sans-serif'],
@@ -38,6 +44,33 @@ module.exports = {
         'lg': '1024px',
         'xl': '1280px',
         '2xl': '1536px',
+      },
+      animation: {
+        'float': 'float 4s ease-in-out infinite',
+        'float-slow': 'float-slow 6s ease-in-out infinite',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'bounce-slow': 'bounce 2s infinite',
+        'spin-slow': 'spin 3s linear infinite',
+        'gradient': 'gradient 8s linear infinite',
+        'glow': 'glow 2s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+          '50%': { transform: 'translateY(-20px) scale(1.05)' },
+        },
+        'float-slow': {
+          '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+          '50%': { transform: 'translateY(-15px) scale(1.03)' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        glow: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
+          '50%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.8)' },
+        },
       },
     },
   },

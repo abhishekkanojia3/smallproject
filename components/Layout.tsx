@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <ErrorBoundary>
       <div className="flex min-h-screen flex-col bg-surface text-ink">
         <header
-          className={`sticky top-0 z-50 transition-all bg-navy shadow-lg`}
+          className={`sticky top-0 z-50 transition-all bg-gradient-to-r from-midnight via-primary to-navy shadow-xl border-b border-white/10`}
         >
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
             <Link href="/" className="flex items-center gap-2 md:gap-3 hover:opacity-90 transition">
@@ -50,14 +50,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="hidden md:flex">
               <Link
                 href="/contact"
-                className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-accent/30 hover:brightness-110 transition"
+                className="rounded-full bg-gradient-to-r from-accent to-secondary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/40 hover:shadow-accent/60 hover:scale-105 transition-all duration-300"
               >
                 Enroll Now
               </Link>
             </div>
 
             <button
-              className="md:hidden text-white bg-accent/30 hover:bg-accent/40 border border-accent/50 text-xs font-semibold focus-visible:ring-2 focus-visible:ring-accent rounded-lg px-4 py-2 transition"
+              className="md:hidden text-white bg-gradient-to-r from-accent/30 to-secondary/30 hover:from-accent/40 hover:to-secondary/40 border border-accent/50 text-xs font-semibold focus-visible:ring-2 focus-visible:ring-accent rounded-lg px-4 py-2 transition-all duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
@@ -120,7 +120,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full rounded-full bg-gradient-to-r from-accent to-accent/80 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-accent/40 hover:brightness-110 transition"
+                  className="flex items-center justify-center gap-2 w-full rounded-full bg-gradient-to-r from-accent to-secondary px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent/50 hover:shadow-accent/70 hover:scale-105 transition-all duration-300"
                 >
                   🚀 Enroll Now
                 </Link>
@@ -131,7 +131,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <main className="flex-1">{children}</main>
 
-        <footer className="bg-navy text-white">
+        <footer className="bg-gradient-to-br from-midnight via-primary to-navy text-white border-t border-white/10">
           <div className="mx-auto grid max-w-5xl items-start gap-6 md:gap-8 px-4 py-10 md:py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.65fr_0.9fr] lg:gap-10">
             <div className="max-w-sm">
               <div className="flex items-center gap-2 md:gap-3">
@@ -188,11 +188,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 rounded-full bg-accent px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm font-semibold text-white shadow-lg shadow-accent/40 hover:brightness-110 transition"
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-secondary px-4 py-3 md:px-5 md:py-3.5 text-xs md:text-sm font-semibold text-white shadow-xl shadow-accent/50 hover:shadow-accent/70 hover:scale-110 transition-all duration-300"
           aria-label="Chat with TechRunniti on WhatsApp"
         >
-          <span className="absolute inset-0 rounded-full bg-accent animate-ping-slow" />
-          <span className="relative">Chat</span>
+          <span className="absolute inset-0 rounded-full bg-accent/50 animate-ping-slow" />
+          <span className="relative">💬 Chat</span>
         </a>
       </div>
     </ErrorBoundary>

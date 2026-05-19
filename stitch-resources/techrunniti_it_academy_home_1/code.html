@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TechRunniti IT Academy | Build Enterprise Cloud Expertise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(11, 15, 25, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glowing-border {
+            box-shadow: 0 0 15px rgba(20, 216, 255, 0.3);
+            border: 1px solid #14d8ff;
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(20, 216, 255, 0) 0%, rgba(20, 216, 255, 0.05) 50%, rgba(20, 216, 255, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scanline 8s linear infinite;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        canvas {
+            display: block;
+        }
+        .loading-bar-fill {
+            animation: loading 3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#004e5d",
+                        "surface-container-low": "#161d1f",
+                        "on-tertiary-fixed-variant": "#5e4100",
+                        "on-surface-variant": "#bbc9ce",
+                        "on-primary-container": "#005a6c",
+                        "tertiary": "#ffdda7",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#2f3638",
+                        "secondary": "#ebb2ff",
+                        "primary": "#aeecff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-bright": "#333a3d",
+                        "on-tertiary-container": "#6d4c00",
+                        "primary-container": "#00d8ff",
+                        "secondary-container": "#ce5dff",
+                        "on-secondary-container": "#480064",
+                        "surface-dim": "#0e1417",
+                        "tertiary-fixed": "#ffdea9",
+                        "surface-container-high": "#242b2d",
+                        "on-tertiary": "#422d00",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#00687b",
+                        "outline": "#859398",
+                        "primary-fixed-dim": "#14d8ff",
+                        "primary-fixed": "#afecff",
+                        "surface-variant": "#2f3638",
+                        "surface": "#0e1417",
+                        "tertiary-container": "#feba29",
+                        "outline-variant": "#3c494d",
+                        "inverse-surface": "#dde4e6",
+                        "on-primary": "#003641",
+                        "on-primary-fixed": "#001f27",
+                        "on-secondary-fixed": "#320047",
+                        "inverse-on-surface": "#2b3234",
+                        "surface-tint": "#14d8ff",
+                        "surface-container": "#1a2123",
+                        "secondary-fixed": "#f8d8ff",
+                        "on-secondary-fixed-variant": "#74009f",
+                        "on-background": "#dde4e6",
+                        "background": "#0e1417",
+                        "secondary-fixed-dim": "#ebb2ff",
+                        "tertiary-fixed-dim": "#ffbb2a",
+                        "on-secondary": "#520071",
+                        "on-surface": "#dde4e6",
+                        "surface-container-lowest": "#080f11"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "bento_ratio": "1.618",
+                        "container_padding": "24px",
+                        "card_padding": "20px",
+                        "grid_gap": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-base": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "code-sm": ["13px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-base": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary/30 font-body-base overflow-x-hidden">
+<!-- Loading Overlay -->
+<div class="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center transition-opacity duration-1000" id="loader">
+<div class="w-64 space-y-4">
+<div class="flex justify-between items-end font-label-caps text-primary text-xs">
+<span class="tracking-widest">SYSTEM INITIALIZING...</span>
+<span id="load-percent">0%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest overflow-hidden">
+<div class="loading-bar-fill h-full bg-primary-container shadow-[0_0_10px_#00d8ff]"></div>
+</div>
+<div class="font-code-sm text-on-surface-variant text-[10px] uppercase">TechRunniti OS v2.1.0 - Active</div>
+</div>
+</div>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-container_padding h-16 w-full shadow-[0_0_15px_rgba(20,216,255,0.1)]">
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="flex items-center gap-2">
+<img alt="TechRunniti Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiUr1MY62CdWwAWFR808RR8hOPIa1QXmfy5MNNcsKDsXpVnzSKaQFSe1egDG_jXhrJXzJrOJbgpWebwSKgBxkpS26HL3hklj9HNW2DRNIWa2B-WL4XnznWZr0_h8Ylcy2AoSTmly9Su_hOhRs_BZsmCn5m84iea1RMflNltOMNngIQVIt-YdAObKyhI0ayIZg3yF7TSUmJuvZq_fPyVvR76x3WmlIufe6Y_I0xRu88Dw8PsACbi5IwnVqA"/>
+<div class="font-display-lg text-lg lg:text-headline-md tracking-tighter text-primary-fixed-dim whitespace-nowrap">TECHRUNNITI</div>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-caps text-label-caps text-primary-fixed border-b-2 border-primary-fixed transition-all duration-300 ease-in-out" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 ease-in-out" href="#">Programmes</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 ease-in-out" href="#">About</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-all duration-300 ease-in-out" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors hidden sm:block">hub</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors hidden sm:block">terminal</button>
+<button class="bg-primary-container text-on-primary px-4 lg:px-6 py-2 font-label-caps text-[10px] lg:text-label-caps tracking-widest hover:brightness-110 transition-all">Enroll Now</button>
+</div>
+</header>
+<!-- Side Navigation -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low/80 backdrop-blur-2xl border-r border-white/5 hidden lg:flex flex-col py-6 z-40 mt-16">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 border border-primary/30 flex items-center justify-center overflow-hidden">
+<img alt="Academy Logo" class="w-6 h-6 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiUr1MY62CdWwAWFR808RR8hOPIa1QXmfy5MNNcsKDsXpVnzSKaQFSe1egDG_jXhrJXzJrOJbgpWebwSKgBxkpS26HL3hklj9HNW2DRNIWa2B-WL4XnznWZr0_h8Ylcy2AoSTmly9Su_hOhRs_BZsmCn5m84iea1RMflNltOMNngIQVIt-YdAObKyhI0ayIZg3yF7TSUmJuvZq_fPyVvR76x3WmlIufe6Y_I0xRu88Dw8PsACbi5IwnVqA"/>
+</div>
+<div>
+<div class="font-label-caps text-on-primary-container text-[12px]">ACADEMY_ADMIN</div>
+<div class="font-code-sm text-[10px] text-on-surface-variant">Cloud Architect</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-6 py-3 bg-primary-container/20 text-primary-fixed border-l-4 border-primary-fixed-dim transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined">cloud</span>
+<span class="font-code-sm">Cloud Professional</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-code-sm">DevOps Engineer</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-code-sm">DevSecOps Master</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined">fingerprint</span>
+<span class="font-code-sm">Penetration Testing</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-code-sm">Prompt Engineering</span>
+</a>
+</nav>
+<div class="px-4 mt-auto mb-16">
+<button class="w-full py-4 border border-primary/20 bg-primary/5 text-primary font-label-caps text-label-caps tracking-widest hover:bg-primary/10 transition-colors">
+                Start Live Lab
+            </button>
+<div class="mt-6 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-2 py-1 text-on-surface-variant hover:text-secondary font-code-sm" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-4 px-2 py-1 text-on-surface-variant hover:text-secondary font-code-sm" href="#">
+<span class="material-symbols-outlined text-sm">help_center</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content (Hero) -->
+<main class="lg:pl-64 pt-16 min-h-screen relative overflow-hidden flex flex-col items-center justify-center px-container_padding">
+<!-- Three.js Canvas Container -->
+<div class="absolute inset-0 z-0 opacity-60" id="hero-canvas"></div>
+<!-- Scanline Effect -->
+<div class="scanline"></div>
+<!-- Floating UI Nodes -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
+<!-- Cloud Node -->
+<div class="absolute top-[20%] left-[10%] floating bg-surface-container-low/40 backdrop-blur-md border border-white/10 p-4 w-40 flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">cloud</span>
+<span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant">NODE: CLOUD</span>
+<div class="w-full h-[1px] bg-white/5"></div>
+<span class="font-code-sm text-[9px] text-primary/60">AWS / Azure</span>
+</div>
+<!-- DevOps Node -->
+<div class="absolute top-[15%] right-[10%] floating bg-surface-container-low/40 backdrop-blur-md border border-white/10 p-4 w-40 flex flex-col items-center gap-2" style="animation-delay: -1s;">
+<span class="material-symbols-outlined text-secondary text-3xl">settings_input_component</span>
+<span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant">NODE: DEVOPS</span>
+<div class="w-full h-[1px] bg-white/5"></div>
+<span class="font-code-sm text-[9px] text-secondary/60">CI/CD Active</span>
+</div>
+<!-- DevSecOps Node -->
+<div class="absolute bottom-[20%] left-[12%] floating bg-surface-container-low/40 backdrop-blur-md border border-white/10 p-4 w-40 flex flex-col items-center gap-2" style="animation-delay: -2s;">
+<span class="material-symbols-outlined text-error text-3xl">security</span>
+<span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant">NODE: SECURE</span>
+<div class="w-full h-[1px] bg-white/5"></div>
+<span class="font-code-sm text-[9px] text-error/60">Infra-Sec</span>
+</div>
+<!-- AIOps Node -->
+<div class="absolute bottom-[15%] right-[12%] floating bg-surface-container-low/40 backdrop-blur-md border border-white/10 p-4 w-40 flex flex-col items-center gap-2" style="animation-delay: -3s;">
+<span class="material-symbols-outlined text-tertiary text-3xl">psychology</span>
+<span class="font-label-caps text-[10px] tracking-widest text-on-surface-variant">NODE: PROMPT</span>
+<div class="w-full h-[1px] bg-white/5"></div>
+<span class="font-code-sm text-[9px] text-tertiary/60">LLM Mastering</span>
+</div>
+</div>
+<!-- Content Overlay -->
+<div class="relative z-10 text-center max-w-4xl px-4 mt-[-80px]">
+<div class="inline-block mb-6 px-4 py-1 border border-primary/30 bg-primary/10 backdrop-blur-md">
+<span class="font-label-caps text-xs tracking-[0.3em] text-primary">TECHRUNNITI IT ACADEMY</span>
+</div>
+<h1 class="font-display-lg text-4xl md:text-5xl lg:text-7xl mb-6 leading-tight text-on-surface">
+                Build enterprise cloud expertise with a <span class="text-primary-container">Fortune-500 training experience.</span>
+</h1>
+<p class="font-body-base text-on-surface-variant text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
+                Structured programmes, live labs, and security-first engineering to help you earn certification and lead cloud transformations.
+                <span class="block mt-2 text-primary/80">95% Completion Rate · 12-Student Live Cohorts · Industry-Certified Mentors</span>
+</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="group relative px-8 py-4 w-full sm:w-auto overflow-hidden bg-primary-container text-on-primary font-label-caps text-sm tracking-widest font-bold shadow-[0_0_20px_rgba(0,216,255,0.4)] hover:shadow-[0_0_40px_rgba(0,216,255,0.6)] transition-all">
+<span class="relative z-10">EXPLORE PROGRAMMES</span>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+</button>
+<button class="px-8 py-4 w-full sm:w-auto glass-panel font-label-caps text-sm tracking-widest text-on-surface hover:bg-white/10 hover:border-primary/50 transition-all border border-white/20">
+                    REQUEST A CALLBACK
+                </button>
+</div>
+</div>
+<!-- Live Status Ticker -->
+<div class="absolute bottom-10 left-container_padding right-container_padding flex flex-wrap justify-between items-center pointer-events-none opacity-50">
+<div class="flex items-center gap-8 font-code-sm text-xs">
+<div class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 animate-pulse"></div> AWS/AZURE UPLINK: STABLE</div>
+<div class="flex items-center gap-2"><span class="text-primary">COHORTS: 12-STUDENTS</span></div>
+<div class="flex items-center gap-2"><span class="text-secondary">CURRICULUM: CERT-ALIGNED</span></div>
+</div>
+<div class="font-label-caps text-[10px] tracking-tighter uppercase">Environment: Enterprise_Lab_v2.6</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="lg:pl-64 w-full py-12 bg-surface-container-lowest border-t border-outline-variant flex flex-col items-center px-container_padding text-on-surface-variant font-code-sm text-code-sm">
+<div class="w-full flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-8">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<img alt="TechRunniti Logo" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida/ADBb0uiUr1MY62CdWwAWFR808RR8hOPIa1QXmfy5MNNcsKDsXpVnzSKaQFSe1egDG_jXhrJXzJrOJbgpWebwSKgBxkpS26HL3hklj9HNW2DRNIWa2B-WL4XnznWZr0_h8Ylcy2AoSTmly9Su_hOhRs_BZsmCn5m84iea1RMflNltOMNngIQVIt-YdAObKyhI0ayIZg3yF7TSUmJuvZq_fPyVvR76x3WmlIufe6Y_I0xRu88Dw8PsACbi5IwnVqA"/>
+<div class="font-display-lg text-lg tracking-tighter text-on-surface">TechRunniti</div>
+</div>
+<p class="max-w-xs text-on-surface-variant/80">Premium cloud and DevSecOps programmes designed for professionals who want enterprise-grade skills.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-primary text-[10px]">PROGRAMMES</span>
+<a class="hover:text-primary transition-colors" href="#">Cloud Professional</a>
+<a class="hover:text-primary transition-colors" href="#">DevOps Engineer</a>
+<a class="hover:text-primary transition-colors" href="#">DevSecOps Master</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-primary text-[10px]">COMPANY</span>
+<a class="hover:text-primary transition-colors" href="#">About Us</a>
+<a class="hover:text-primary transition-colors" href="#">Resources</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-3 col-span-2 md:col-span-1">
+<span class="font-label-caps text-primary text-[10px]">GET IN TOUCH</span>
+<a class="hover:text-primary transition-colors" href="mailto:hello@techrunniti.com">hello@techrunniti.com</a>
+<a class="hover:text-primary transition-colors" href="tel:+919131590319">+91-9131590319</a>
+</div>
+</div>
+</div>
+<div class="w-full pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="font-label-caps text-tertiary">© 2026 TechRunniti IT Academy. All rights reserved.</div>
+<div class="flex gap-8 opacity-60">
+<a class="hover:text-secondary transition-opacity" href="#">Privacy Policy</a>
+<a class="hover:text-secondary transition-opacity" href="#">Terms of Service</a>
+<a class="hover:text-secondary transition-opacity" href="https://wa.me/919131590319">WhatsApp Admissions</a>
+</div>
+</div>
+</footer>
+<script>
+        // Loader logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            const percent = document.getElementById('load-percent');
+            let count = 0;
+            const interval = setInterval(() => {
+                count += Math.floor(Math.random() * 15) + 5;
+                if (count >= 100) {
+                    count = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loader.classList.add('opacity-0');
+                        setTimeout(() => loader.style.display = 'none', 1000);
+                    }, 500);
+                }
+                percent.innerText = count + '%';
+            }, 100);
+        });
+
+        // Three.js Neural Network Animation
+        let scene, camera, renderer, particles, sphere;
+        const container = document.getElementById('hero-canvas');
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            // Create particle sphere
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const radius = 200;
+            for (let i = 0; i < 2000; i++) {
+                const theta = 2 * Math.PI * Math.random();
+                const phi = Math.acos(2 * Math.random() - 1);
+                const x = radius * Math.sin(phi) * Math.cos(theta);
+                const y = radius * Math.sin(phi) * Math.sin(theta);
+                const z = radius * Math.cos(phi);
+                vertices.push(x, y, z);
+            }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            
+            const material = new THREE.PointsMaterial({
+                color: 0x14d8ff,
+                size: 2,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            // Wireframe sphere inner
+            const sphereGeom = new THREE.SphereGeometry(180, 32, 32);
+            const sphereMat = new THREE.MeshBasicMaterial({
+                color: 0x00d8ff,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.05
+            });
+            sphere = new THREE.Mesh(sphereGeom, sphereMat);
+            scene.add(sphere);
+
+            camera.position.z = 500;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.y += 0.001;
+            particles.rotation.x += 0.0005;
+            sphere.rotation.y -= 0.0005;
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', onWindowResize, false);
+
+        init();
+        animate();
+
+        // Mouse interaction for the 3D scene
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = (event.clientX - window.innerWidth / 2) / 100;
+            const mouseY = (event.clientY - window.innerHeight / 2) / 100;
+            
+            if(particles) {
+                particles.rotation.y = mouseX * 0.1;
+                particles.rotation.x = mouseY * 0.1;
+            }
+        });
+    </script>
+</body></html>

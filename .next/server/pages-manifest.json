@@ -1,13 +1,13 @@
 {
-  "/": "pages/index.html",
-  "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/_error": "pages/_error.js",
-  "/about": "pages/about.html",
+  "/_app": "pages/_app.js",
   "/api/contact": "pages/api/contact.js",
-  "/blog": "pages/blog.html",
   "/contact": "pages/contact.html",
   "/courses": "pages/courses.html",
+  "/blog": "pages/blog.html",
+  "/about": "pages/about.html",
+  "/": "pages/index.html",
   "/testimonials": "pages/testimonials.html",
+  "/_error": "pages/_error.js",
   "/404": "pages/404.html"
 }

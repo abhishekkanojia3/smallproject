@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(11, 15, 25, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-5px) scale(1.02);
+        }
+        .matrix-bg {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .glass-card:hover .matrix-bg {
+            opacity: 0.15;
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            animation: scanline 3s linear infinite;
+            opacity: 0;
+        }
+        .glass-card:hover .scanline {
+            opacity: 0.5;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#004e5d",
+                        "surface-container-low": "#161d1f",
+                        "on-tertiary-fixed-variant": "#5e4100",
+                        "on-surface-variant": "#bbc9ce",
+                        "on-primary-container": "#005a6c",
+                        "tertiary": "#ffdda7",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#2f3638",
+                        "secondary": "#ebb2ff",
+                        "primary": "#aeecff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-bright": "#333a3d",
+                        "on-tertiary-container": "#6d4c00",
+                        "primary-container": "#00d8ff",
+                        "secondary-container": "#ce5dff",
+                        "on-secondary-container": "#480064",
+                        "surface-dim": "#0e1417",
+                        "tertiary-fixed": "#ffdea9",
+                        "surface-container-high": "#242b2d",
+                        "on-tertiary": "#422d00",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#00687b",
+                        "outline": "#859398",
+                        "primary-fixed-dim": "#14d8ff",
+                        "primary-fixed": "#afecff",
+                        "surface-variant": "#2f3638",
+                        "surface": "#0e1417",
+                        "tertiary-container": "#feba29",
+                        "outline-variant": "#3c494d",
+                        "inverse-surface": "#dde4e6",
+                        "on-primary": "#003641",
+                        "on-primary-fixed": "#001f27",
+                        "on-secondary-fixed": "#320047",
+                        "inverse-on-surface": "#2b3234",
+                        "surface-tint": "#14d8ff",
+                        "surface-container": "#1a2123",
+                        "secondary-fixed": "#f8d8ff",
+                        "on-secondary-fixed-variant": "#74009f",
+                        "on-background": "#dde4e6",
+                        "background": "#0e1417",
+                        "secondary-fixed-dim": "#ebb2ff",
+                        "tertiary-fixed-dim": "#ffbb2a",
+                        "on-secondary": "#520071",
+                        "on-surface": "#dde4e6",
+                        "surface-container-lowest": "#080f11"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "bento_ratio": "1.618",
+                        "container_padding": "24px",
+                        "card_padding": "20px",
+                        "grid_gap": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-base": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "code-sm": ["13px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-base": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-base selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 w-full bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_15px_rgba(20,216,255,0.1)] z-50 flex justify-between items-center px-container_padding h-16 transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-4">
+<img alt="TechRunniti Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uiUr1MY62CdWwAWFR808RR8hOPIa1QXmfy5MNNcsKDsXpVnzSKaQFSe1egDG_jXhrJXzJrOJbgpWebwSKgBxkpS26HL3hklj9HNW2DRNIWa2B-WL4XnznWZr0_h8Ylcy2AoSTmly9Su_hOhRs_BZsmCn5m84iea1RMflNltOMNngIQVIt-YdAObKyhI0ayIZg3yF7TSUmJuvZq_fPyVvR76x3WmlIufe6Y_I0xRu88Dw8PsACbi5IwnVqA"/>
+<span class="font-display-lg text-headline-md tracking-tighter text-primary-fixed-dim">TECHRUNNITI</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-primary-fixed border-b-2 border-primary-fixed transition-all duration-300 ease-in-out" href="#">Programmes</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all duration-300 ease-in-out" href="#">Sandbox</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all duration-300 ease-in-out" href="#">Terminal</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all duration-300 ease-in-out" href="#">Academy</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">settings_ethernet</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">terminal</button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded-sm hover:brightness-110 transition-all">Enroll Now</button>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low/80 backdrop-blur-2xl border-r border-white/5 hidden lg:flex flex-col py-6 z-40 mt-16">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<div class="font-label-caps text-on-primary-container text-[10px]">LEARNER_PORTAL</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant opacity-60">Verified Access</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<div class="flex items-center gap-3 px-4 py-3 bg-primary-container/20 text-primary-fixed border-l-4 border-primary-fixed-dim transition-all duration-300">
+<span class="material-symbols-outlined">cloud</span>
+<span class="font-code-sm text-code-sm">Cloud</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary cursor-pointer transition-all">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-code-sm text-code-sm">DevOps</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary cursor-pointer transition-all">
+<span class="material-symbols-outlined">security</span>
+<span class="font-code-sm text-code-sm">DevSecOps</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary cursor-pointer transition-all">
+<span class="material-symbols-outlined">android_fingerprint</span>
+<span class="font-code-sm text-code-sm">VAPT</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary cursor-pointer transition-all">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-code-sm text-code-sm">Prompt Eng</span>
+</div>
+</nav>
+<div class="px-4 py-6 border-t border-white/5">
+<button class="w-full py-3 bg-primary/10 border border-primary/30 text-primary font-label-caps text-label-caps hover:bg-primary/20 transition-all active:scale-95">
+                Initialize Sandbox
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 mt-16 min-h-screen px-container_padding py-12 bg-[#060913]">
+<!-- Dashboard Header -->
+<div class="mb-12">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase">Status: Admissions Open</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-white mb-4">Enterprise Curriculum</h1>
+<p class="text-on-surface-variant max-w-2xl font-body-base">
+                Professional architectural mastery. Select a programme node to view duration and resource requirements for live cohort deployment.
+            </p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-grid_gap">
+<!-- 1. Cloud Professional -->
+<div class="glass-card md:col-span-3 lg:col-span-4 p-card_padding relative overflow-hidden group cursor-pointer" style="--accent-color: #aeecff; --accent-glow: rgba(174, 236, 255, 0.3);">
+<div class="scanline"></div>
+<div class="matrix-bg absolute inset-0 font-code-sm text-[8px] text-primary whitespace-pre pointer-events-none p-2 leading-none">
+                    AWS_NODE AZURE_CORE
+                    VPC_INIT IAM_ROLE
+                    S3_STORAGE ROUTE_53
+                    LOAD_BALANCER_OK
+                </div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">cloud</span>
+<div class="font-label-caps text-[10px] px-2 py-1 bg-primary/10 text-primary border border-primary/20">2 MONTHS</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Cloud Professional</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant mb-6">Intensive foundation in AWS and Azure core services. High availability and global scalability.</p>
+<div class="flex justify-between items-end">
+<div class="flex gap-2">
+<span class="font-label-caps text-[9px] bg-white/5 px-2 py-1 text-on-surface-variant">AWS</span>
+<span class="font-label-caps text-[9px] bg-white/5 px-2 py-1 text-on-surface-variant">AZURE</span>
+</div>
+<div class="text-right">
+<div class="font-label-caps text-[8px] text-on-surface-variant opacity-60">STARTING AT</div>
+<div class="font-code-sm text-primary">INR 14,999</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. DevOps Engineer -->
+<div class="glass-card md:col-span-3 lg:col-span-8 p-card_padding relative overflow-hidden group cursor-pointer" style="--accent-color: #14d8ff; --accent-glow: rgba(20, 216, 255, 0.3);">
+<div class="scanline"></div>
+<div class="matrix-bg absolute inset-0 font-code-sm text-[8px] text-primary whitespace-pre pointer-events-none p-2 leading-none">
+                    CI_CD_PIPELINE BUILD_TRIGGER
+                    GHA_ACTION DOCKER_UP
+                    TERRAFORM_PLAN JENKINS_OK
+                    K8S_DEPLOY_SUCCESS
+                </div>
+<div class="relative z-10 flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary-fixed-dim text-4xl" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
+<div class="font-label-caps text-[10px] px-2 py-1 bg-primary-fixed-dim/10 text-primary-fixed-dim border border-primary-fixed-dim/20">3 MONTHS</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-2">DevOps Engineer</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant mb-4">CI/CD automation, container workflows, and Infrastructure as Code. Zero-touch delivery orchestration.</p>
+<div class="flex gap-2 mb-4">
+<span class="font-label-caps text-[9px] bg-white/5 px-2 py-1 text-on-surface-variant">TERRAFORM</span>
+<span class="font-label-caps text-[9px] bg-white/5 px-2 py-1 text-on-surface-variant">DOCKER</span>
+<span class="font-label-caps text-[9px] bg-white/5 px-2 py-1 text-on-surface-variant">GITHUB ACTIONS</span>
+</div>
+</div>
+<div class="w-full md:w-48 flex flex-col justify-end text-right">
+<div class="mb-4">
+<div class="font-label-caps text-[10px] text-on-surface-variant opacity-60">STARTING AT</div>
+<div class="font-display-lg text-headline-md text-primary-fixed-dim">INR 24,999</div>
+</div>
+<div class="space-y-3">
+<div class="h-1 bg-white/10 w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-3/4 group-hover:w-full transition-all duration-700"></div>
+</div>
+<div class="flex justify-between font-label-caps text-[9px] text-on-surface-variant">
+<span>CURRICULUM SYNC</span>
+<span>75%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. DevSecOps Master -->
+<div class="glass-card md:col-span-6 lg:col-span-5 p-card_padding relative overflow-hidden group cursor-pointer" style="--accent-color: #ffb4ab; --accent-glow: rgba(255, 180, 171, 0.3);">
+<div class="scanline"></div>
+<div class="matrix-bg absolute inset-0 font-code-sm text-[8px] text-error whitespace-pre pointer-events-none p-2 leading-none">
+                    SCANNING_CVE VULN_DETECTED
+                    PATCH_APPLIED FIREWALL_DROP
+                    VAULT_INIT TLS_ENCRYPT
+                    SECURITY_AUDIT_PASS
+                </div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-error text-4xl" style="font-variation-settings: 'FILL' 1;">security</span>
+<div class="flex gap-2">
+<div class="font-label-caps text-[10px] px-2 py-1 bg-error/10 text-error border border-error/20">FLAGSHIP</div>
+<div class="font-label-caps text-[10px] px-2 py-1 bg-primary/10 text-primary border border-primary/20">6 MONTHS</div>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-2">DevSecOps Master</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant mb-6">Advanced cloud architecture combined with security-first engineering. Threat modeling and hardening.</p>
+<div class="grid grid-cols-2 gap-2 mb-6">
+<div class="border border-white/10 p-2 text-center group-hover:border-error transition-colors">
+<div class="font-label-caps text-[8px] text-on-surface-variant">DURATION</div>
+<div class="text-error font-code-sm uppercase">24 WEEKS</div>
+</div>
+<div class="border border-white/10 p-2 text-center group-hover:border-primary transition-colors">
+<div class="font-label-caps text-[8px] text-on-surface-variant">STARTING PRICE</div>
+<div class="text-primary font-code-sm">INR 39,999</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Penetration Testing Professional -->
+<div class="glass-card md:col-span-6 lg:col-span-7 p-card_padding relative overflow-hidden group cursor-pointer" style="--accent-color: #14d8ff; --accent-glow: rgba(20, 216, 255, 0.3);">
+<div class="scanline"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+<div class="w-full md:w-1/2 text-center md:text-left">
+<span class="material-symbols-outlined text-primary text-6xl mb-4" style="font-variation-settings: 'FILL' 1;">android_fingerprint</span>
+<h3 class="font-headline-md text-headline-md text-white">Penetration Testing Professional</h3>
+<div class="font-label-caps text-label-caps text-primary mt-1">3 MONTHS // OSCP ALIGNED</div>
+<div class="mt-4 flex items-center gap-2 justify-center md:justify-start">
+<span class="font-label-caps text-[10px] text-on-surface-variant opacity-60">PRICE:</span>
+<span class="font-code-sm text-primary text-xl">INR 29,999</span>
+</div>
+</div>
+<div class="flex-1 w-full">
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-white/5 border border-white/10 hover:border-primary transition-colors">
+<div class="font-label-caps text-[10px] text-on-surface-variant">NMAP</div>
+<div class="font-code-sm text-primary">SCANNED</div>
+</div>
+<div class="p-4 bg-white/5 border border-white/10 hover:border-primary transition-colors">
+<div class="font-label-caps text-[10px] text-on-surface-variant">METASPLOIT</div>
+<div class="font-code-sm text-primary">READY</div>
+</div>
+<div class="p-4 bg-white/5 border border-white/10 hover:border-primary transition-colors">
+<div class="font-label-caps text-[10px] text-on-surface-variant">EXPLOITATION</div>
+<div class="font-code-sm text-primary">LIVE LABS</div>
+</div>
+<div class="p-4 bg-white/5 border border-white/10 hover:border-primary transition-colors">
+<div class="font-label-caps text-[10px] text-on-surface-variant">REPORTING</div>
+<div class="font-code-sm text-primary">PROFESSIONAL</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. Prompt Engineering Professional -->
+<div class="glass-card md:col-span-3 lg:col-span-12 p-card_padding relative overflow-hidden group cursor-pointer" style="--accent-color: #ce5dff; --accent-glow: rgba(206, 93, 255, 0.3);">
+<div class="scanline"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-secondary-container text-4xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-white">Prompt Engineering Professional</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant max-w-xl">Mastering LLM automation for ChatGPT, Claude, and enterprise AI. 10-day intensive with hands-on projects.</p>
+</div>
+</div>
+<div class="flex items-center gap-12">
+<div class="text-center">
+<div class="font-label-caps text-[10px] text-on-surface-variant opacity-60">DURATION</div>
+<div class="font-code-sm text-secondary-container text-lg">10 DAYS</div>
+</div>
+<div class="text-right">
+<div class="font-label-caps text-[10px] text-on-surface-variant opacity-60">PRICE</div>
+<div class="font-display-lg text-headline-md text-secondary-container">INR 9,999</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- System Image Section -->
+<div class="mt-16 w-full h-[400px] overflow-hidden rounded-xl relative group">
+<img alt="Mainframe Server" class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBThUgYV75nFmsOsLEcmLizClMaYSTuA98Hxf0vplshSaQ2y5lYk6WGxr_GkySe5ojGFtK5SrbjbgEy5ukl8PE2ug87buDOdNqIVTkj9U6rPoQH281HgZnWwxRE2aNY9Glc9SiHDFy0Sg-KyRbWH_D91s9iTToAXiFfFoleYQTelBiaP_-HW27qvi22b-dJgeTVVjL2in_75x0xD_YdkzxTnTEncAV81qiqJR1-j3zBC2uGOcRuDZDitunv_9wDUU3Zgd-1HwhxjVs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8">
+<div class="font-label-caps text-label-caps text-primary mb-2">INFRASTRUCTURE_LOCATION: TECHRUNNITI_LABS</div>
+<div class="font-display-lg text-headline-md text-white">Cloud Training Matrix</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="lg:ml-64 bg-surface-container-lowest border-t border-outline-variant w-full py-8 flex flex-col md:flex-row justify-between items-center px-container_padding space-y-4 md:space-y-0 opacity-80 hover:opacity-100 transition-all duration-300">
+<div class="font-label-caps text-label-caps text-tertiary uppercase">© 2026 TechRunniti IT Academy. All rights reserved.</div>
+<div class="flex gap-6">
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Courses</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary transition-all" href="#">About</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Resources</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary transition-all" href="#">Contact</a>
+</div>
+</footer>
+<script>
+        // Micro-interaction for 3D tilt effect on cards
+        const cards = document.querySelectorAll('.glass-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+
+        // Atmospheric Terminal Log effect in the background matrix
+        const matrixBgs = document.querySelectorAll('.matrix-bg');
+        const commands = [
+            'COHORT_INIT', 'LAB_SYNC_OK', 'AWS_VPC_DEPL', 'AZURE_RBAC', 
+            'CI_CD_BUILD', 'DOCKER_PUSH', 'SEC_SCAN_INIT', 'PEN_TEST_OK', 
+            'PROMPT_ENG_V1', 'K8S_SVC_L4', 'ROOT_ACCESS', 'ADMISSION_OP'
+        ];
+
+        setInterval(() => {
+            matrixBgs.forEach(bg => {
+                const lines = bg.innerText.split('\n');
+                const randomLine = Math.floor(Math.random() * lines.length);
+                const randomCmd = commands[Math.floor(Math.random() * commands.length)];
+                if (lines[randomLine]) {
+                    lines[randomLine] = lines[randomLine].substring(0, 10) + ' ' + randomCmd;
+                    bg.innerText = lines.join('\n');
+                }
+            });
+        }, 1500);
+    </script>
+</body></html>

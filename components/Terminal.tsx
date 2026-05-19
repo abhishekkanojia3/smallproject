@@ -65,13 +65,13 @@ export default function Terminal() {
   const activeLine = currentLine < LINES.length ? LINES[currentLine] : null;
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0d1117] shadow-2xl shadow-black/50 overflow-hidden font-mono text-xs md:text-sm">
+    <div className="rounded-2xl border border-accent/30 bg-[#0d1117] shadow-2xl shadow-accent/20 overflow-hidden font-mono text-xs md:text-sm glowing-border">
       {/* Title bar */}
-      <div className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-[#161b22] border-b border-white/10">
-        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#ff5f57]" />
+      <div className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-[#161b22] border-b border-accent/20">
+        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#ff5f57] animate-pulse" style={{ animationDuration: '2s' }} />
         <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#febc2e]" />
-        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#28c840]" />
-        <span className="ml-2 md:ml-3 text-[10px] md:text-xs text-white/30 tracking-wide">terminal — bash</span>
+        <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#28c840] animate-pulse" style={{ animationDuration: '3s' }} />
+        <span className="ml-2 md:ml-3 text-[10px] md:text-xs text-accent/60 tracking-[0.2em] uppercase font-bold">LIVE_TERMINAL — BASH</span>
       </div>
       {/* Body */}
       <div className="px-3 md:px-5 py-3 md:py-4 space-y-2 min-h-[160px] md:min-h-[200px]">
